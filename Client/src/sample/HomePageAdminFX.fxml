@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAdmin">
+   <children>
+      <AnchorPane layoutX="178.0" layoutY="139.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="386.0" prefWidth="422.0">
+         <children>
+            <Label layoutX="112.0" layoutY="56.0" text="Witamy w Administracji">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <VBox layoutY="139.0" prefHeight="386.0" prefWidth="177.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="177.0" text="Prośby o utworzenie konta" />
+            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="177.0" text="Prośby o odblokowanie użytkownika" textAlignment="CENTER" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" />
+         </children></VBox>
+   </children>
+</Pane>
