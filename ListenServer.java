@@ -25,7 +25,7 @@ public class ListenServer
         try
         {
             server = new ListenServer();
-            Naming.rebind("ServerFace", server);
+            Naming.rebind("Login", server);
         }
         catch (Exception e)
         {
