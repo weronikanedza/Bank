@@ -25,4 +25,13 @@ public class ControllerRegister
         appStage.setScene(homePageScene);
         appStage.show();
     }
+
+    public void handleSendRequest() throws IOException
+    {
+        Parent homePageParent = FXMLLoader.load(getClass().getResource("EndRegisterFX.fxml"));
+        Scene homePageScene = new Scene(homePageParent);
+        Stage appStage = (Stage) frontText.getScene().getWindow();
+        appStage.setScene(homePageScene);
+        appStage.show();
+    }
 }

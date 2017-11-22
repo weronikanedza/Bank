@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class Client {
+public class Client
+{
 
 
     private List<String> sendingData = new ArrayList<String>();
@@ -20,7 +21,7 @@ public class Client {
         System.out.println(data);
         List<String> serverData = new ArrayList<String>();
         //login test
-        serverData.addAll(Arrays.asList("0", "c", "192847"));
+        serverData.addAll(Arrays.asList("0", "a", "192847"));
         return serverData;
     }
 
