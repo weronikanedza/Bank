@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
-
+//fx:controller="sample.Main"
 public class Main extends Application {
 
     Client client = new Client();
@@ -67,10 +67,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        primaryStage.setTitle("Twój Hajs");
-        primaryStage.setScene(new Scene(root, 600, 550));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
+        primaryStage.setTitle("PK Bank");
+        primaryStage.setScene(new Scene(root, 950, 750));
         primaryStage.show();
+        primaryStage.setMaxWidth(950);
+        primaryStage.setMaxHeight(750);
+        //primaryStage.setResizable(false);
     }
 
     public static void main(String[] args) {

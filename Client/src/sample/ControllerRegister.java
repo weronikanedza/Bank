@@ -19,7 +19,7 @@ public class ControllerRegister
     @FXML
     public void handleGetBack() throws IOException
     {
-        Parent homePageParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent homePageParent = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
         Scene homePageScene = new Scene(homePageParent);
         Stage appStage = (Stage) frontText.getScene().getWindow();
         appStage.setScene(homePageScene);

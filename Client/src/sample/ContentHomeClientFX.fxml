@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="429.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerClient">
    <children>
-      <ImageView cache="true" fitHeight="153.0" fitWidth="233.0" layoutX="144.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView cache="true" fitHeight="153.0" fitWidth="233.0" layoutX="109.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@homePageImage.jpg" />
          </image>
