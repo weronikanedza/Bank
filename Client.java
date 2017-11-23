@@ -1,4 +1,8 @@
-import java.rmi.Naming;
+package sample;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
 
 public class Client
 {
@@ -8,45 +12,45 @@ public class Client
     public static void main(String args[])
     {
         System.out.println("--------------------------");
-        System.out.println("Client start! " + args[0]);
-        new Client(args);
-        System.out.println("Client stop! " + args[0]);
+        System.out.println("Client start");
+        new Client("1");
+        System.out.println("Client stop! ");
         System.out.println("--------------------------");
     }
 
-    public Client(String args[])
+    public Client(String state)
     {
-        this.name = args.length != 1 ? args[0] : "localhost";
+        // String url = "rmi://217.182.77.242/";
+        String url = "rmi://localhost/";
+        String name = "maslo";
 
-        ServerFace login;
         try
         {
-            login = (ServerFace) Naming.lookup("Login");
+            Context context = new InitialContext();
+            ServerFace login = (ServerFace) context.lookup(url + "ServerFace");
 
-
-            switch(args[1])
+            switch (state)
             {
                 case "0":
-                    System.out.println("Logowanie: " + args[0]);
-                    login.CheckLogin(name, args[1]);
+                    System.out.println("Logowanie: ");
+                    login.CheckLogin(name, state);
                     break;
                 case "1":
-                    System.out.println("Wylogowanie " + args[0]);
+                    System.out.println("Wylogowanie " + state);
                     login.CheckLogout(name);
                     break;
 
                 case "2":
-                    System.out.println("Transfer " + args[0]);
-                    login.SendTransfer(args[0], args[2], 100);
+                    System.out.println("Transfer " + state);
+                    login.SendTransfer(state, state, 100);
                     break;
 
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             System.err.println(e);
-        }
 
+        }
 
     }
 }
