@@ -1,4 +1,5 @@
-import java.rmi.Naming;
+package sample;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import javax.naming.Context;
@@ -9,8 +10,8 @@ import java.util.Map;
 
 
 public class ListenServer
-    extends UnicastRemoteObject
-    implements ServerFace
+        extends UnicastRemoteObject
+        implements ServerFace
 {
     // This collection contain current user session.
     private static Map<String, ClientData> clientDataSet;
@@ -22,17 +23,11 @@ public class ListenServer
     public static void main(String args[])
     {
         System.out.println("SERVER START!");
-
-        //ListenServer server;
         try
         {
-          /*
-          Najlepiej by było jak byś oddzieli implementację metod z interfejsu (metod ktore wywołuje klient od maina. Bo w tedy ławtwiej jest towrzyć obiekt)
-          Tak jak to jest zrobione z ostatnia metoda tutaj czyli z przykładowa "getDescription"
-           */
             ServerImpl obj1 = new ServerImpl();
             Context context = new InitialContext();
-            context.bind("rmi:ServerFace", obj1);
+            context.rebind("rmi:ServerFace", obj1);
             System.out.println("Wait...");
         }
         catch (Exception e)
@@ -108,7 +103,7 @@ public class ListenServer
 
     // TO ZALEZY CO CHCE Wera DOSTAC
     private class Transmitter
-        implements Runnable
+            implements Runnable
     {
         @Override
         public void run()
@@ -116,12 +111,10 @@ public class ListenServer
 
         }
     }
-//TESTY
+    //TESTY
     @Override
     public String getDescription(String text) throws RemoteException
     {
         return "TESTY2";
     }
 }
-
-
