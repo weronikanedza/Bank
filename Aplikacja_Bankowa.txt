@@ -1,4 +1,4 @@
--Aplikacja Bankowa
+﻿-Aplikacja Bankowa
 	-Logowanie
 	-Zakładanie konta
 	-Przelewy między kontami
@@ -29,3 +29,5 @@
 	-Dostęp jedynie przez serwery "obliczeniowe"
 -Szyfrowanie całego ruchu
 -Szyfrowanie sha lub przez prostę hashowanie (md5)
+
+e
