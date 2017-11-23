@@ -29,5 +29,3 @@
 	-Dostęp jedynie przez serwery "obliczeniowe"
 -Szyfrowanie całego ruchu
 -Szyfrowanie sha lub przez prostę hashowanie (md5)
-
-e
