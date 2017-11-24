@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class ListenServer
         extends UnicastRemoteObject
-        implements ServerFace
 {
     // This collection contain current user session.
     private static Map<String, ClientData> clientDataSet;
@@ -41,7 +40,7 @@ public class ListenServer
         clientDataSet = new HashMap<>();
     }
 
-    @Override
+
     public void CheckLogin(String login, String password)
             throws RemoteException
     {
@@ -62,7 +61,7 @@ public class ListenServer
         }
     }
 
-    @Override
+
     public void CheckLogout(String login)
             throws RemoteException
     {
@@ -83,7 +82,7 @@ public class ListenServer
     }
 
 
-    @Override
+
     public void SendTransfer(String fromClient, String toClient, int value) throws RemoteException
     {
         // DO DOGADANIA
@@ -105,16 +104,10 @@ public class ListenServer
     private class Transmitter
             implements Runnable
     {
-        @Override
+
         public void run()
         {
 
         }
-    }
-    //TESTY
-    @Override
-    public String getDescription(String text) throws RemoteException
-    {
-        return "TESTY2";
     }
 }
