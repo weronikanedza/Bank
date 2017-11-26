@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="750.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.ControllerClient">
+   <children>
+      <AnchorPane fx:id="greetingPane" accessibleRole="NODE" layoutX="200.0" layoutY="145.0" prefHeight="605.0" prefWidth="750.0">
+         <children>
+            <ImageView fitHeight="605.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="209.0" fitWidth="264.0" layoutX="267.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pkLogo02.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="226.0" layoutY="310.0" text="Witaj w bankowości elektronicznej &#10;PK Bank" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="217.0" layoutY="492.0" text="Wybierz operacje jakiej chcesz dokonać.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="homePane" layoutX="200.0" layoutY="145.0" prefHeight="605.0" prefWidth="750.0">
+         <children>
+            <ImageView fitHeight="605.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="112.0" layoutY="197.0" text="Numer konta:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="balance" alignment="CENTER_RIGHT" layoutX="424.0" layoutY="114.0" prefHeight="27.0" prefWidth="129.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" fill="#0044aa" layoutX="492.0" layoutY="145.0" startX="-400.0" stroke="#0044aa" strokeWidth="3.0" />
+            <Label layoutX="118.0" layoutY="110.0" text="Stan konta:">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="accNo" layoutX="128.0" layoutY="245.0" prefHeight="35.0" prefWidth="348.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" fill="#0044aa" layoutX="492.0" layoutY="224.0" startX="-400.0" stroke="#0044aa" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="145.0" prefWidth="950.0" style="-fx-background-color: #0044AA;">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="140.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pkLogo02.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="145.0" prefHeight="605.0" prefWidth="200.0" style="-fx-background-color: #AACCFF;">
+         <children>
+            <VBox layoutX="34.0" layoutY="49.0" spacing="30.0">
+               <children>
+                  <Button fx:id="home" mnemonicParsing="false" onAction="#handleMainPage" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleLogOut" prefHeight="25.0" prefWidth="134.0" text="Wyloguj">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
