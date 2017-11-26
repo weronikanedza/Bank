@@ -55,12 +55,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="errGetAddAccReg" layoutX="36.0" layoutY="155.0" prefHeight="27.0" prefWidth="693.0" textFill="RED">
+            <Label fx:id="errGetAddAccReg" layoutX="52.0" layoutY="155.0" prefHeight="27.0" prefWidth="677.0" textFill="RED">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="56.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleViewAddAccReq" text="Przeglądaj wnioski">
+            <Button layoutX="52.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleViewAddAccReq" text="Przeglądaj wnioski">
                <font>
                   <Font size="14.0" />
                </font>
@@ -84,8 +84,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="620.0" layoutY="12.0" mnemonicParsing="false" prefWidth="116.0" text="Następny wniosek" />
-            <Button layoutX="16.0" layoutY="12.0" mnemonicParsing="false" text="Poprzedni wniosek" />
+            <Button layoutX="620.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleNextAddAccReq" prefWidth="116.0" text="Następny wniosek" />
+            <Button layoutX="16.0" layoutY="12.0" mnemonicParsing="false" onAction="#handlePreviousAddAccReq" text="Poprzedni wniosek" />
             <Line endX="500.0" layoutX="178.0" layoutY="70.0" startX="-100.0" stroke="#aaccff" strokeWidth="3.0" />
             <VBox layoutX="69.0" layoutY="120.0" prefHeight="70.0" prefWidth="116.0" spacing="5.0">
                <children>
@@ -208,12 +208,12 @@
                   </Label>
                </children>
             </VBox>
-            <Button layoutX="69.0" layoutY="488.0" mnemonicParsing="false" text="Zatwierdź">
+            <Button layoutX="69.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleAcceptAddAccReq" text="Zatwierdź">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="176.0" layoutY="488.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" text="Odrzuć">
+            <Button layoutX="176.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleRefuseAddAccReq" prefHeight="30.0" prefWidth="86.0" text="Odrzuć">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -225,7 +225,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="switchReq" alignment="CENTER" layoutX="262.0" layoutY="15.0" prefHeight="20.0" prefWidth="200.0" text="Nie ma kolejnego wnisoku" textFill="#0066ff">
+            <Label fx:id="switchReq" alignment="CENTER" layoutX="219.0" layoutY="15.0" prefHeight="20.0" prefWidth="269.0" text="Nie ma kolejnego wnisoku" textFill="#0066ff">
                <font>
                   <Font size="14.0" />
                </font>

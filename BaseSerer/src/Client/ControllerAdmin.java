@@ -26,6 +26,7 @@ public class ControllerAdmin
     private List<AddAccountRequest> listAddAccReq;
     private int regAmount;
     private int currentReq;
+    private int clicks;
 
     @FXML
     private AnchorPane currentPane;
@@ -46,6 +47,7 @@ public class ControllerAdmin
     private void loadAddAccReqData(int index)
     {
         AddAccountRequest el= listAddAccReq.get(index);
+
         idReq.setText(el.id_request);
         nameAndLastName.setText(el.firstName + el.lastName);
         pesel.setText(el.pesel);
@@ -57,6 +59,93 @@ public class ControllerAdmin
         phoneNumber.setText(el.phoneNumber);
         switchReq.setText("");
         doubleClick.setText("");
+
+        clicks = 0;
+    }
+
+    @FXML
+    public void handleAcceptAddAccReq()
+    {
+     decideAddAccReq("y");
+    }
+
+    @FXML
+    public void handleRefuseAddAccReq()
+    {
+        decideAddAccReq("n");
+    }
+
+    public void decideAddAccReq(String decision)
+    {   int er;
+
+        if(clicks == 0)
+        {
+            clicks++;
+            doubleClick.setText("Kliknij jeszcze raz aby potwierdzić wybór");
+        }
+        else if(clicks == 1)
+        {
+            er = client.sendAddAccDecision(listAddAccReq.get(currentReq).id_request, decision);
+            if (er == -2)
+            {
+            doubleClick.setText("Wystąpił bład podczas przetważania wniosku.");
+            }
+            else if (er == -1)
+            {
+                doubleClick.setText("Wystąpił bład podczas wysyłania wniosku.");
+            }
+            else if (er == 0)
+            {
+                System.out.println("decuzja : " + decision);
+                listAddAccReq.remove(currentReq);
+                regAmount = listAddAccReq.size();
+
+                if(regAmount == 0)
+                {
+                    currentPane.setVisible(false);
+                    currentPane = addAccPane;
+                    currentPane.setVisible(true);
+                    reqAmountLab.setText("0");
+                }
+                else if(currentReq < regAmount)
+                {
+                    loadAddAccReqData(currentReq);
+                }
+                else if(currentReq-1 >= 0)
+                {
+                    currentReq--;
+                    loadAddAccReqData(currentReq);
+                }
+            }
+        }
+    }
+
+    @FXML
+    public void handleNextAddAccReq(){
+
+        if(currentReq+1 == regAmount)
+        {
+            switchReq.setText("To juz ostani wniosek.");
+        }
+        else
+        {
+            currentReq++;
+            loadAddAccReqData(currentReq);
+        }
+    }
+
+    @FXML
+    public void handlePreviousAddAccReq(){
+
+        if(currentReq-1 == -1)
+        {
+            switchReq.setText("To jest pierwszy wniosek na liście.");
+        }
+        else
+        {
+            currentReq--;
+            loadAddAccReqData(currentReq);
+        }
     }
 
     @FXML
@@ -70,9 +159,11 @@ public class ControllerAdmin
             currentReq = 0;
             loadAddAccReqData(currentReq);
         }
+        else if(regAmount == 0)
+        {
+            errGetAddAccReg.setText("Nie ma wniosków do sprawdzenia.");
+        }
     }
-
-
 
     @FXML
     public void handleAddAccRequests()
@@ -91,7 +182,10 @@ public class ControllerAdmin
 
         }
         else
+        {
             errGetAddAccReg.setText("Niestety obecnie nie jest możliwe pobranie wniosków, sprobój ponownie pożniej.");
+            regAmount = -1;
+        }
     }
 
     @FXML

@@ -3,6 +3,7 @@ package Client;
 import Base.BaseServerFace;
 import Base.LogTo;
 import Base.LogFrom;
+import sample.AddAccReqDecision;
 import sample.AddAccountRequest;
 import sample.PersonalData;
 import sample.RequestListAddAccount;
@@ -57,8 +58,8 @@ public class Client
         LogFrom received;
 
         // connect to server
-        if(communicateWithServer()==-1)
-            return errorCode;
+//        if(communicateWithServer()==-1)
+//            return errorCode;
 
         //check whether data is correct
         if (!checkData.checkLoginData(login, password))
@@ -80,33 +81,33 @@ public class Client
         //new thread creating
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
-         //sending and receiving data to/from main server, interpreting received data all in thread
-        try
-        {
-            received = server.logIn(login, toSend);
-            System.out.println(received.login);
-        }
-        catch (Exception e)
-        {
-
-            System.out.println("Error: " + e);
-            e.printStackTrace();
-            return -1;
-        }
-         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+//         //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.logIn(login, toSend);
+//            System.out.println(received.login);
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return -1;
+//        }
+//         //chcek if received if null !!!
+//        if(received == null)
+//            return errorCode;
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
 
 //--------------------------do testowania odbierania danych-------------------------------------------
-//        received = new LogFrom();
-//        received.error = "0";
-//        received.status = "a";
-//        received.login = "1234";
-//        received.balance = "1140.56";
-//        received.accNo  = "15975364820";
+        received = new LogFrom();
+        received.error = "0";
+        received.status = "a";
+        received.login = "1234";
+        received.balance = "1140.56";
+        received.accNo  = "15975364820";
 ////----------------------------------------------------------------------------------------------
 
 
@@ -175,7 +176,7 @@ public class Client
 //         //sending and receiving data to/from main server, interpreting received data all in thread
 //        try
 //        {
-//            received = (String)server.requestAddAccount(userId, toSend);
+//            received = server.requestAddAccount(userId, toSend);
 //        }
 //        catch (Exception e)
 //        {
@@ -212,7 +213,7 @@ public class Client
 //         //sending and receiving data to/from main server, interpreting received data all in thread
 //        try
 //        {
-//            received = (RequestListAddAccount)server.getRequestAddAccount(userId);
+//            received = server.getRequestAddAccount(userId);
 //        }
 //        catch (Exception e)
 //        {
@@ -237,10 +238,61 @@ public class Client
         sample.idNumber = "AZK784512";
         sample.email = "Janusz@gmail.com";
         sample.phoneNumber = "759413682";
+
+        AddAccountRequest sample2 = new AddAccountRequest();
+        sample2.id_request = "1234";
+        sample2.firstName = "Andrzej";
+        sample2.lastName = "Wolak";
+        sample2.street = "Wislka II 13c/14";
+        sample2.zipCode = "37-450";
+        sample2.city = "Nowy Sącz";
+        sample2.pesel = "54092356981";
+        sample2.idNumber = "AZK784512";
+        sample2.email = "WolakA@gmail.com";
+        sample2.phoneNumber = "759413682";
+
         list.add(sample);
+        list.add(sample2);
 
         received.data = list;
 //----------------------------------------------------------------------------------------------
      return  received.data;
+    }
+
+    public int sendAddAccDecision(String idReq, String decision)
+    {
+        int errorCode = -1;
+        AddAccReqDecision toSend = new AddAccReqDecision();
+        String received = "0";
+
+        //Putting everything in to a list S
+        toSend.id_req = idReq;
+        toSend.decision = decision;
+
+        //encoding the list S of data
+        //TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+//         //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.answerAddAccountReq(userId, toSend);
+//        }
+//        catch (Exception e)
+//        {
+//            return errorCode;
+//        }
+//----------------------------------------------------------------------------------------------
+        if (received.equals("1"))
+            errorCode = -2;
+        else if (received.equals("0"))
+            errorCode = 0;
+
+        return errorCode;
     }
 }
