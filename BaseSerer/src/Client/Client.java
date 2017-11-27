@@ -23,16 +23,13 @@ public class Client
 
     public int communicateWithServer()
     {
-        // String url = "rmi://217.182.77.242/";
         String url = "rmi://localhost/";
-        String name = "maslo";
 
         try
         {
             Context context = new InitialContext();
 
             server = (BaseServerFace) context.lookup(url + "BaseServerFace");
-
 
         } catch (Exception e)
         {
@@ -58,8 +55,8 @@ public class Client
         LogFrom received;
 
         // connect to server
-//        if(communicateWithServer()==-1)
-//            return errorCode;
+        if(communicateWithServer()==-1)
+            return errorCode;
 
         //check whether data is correct
         if (!checkData.checkLoginData(login, password))
@@ -81,45 +78,44 @@ public class Client
         //new thread creating
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
-//         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.logIn(login, toSend);
-//            System.out.println(received.login);
-//        }
-//        catch (Exception e)
-//        {
-//
-//            System.out.println("Error: " + e);
-//            e.printStackTrace();
-//            return -1;
-//        }
-//         //chcek if received if null !!!
-//        if(received == null)
-//            return errorCode;
+         //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.logIn(login, toSend);
+            System.out.println(received.login);
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+         //chcek if received if null !!!
+        if(received == null)
+            return errorCode;
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
 
 //--------------------------do testowania odbierania danych-------------------------------------------
-        received = new LogFrom();
-        received.error = "0";
-        received.status = "a";
-        received.login = "1234";
-        received.balance = "1140.56";
-        received.accNo  = "15975364820";
+//        received = new LogFrom();
+//        received.error = "0";
+//        received.status = "a";
+//        received.login = "1234";
+//        received.balance = "1140.56";
+//        received.accNo  = "15975364820";
 ////----------------------------------------------------------------------------------------------
-
 
         if(received.error.equals("0"))
         {
-            if (received.status.equals("c"))// ok and client
+            if (received.status.equals("C"))// ok and client
             {
                 balance = received.balance;
                 accNo = received.accNo;
                 errorCode = 0;
             }
-            else if (received.status.equals("a"))// ok and admin
+            else if (received.status.equals("A"))// ok and admin
                 errorCode = 1;
 
             userId = received.login;
@@ -182,7 +178,7 @@ public class Client
 //        {
 //            return -1;
 //        }
-
+//
 //         //chcek if received if null !!!
 //        if(received == null)
 //            return errorCode;
@@ -295,4 +291,18 @@ public class Client
 
         return errorCode;
     }
+
+    public void logOot(){
+        //         //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            server.LogOut(userId);
+        }
+        catch (Exception e)
+        {
+            System.out.println("err Log out");
+        }
+
+    }
+
 }

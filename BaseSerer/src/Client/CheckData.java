@@ -45,11 +45,11 @@ public class CheckData
     public boolean checkLoginData(String login, String password)
     {
         boolean isCorrect;
-        isCorrect = textHasCapital(login) &&
-                textHasCapital(password) &&
+        isCorrect = textHasCapital(password) &&
                 !textHasSpecial(login) &&
                 !textHasSpecial(password) &&
                 textHasNumber(login) &&
+                !textHasCharacter(login);
                 textHasNumber(password);
         return isCorrect;
     }

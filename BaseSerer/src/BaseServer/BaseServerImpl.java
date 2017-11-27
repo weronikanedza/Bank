@@ -23,11 +23,12 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public LogFrom logIn(String login, LogTo data) throws RemoteException
+	public synchronized LogFrom logIn(String login, LogTo data) throws RemoteException
 	{
-		System.out.println("Loguj!");
+		System.out.println("LOGIN");
+		LogFrom logFrom = computingSever.logIn(login, data);
 
-		return computingSever.logIn(login, data);
+		return logFrom;
 	}
 
 	@Override

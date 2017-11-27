@@ -1,27 +1,74 @@
 package ComputingServer;
 
-import Base.*;
+import Base.BaseServerFace;
+import Base.LogFrom;
+import Base.LogTo;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.*;
 
-// packege BaseServer.BaseServerimpl JUST FOR TEST
 public class ComputingServerImpl
     extends UnicastRemoteObject
     implements BaseServerFace
 {
-    protected ComputingServerImpl() throws RemoteException
-    {
+
+    final private String URL="jdbc:mysql://localhost:3306/bazadb";
+    private Connection connection=null;
+    private Statement statement=null;
+    private ResultSet rS=null;
+
+    public ComputingServerImpl() throws RemoteException, SQLException {
         super();
+        try {
+            connection = DriverManager.getConnection(URL,"root","");
+            statement=connection.createStatement();
+        } catch (SQLException e) {
+            System.out.println("Connection Failed! Check output console");
+            e.printStackTrace();
+            return;
+        }
+
+        if (connection != null) {
+            System.out.println("You made it, take control your database now!");
+        } else {
+            System.out.println("Failed to make connection!");
+        }
     }
+
 
     @Override
     public LogFrom logIn(String login, LogTo data) throws RemoteException
     {
-        System.out.println("Log!!!");
-        LogFrom logFrom = new LogFrom();
-        logFrom.login = login;
+        System.out.println("LOGIN");
+        LogFrom logFrom=new LogFrom();
+        try {
+            rS= statement.executeQuery("Select password,status from users where login='"+data.login+"' and password='"+data.password+"'" );
+            rS.next();
+            if(data.password.equals(rS.getString("password"))){ //checks password capital/small letters
+                logFrom.error="0";
+                logFrom.status=rS.getString("status");
+                logFrom.login=data.login;
+                System.out.println(logFrom.login);
 
+                if(logFrom.status.equals("C") ) { //add balance if client is a user
+                    rS=statement.executeQuery("Select balance,id_account from account natural join customers where customer_nr='"+data.login+"'");
+                    rS.next();
+                    logFrom.balance= rS.getString("balance");
+                    logFrom.accNo= rS.getString("id_account");
+                }
+
+            }else throw new Exception();
+        } catch(SQLException e){
+            System.out.println("resultset exception");
+            System.out.println(e.getMessage());
+            logFrom.error="1";
+        } catch (Exception e){
+            System.out.println("There is no that person in database");
+            logFrom.error="1";
+        }
         return logFrom;
     }
 

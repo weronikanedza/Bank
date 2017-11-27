@@ -4,6 +4,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ComputingServer
 {
@@ -25,6 +26,10 @@ public class ComputingServer
         catch (NamingException e)
         {
             System.out.println(e);
+            e.printStackTrace();
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
     }
