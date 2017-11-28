@@ -1,5 +1,6 @@
 package Client;
 
+import Base.AddAccountRequest;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.AddAccountRequest;
 
 import java.io.IOException;
 import java.util.List;
@@ -84,8 +84,9 @@ public class ControllerAdmin
             doubleClick.setText("Kliknij jeszcze raz aby potwierdzić wybór");
         }
         else if(clicks == 1)
-        {
+        {   doubleClick.setText("Zatwierdzono wybór");
             er = client.sendAddAccDecision(listAddAccReq.get(currentReq).id_request, decision);
+
             if (er == -2)
             {
             doubleClick.setText("Wystąpił bład podczas przetważania wniosku.");
@@ -98,7 +99,9 @@ public class ControllerAdmin
             {
                 System.out.println("decuzja : " + decision);
                 listAddAccReq.remove(currentReq);
+                listAddAccReq = client.getListAddAccReq();
                 regAmount = listAddAccReq.size();
+                currentReq = 0;
 
                 if(regAmount == 0)
                 {
@@ -107,15 +110,11 @@ public class ControllerAdmin
                     currentPane.setVisible(true);
                     reqAmountLab.setText("0");
                 }
-                else if(currentReq < regAmount)
+                else
                 {
                     loadAddAccReqData(currentReq);
                 }
-                else if(currentReq-1 >= 0)
-                {
-                    currentReq--;
-                    loadAddAccReqData(currentReq);
-                }
+
             }
         }
     }

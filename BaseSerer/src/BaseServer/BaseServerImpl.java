@@ -56,9 +56,12 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object requestAddAccount(String login, Object data) throws RemoteException
+	public String requestAddAccount(String login, PersonalData data) throws RemoteException
 	{
-		return null;
+		System.out.println("Zakladanie konta(wniosek)");
+		String err = computingSever.requestAddAccount(login, data);
+
+		return err;
 	}
 
 	@Override
@@ -80,9 +83,12 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object answerAddAccountReq(String login, Object data) throws RemoteException
+	public String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException
 	{
-		return null;
+		System.out.println("Odpowiedz zalozenie wniosku");
+		String err = computingSever.answerAddAccountReq(login, data);
+
+		return err;
 	}
 
 	@Override
@@ -134,9 +140,12 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getRequestAddAccount(String login) throws RemoteException
+	public RequestListAddAccount getRequestAddAccount(String login) throws RemoteException
 	{
-		return null;
+		System.out.println("Zakladanie konta(wniosek)");
+		RequestListAddAccount list = computingSever.getRequestAddAccount(login);
+
+		return list;
 	}
 
 	@Override

@@ -1,17 +1,11 @@
 package Client;
 
-import Base.BaseServerFace;
-import Base.LogTo;
-import Base.LogFrom;
-import sample.AddAccReqDecision;
-import sample.AddAccountRequest;
-import sample.PersonalData;
-import sample.RequestListAddAccount;
+import Base.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import java.util.ArrayList;
 import java.util.List;
+
 public class Client
 {
 
@@ -137,7 +131,7 @@ public class Client
     * */
     public int register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated)
     {
-        int errorCode = -1;
+        int errorCode = -4;
         PersonalData toSend = new PersonalData();
         String received;
 
@@ -158,6 +152,15 @@ public class Client
             return errorCode;
 
         //Putting everything in to a list S
+        toSend.pesel = pesel;
+        toSend.city = city;
+        toSend.email = email;
+        toSend.firstName = name;
+        toSend.idNumber = idNumber;
+        toSend.lastName = lastName;
+        toSend.phoneNumber = phoneNum;
+        toSend.street = street;
+        toSend.zipCode = zipCode;
 
         //encoding the list S of data
         //TO DO
@@ -169,29 +172,28 @@ public class Client
         //TO DO
 
 //---------------------------------poprawne wysylanie------------------------------------------
-//         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.requestAddAccount(userId, toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return -1;
-//        }
-//
-//         //chcek if received if null !!!
-//        if(received == null)
-//            return errorCode;
+         //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.requestAddAccount(userId, toSend);
+        }
+        catch (Exception e)
+        {
+            return errorCode;
+        }
+
+         //chcek if received if null !!!
+        if(received == null)
+            return errorCode;
 //----------------------------------------------------------------------------------------------
 
 //--------------------------do testowania odbierania danych-------------------------------------------
-        received = "0";
 //----------------------------------------------------------------------------------------------
 
         if(received.equals("0"))
             errorCode = 0;
         else if(received.equals("1"))
-            errorCode=-2;
+            errorCode=-1;
 
         //end thread
 
@@ -206,51 +208,52 @@ public class Client
         RequestListAddAccount received;
 
 //        //---------------------------------poprawne wysylanie------------------------------------------
-//         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.getRequestAddAccount(userId);
-//        }
-//        catch (Exception e)
-//        {
-//            return null;
-//        }
-//
-//        if (received.error.equals("1"))
-//            return null;
+         //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.getRequestAddAccount(userId);
+
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+
+        if (received.error.equals("1"))
+            return null;
 //----------------------------------------------------------------------------------------------
 
 //--------------------------do testowania odbierania danych-------------------------------------------
-        received = new RequestListAddAccount();
-        List<AddAccountRequest> list = new ArrayList<AddAccountRequest>();
-        AddAccountRequest sample = new AddAccountRequest();
-        sample.id_request = "1234";
-        sample.firstName = "Janusz";
-        sample.lastName = "Nędza";
-        sample.street = "Jana Pawła II 13c/14";
-        sample.zipCode = "37-450";
-        sample.city = "Stalowa Wola";
-        sample.pesel = "54092356981";
-        sample.idNumber = "AZK784512";
-        sample.email = "Janusz@gmail.com";
-        sample.phoneNumber = "759413682";
-
-        AddAccountRequest sample2 = new AddAccountRequest();
-        sample2.id_request = "1234";
-        sample2.firstName = "Andrzej";
-        sample2.lastName = "Wolak";
-        sample2.street = "Wislka II 13c/14";
-        sample2.zipCode = "37-450";
-        sample2.city = "Nowy Sącz";
-        sample2.pesel = "54092356981";
-        sample2.idNumber = "AZK784512";
-        sample2.email = "WolakA@gmail.com";
-        sample2.phoneNumber = "759413682";
-
-        list.add(sample);
-        list.add(sample2);
-
-        received.data = list;
+//        received = new RequestListAddAccount();
+//        List<AddAccountRequest> list = new ArrayList<AddAccountRequest>();
+//        AddAccountRequest sample = new AddAccountRequest();
+//        sample.id_request = "1234";
+//        sample.firstName = "Janusz";
+//        sample.lastName = "Nędza";
+//        sample.street = "Jana Pawła II 13c/14";
+//        sample.zipCode = "37-450";
+//        sample.city = "Stalowa Wola";
+//        sample.pesel = "54092356981";
+//        sample.idNumber = "AZK784512";
+//        sample.email = "Janusz@gmail.com";
+//        sample.phoneNumber = "759413682";
+//
+//        AddAccountRequest sample2 = new AddAccountRequest();
+//        sample2.id_request = "1234";
+//        sample2.firstName = "Andrzej";
+//        sample2.lastName = "Wolak";
+//        sample2.street = "Wislka II 13c/14";
+//        sample2.zipCode = "37-450";
+//        sample2.city = "Nowy Sącz";
+//        sample2.pesel = "54092356981";
+//        sample2.idNumber = "AZK784512";
+//        sample2.email = "WolakA@gmail.com";
+//        sample2.phoneNumber = "759413682";
+//
+//        list.add(sample);
+//        list.add(sample2);
+//
+//        received.data = list;
 //----------------------------------------------------------------------------------------------
      return  received.data;
     }
@@ -259,7 +262,7 @@ public class Client
     {
         int errorCode = -1;
         AddAccReqDecision toSend = new AddAccReqDecision();
-        String received = "0";
+        String received;
 
         //Putting everything in to a list S
         toSend.id_req = idReq;
@@ -274,20 +277,23 @@ public class Client
         //new thread creating
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
-//         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.answerAddAccountReq(userId, toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return errorCode;
-//        }
+         //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.answerAddAccountReq(userId, toSend);
+        }
+        catch (Exception e)
+        {
+            return errorCode;
+        }
+
 //----------------------------------------------------------------------------------------------
         if (received.equals("1"))
             errorCode = -2;
         else if (received.equals("0"))
             errorCode = 0;
+        else
+            errorCode = -1;
 
         return errorCode;
     }

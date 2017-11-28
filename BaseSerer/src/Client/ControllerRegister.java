@@ -51,11 +51,13 @@ public class ControllerRegister
             appStage.show();
         }
         else if (errorCode==-1)
-            errorText.setText("Nie można połaczyc sie z serwerem!");
+            errorText.setText("Wniosek nie został przyjety.");
         else if (errorCode== -2)
             errorText.setText("Nie poprawnie powtórzono adres e-mail.");
         else if (errorCode== -3)
             errorText.setText("Sprawdz czy dane zostały wprowadzone poprawinie.");
+        else if (errorCode==-4)
+            errorText.setText("Nie można połaczyc sie z serwerem!");
 
     }
 }

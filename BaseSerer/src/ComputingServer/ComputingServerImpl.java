@@ -1,24 +1,23 @@
 package ComputingServer;
 
-import Base.BaseServerFace;
-import Base.LogFrom;
-import Base.LogTo;
+import Base.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ComputingServerImpl
     extends UnicastRemoteObject
     implements BaseServerFace
 {
 
-    final private String URL="jdbc:mysql://localhost:3306/bazadb";
+    final private String URL="jdbc:mysql://localhost:3306/bankdb";
     private Connection connection=null;
     private Statement statement=null;
     private ResultSet rS=null;
+    Checker check=null;
+    Generator generator=null;
 
     public ComputingServerImpl() throws RemoteException, SQLException {
         super();
@@ -36,6 +35,9 @@ public class ComputingServerImpl
         } else {
             System.out.println("Failed to make connection!");
         }
+
+        check=new Checker(statement);
+        generator=new Generator(statement);
     }
 
 
@@ -97,9 +99,30 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object requestAddAccount(String login, Object data) throws RemoteException
+    public String requestAddAccount(String login, PersonalData data) throws RemoteException
     {
-        return null;
+        int id_req=0;
+        try{
+            if( check.checkIfCustomerExist(data.pesel) &&
+                    check.checkCustomerInAddAccReq(data.pesel) ){ //+++age
+                statement.execute("SELECT id_request FROM newaccountrequest");
+                rS=statement.getResultSet();
+                while (rS.next())
+                    id_req = Integer.parseInt(rS.getString(1));
+
+                id_req+=1;
+
+                statement.executeUpdate("INSERT INTO newaccountrequest VALUES('"+id_req+ "','"+data.firstName+
+                        "','"+data.lastName+"','"+data.street+"','"+data.city+"','"+data.zipCode+
+                        "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1)");
+
+            }else throw new Exception();
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return "1";
+        }
+        return "0";
     }
 
     @Override
@@ -121,9 +144,34 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object answerAddAccountReq(String login, Object data) throws RemoteException
+    public String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException
     {
-        return null;
+        if (data.decision.equals("y")) {
+            try {
+                String logNr = generator.generateLogin();
+                statement.executeUpdate("INSERT INTO users (login,password,status) VALUES ('" + logNr + "','" + generator.generatePassword() + "','C')");
+                statement.executeUpdate("INSERT INTO customers (pesel,customer_nr,firstname,lastname,idNumber,street,email,zipcode,city,phonenumber)" +
+                        " SELECT pesel,'" + logNr + "',firstname,lastname,idNumber,street,email,zipcode,city,phonenumber from newaccountrequest where id_request='" + data.id_req + "'");
+                statement.executeUpdate("INSERT into account (id_account,balance,pesel) SELECT '" + generator.generateAccNr() + "',0.00,pesel " +
+                        "from newaccountrequest where id_request='" + data.id_req + "'");
+                statement.executeUpdate("Delete from newaccountrequest where id_request='" + data.id_req + "'");
+            } catch (Exception e) {
+                System.out.println("answer add acc req exception");
+                System.out.println(e.getMessage());
+                return "1";
+            }
+
+        }else {
+            try{
+                statement.executeUpdate("Delete from newaccountrequest where id_request='" + data.id_req + "'");
+            } catch (SQLException e) {
+                System.out.println("answer add acc req exception");
+                e.printStackTrace();
+                return "1";
+            }
+
+        }
+        return "0";
     }
 
     @Override
@@ -175,9 +223,26 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object getRequestAddAccount(String login) throws RemoteException
+    public RequestListAddAccount getRequestAddAccount(String login) throws RemoteException
     {
-        return null;
+        RequestListAddAccount req=new RequestListAddAccount();
+        req.data=new ArrayList<>();
+        try {
+            ResultSet rS=statement.executeQuery("SELECT * from newaccountrequest");
+            while(rS.next()){
+                AddAccountRequest addAcc=new AddAccountRequest(rS.getString("id_request"),rS.getString("firstname"),
+                        rS.getString("lastname"),rS.getString("street"),rS.getString("zipCode"),
+                        rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),
+                        rS.getString("email"),rS.getString("phoneNumber"));
+                req.data.add(addAcc);
+            }
+            req.error="0";
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            req.error="1";
+        }
+
+        return  req;
     }
 
     @Override
