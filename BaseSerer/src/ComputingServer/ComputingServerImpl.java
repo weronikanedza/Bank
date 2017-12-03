@@ -81,8 +81,41 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object transfer(String login, String accFrom, String accTo, Object data) throws RemoteException
+    public String transfer(Transfer data) throws RemoteException
     {
+//        double balance,transferAmount,senderBalance;
+//        if(!balance().equals("")) {
+//            balance = Double.parseDouble(balance());
+//            transferAmount = Double.parseDouble(data.amount);
+//            senderBalance = balance - transferAmount;
+//
+//            if (senderBalance < 0 || findAccount().equals("")) {
+//                System.out.println("You don't have enough money/ there is no account with given number");
+//                list.clear();
+//                list.add("1");
+//            }
+//            else {
+//                try {
+//                    sql = "UPDATE account a  join customers c on a.pesel=c.pesel  set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + login + "'";
+//                    statement.executeUpdate(sql); //update sender account
+//                    sql = "UPDATE account SET balance=balance+'" + transferAmount + "' WHERE id_account='" + list.get(2) + "'";
+//                    statement.executeUpdate(sql);
+//                    list.clear();
+//                    list.add("0"); //transfer accepted
+//                } catch (SQLException e) {
+//                    list.add("1");
+//                    System.out.println(e.getMessage());
+//                } catch (Exception e) {
+//                    list.add("1");
+//                    System.out.println("balance function exception");
+//                    System.out.println(e.getMessage());
+//                }
+//            }
+//        }else {
+//            list.clear();
+//            list.add("1");
+//        }
+//        return list;
         return null;
     }
 

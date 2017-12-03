@@ -8,7 +8,7 @@ public interface BaseServerFace
 {
     LogFrom logIn(String login, LogTo data) throws RemoteException; //ok
     Object restartPassword(String login, Object data) throws RemoteException;
-    Object transfer(String login, String accFrom, String accTo, Object data) throws RemoteException;
+    String transfer(Transfer data) throws RemoteException; //OK
     Object changePassword(String login, Object data) throws RemoteException;
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
 

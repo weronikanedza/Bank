@@ -38,8 +38,11 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object transfer(String login, String accFrom, String accTo, Object data) throws RemoteException
+	public String transfer( Transfer data) throws RemoteException
 	{
+//		System.out.println("TRANSFER");
+//		String transfer = computingSever.transfer(login, accFrom,accTo,data);
+//		return transfer;
 		return null;
 	}
 
