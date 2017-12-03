@@ -4,6 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * additional class with checks requiered data
+ * in database ,ComputnigServerImpl uses this
+ * class in conditionals
+ */
 public class Checker {
     private Statement statement=null;
     private ResultSet rS;
@@ -28,9 +33,9 @@ public class Checker {
             return true;
         }
     }
-
     /**
-     * check person in customer , request table
+     * this function checks if client with given
+     * pesel already exist
      * @param pesel
      * @throws Exception
      */
@@ -45,6 +50,12 @@ public class Checker {
             return true;
         }
     }
+
+    /**
+     * function gets balance of client with given number
+     * @param accNr
+     * @return balance
+     */
     public String checkBalance(String accNr){
         try {
             rS=statement.executeQuery("Select * from account where id_account='"+accNr+"'");
@@ -57,6 +68,11 @@ public class Checker {
         }
     }
 
+    /**
+     * function checks if given account number exists
+     * @param accTo
+     * @return
+     */
     public String findAccount(String accTo){
         try {
             ResultSet rS = statement.executeQuery("Select id_account from account where id_account='"+accTo+"'");

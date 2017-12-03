@@ -8,7 +8,7 @@ public interface BaseServerFace
 {
     LogFrom logIn(String login, LogTo data) throws RemoteException; //ok
     Object restartPassword(String login, Object data) throws RemoteException;
-    String transfer(Transfer data) throws RemoteException; //OK
+    String transfer(Transfer data) throws RemoteException; //OK --now
     Object changePassword(String login, Object data) throws RemoteException;
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
 
@@ -17,12 +17,12 @@ public interface BaseServerFace
     Object requestLoan(String login, Object data) throws RemoteException;
     Object requestInvestment(String login, Object data) throws RemoteException;
 
-    String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //ok --now
+    String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //ok
     Object answerChangePersonalDataReq(String login, Object data) throws RemoteException;
     Object answerLoanReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
     Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
 
-    Object getBalance(String login) throws RemoteException; // do Werki tylko login
+    String getBalance(String login) throws RemoteException; // ok--now
     Object getTransferHistory(String login) throws RemoteException;
     Object getPersonalData(String login) throws RemoteException;
     Object getLoanHistory(String login) throws RemoteException;
@@ -33,8 +33,6 @@ public interface BaseServerFace
     Object getRequestInvestment(String login) throws RemoteException;
 
     Object LogOut(String login) throws RemoteException;
-
-
     //TESTY
 
     String getDescription(String text) throws RemoteException;

@@ -88,7 +88,7 @@ public class BaseServerImpl
 	@Override
 	public String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException
 	{
-		System.out.println("Odpowiedz zalozenie wniosku");
+		System.out.println("ANSWERADDACCOUNTREQ");
 		String err = computingSever.answerAddAccountReq(login, data);
 
 		return err;
@@ -113,8 +113,11 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getBalance(String login) throws RemoteException
+	public String getBalance(String login) throws RemoteException
 	{
+//		System.out.println("GETBALANCE");
+//		String balance = computingSever.getBalance(login);
+//		return balance;
 		return null;
 	}
 

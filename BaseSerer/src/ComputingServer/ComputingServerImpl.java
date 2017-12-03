@@ -7,6 +7,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * class creates connection with database and implements
+ * interface with client requests
+ */
 public class ComputingServerImpl
     extends UnicastRemoteObject
     implements BaseServerFace
@@ -81,41 +85,40 @@ public class ComputingServerImpl
     }
 
     @Override
-    public String transfer(Transfer data) throws RemoteException
-    {
+    public String transfer(Transfer data) throws RemoteException {
 //        double balance,transferAmount,senderBalance;
-//        if(!balance().equals("")) {
-//            balance = Double.parseDouble(balance());
+//
+//        if(!check.checkBalance(data.accNoFrom).equals("")) {
+//            balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
 //            transferAmount = Double.parseDouble(data.amount);
 //            senderBalance = balance - transferAmount;
 //
-//            if (senderBalance < 0 || findAccount().equals("")) {
-//                System.out.println("You don't have enough money/ there is no account with given number");
-//                list.clear();
-//                list.add("1");
-//            }
+//            if (senderBalance < 0 ) {
+//                return "You don't have enough money";
+//            }else if(check.findAccount(data.accNoTo).equals("")){
+//                return "there is no account with given number";
+//                }
 //            else {
 //                try {
-//                    sql = "UPDATE account a  join customers c on a.pesel=c.pesel  set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + login + "'";
-//                    statement.executeUpdate(sql); //update sender account
-//                    sql = "UPDATE account SET balance=balance+'" + transferAmount + "' WHERE id_account='" + list.get(2) + "'";
-//                    statement.executeUpdate(sql);
-//                    list.clear();
-//                    list.add("0"); //transfer accepted
+//
+//                    statement.executeUpdate("UPDATE account a  join customers c on a.pesel=c.pesel  " +
+//                                            "set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + data.login + "'"); //update sender account
+//
+//                    statement.executeUpdate("UPDATE account SET balance=balance+'" + transferAmount
+//                                            + "' WHERE id_account='" + data.accNoTo + "'");
 //                } catch (SQLException e) {
-//                    list.add("1");
 //                    System.out.println(e.getMessage());
+//                    return "1";
 //                } catch (Exception e) {
-//                    list.add("1");
 //                    System.out.println("balance function exception");
 //                    System.out.println(e.getMessage());
+//                    return"1";
 //                }
 //            }
 //        }else {
-//            list.clear();
-//            list.add("1");
+//            return "1";
 //        }
-//        return list;
+//        return "0";
         return null;
     }
 
@@ -226,8 +229,21 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object getBalance(String login) throws RemoteException
+    public String getBalance(String login) throws RemoteException
     {
+//        try {
+//            ResultSet rS = statement.executeQuery("Select balance from account natural join customers where customer_nr='"+login+"'");
+//            if( rS.next())
+//                return rS.getString("balance");
+//            else throw new Exception();
+//        }catch(SQLException e){
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }catch(Exception e){  //there is no client with
+//            System.out.println("balance function exception");
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }
         return null;
     }
 
