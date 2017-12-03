@@ -3,14 +3,12 @@ package Base;
 import java.io.Serializable;
 
 public class LogTo
-    implements Serializable
+        implements Serializable
 {
     public String login;
     public String password;
 
-    public LogTo()
-    {
-    }
+    public LogTo() { }
 
     public String toString()
     {
