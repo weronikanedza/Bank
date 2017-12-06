@@ -79,11 +79,11 @@ public class Main extends Application {
     {
         Parent root = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
         primaryStage.setTitle("PK Bank");
-        primaryStage.setScene(new Scene(root, 960, 770));
+        primaryStage.setScene(new Scene(root, 1060, 830));
 
         primaryStage.show();
-        primaryStage.setMaxWidth(960);
-        primaryStage.setMaxHeight(780);
+        primaryStage.setMaxWidth(1060);
+        primaryStage.setMaxHeight(830);
         //primaryStage.setResizable(false);
     }
 
