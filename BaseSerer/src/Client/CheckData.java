@@ -54,6 +54,31 @@ public class CheckData
         return isCorrect;
     }
 
+    public boolean checkTransferData(String accNoTo, String amount, String amountAfterComma, String transferTitle)
+    {
+        boolean isAccNoToCorrect;
+        boolean isAmountCorrect;
+        boolean isAmountAfterCommaCorrect;
+        boolean istransferTitleCorrect;
+
+        isAccNoToCorrect = accNoTo.length() == 9  &&
+                !textHasCharacter(accNoTo) &&
+                !textHasSpecial(accNoTo);
+
+        isAmountCorrect = !amount.isEmpty() &&
+                !textHasCharacter(amount) &&
+                !textHasSpecial(amount);
+
+        isAmountAfterCommaCorrect = amountAfterComma.length() == 2 &&
+                !textHasCharacter(amountAfterComma) &&
+                !textHasSpecial(amountAfterComma);
+
+        istransferTitleCorrect = !transferTitle.isEmpty() &&
+                !textHasSpecial(amount);
+
+        return isAccNoToCorrect && isAmountAfterCommaCorrect && isAmountCorrect && istransferTitleCorrect;
+    }
+
     public boolean checkPersonalData(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email)
     {
         boolean isNameCorrect;

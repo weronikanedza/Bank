@@ -15,6 +15,11 @@ public class Client
     String balance;
     BaseServerFace server;
 
+    /*
+    * errocode:
+    * 0 everything ok
+    * -1 cannot connect to server
+    */
     public int communicateWithServer()
     {
         String url = "rmi://localhost/";
@@ -91,15 +96,6 @@ public class Client
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
-
-//--------------------------do testowania odbierania danych-------------------------------------------
-//        received = new LogFrom();
-//        received.error = "0";
-//        received.status = "a";
-//        received.login = "1234";
-//        received.balance = "1140.56";
-//        received.accNo  = "15975364820";
-////----------------------------------------------------------------------------------------------
 
         if(received.error.equals("0"))
         {
@@ -187,9 +183,6 @@ public class Client
             return errorCode;
 //----------------------------------------------------------------------------------------------
 
-//--------------------------do testowania odbierania danych-------------------------------------------
-//----------------------------------------------------------------------------------------------
-
         if(received.equals("0"))
             errorCode = 0;
         else if(received.equals("1"))
@@ -200,6 +193,100 @@ public class Client
         //can I return sth inside a thread or better outside??
         return errorCode; // only to tests
     }
+
+    public void logOot(){
+        //         //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            server.LogOut(userId);
+        }
+        catch (Exception e)
+        {
+            System.out.println("err Log out");
+        }
+
+    }
+
+    //----------------------------------------------------------------------------------------------
+    //********************************Client's Operations*******************************************
+    //----------------------------------------------------------------------------------------------
+    /*
+    * errocode:
+    * 0 everything ok
+    * 1 no resources
+    * 2 there is no such account
+    * 3 sth wrong with data base
+    * 4 sth wrong with base server
+    * 5 unsuitable data in fields
+    * */
+    public int sendTransfer(String accNoTo, String amount, String amountAfterComma, String transferTitle)
+    {
+        int errorCode = 4;
+        Transfer toSend = new Transfer();
+        String received;
+
+        if (!checkData.checkTransferData(accNoTo, amount, amountAfterComma, transferTitle))
+        {
+            errorCode = 5;
+            return errorCode;
+        }
+
+        //Putting everything in to a list S
+        toSend.login = userId;
+        toSend.accNoFrom = accNo;
+        toSend.accNoTo = accNoTo;
+        toSend.amount = amount + "." + amountAfterComma; // czo ma byc . czy ,
+        toSend.title = transferTitle;
+        //encoding the list S of data
+        //TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+
+//---------------------------------poprawne wysylanie------------------------------------------
+//        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.transfer(toSend);
+//        }
+//        catch (Exception e)
+//        {
+//            return errorCode;
+//        }
+
+        // testy
+        received = "0";
+
+
+        //chcek if received if null !!!
+        if(received == null)
+            return errorCode;
+//----------------------------------------------------------------------------------------------
+
+        if(received.equals("0"))
+            errorCode = 0;
+        else if(received.equals("1"))
+            errorCode = 1;
+        else if(received.equals("2"))
+            errorCode = 2;
+        else if(received.equals("3"))
+            errorCode = 3;
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode; // only to tests
+    }
+
+    //----------------------------------------------------------------------------------------------
+    //**********************************************************************************************
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    //***********************8*********Admin's Operations*******************************************
+    //----------------------------------------------------------------------------------------------
     /*
     *
     * */
@@ -297,18 +384,8 @@ public class Client
 
         return errorCode;
     }
-
-    public void logOot(){
-        //         //sending and receiving data to/from main server, interpreting received data all in thread
-        try
-        {
-            server.LogOut(userId);
-        }
-        catch (Exception e)
-        {
-            System.out.println("err Log out");
-        }
-
-    }
+    //----------------------------------------------------------------------------------------------
+    //**********************************************************************************************
+    //----------------------------------------------------------------------------------------------
 
 }
