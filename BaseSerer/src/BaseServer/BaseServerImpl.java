@@ -4,6 +4,7 @@ import Base.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class BaseServerImpl
@@ -26,13 +27,14 @@ public class BaseServerImpl
 	public synchronized LogFrom logIn(String login, LogTo data) throws RemoteException
 	{
 		System.out.println("LOGIN");
-		LogFrom logFrom= computingSever.logIn(login, data);
-		return logFrom;
+		return computingSever.logIn(login, data);
 }
 
 	@Override
-	public Object restartPassword(String login, Object data) throws RemoteException
+	public String restartPassword(String login) throws RemoteException
 	{
+//		System.out.println("RESTARTPASSWORD");
+//		return computingSever.restartPassword(login);
 		return null;
 	}
 
@@ -46,8 +48,11 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object changePassword(String login, Object data) throws RemoteException
+	public String changePassword(LogTo data) throws RemoteException
 	{
+//		System.out.println("changepassword");
+//		return computingSever.changePassword(data);
+//
 		return null;
 	}
 
@@ -60,15 +65,16 @@ public class BaseServerImpl
 	@Override
 	public String requestAddAccount(String login, PersonalData data) throws RemoteException
 	{
-		System.out.println("Zakladanie konta(wniosek)");
-		String err = computingSever.requestAddAccount(login, data);
+		System.out.println("requestaddaccount");
+		return  computingSever.requestAddAccount(login, data);
 
-		return err;
 	}
 
 	@Override
-	public Object requestChangePersonalData(String login, Object data) throws RemoteException
+	public String requestChangePersonalData(String login, PersonalData data) throws RemoteException
 	{
+//		System.out.println("request chane persoanl data");
+//		return  computingSever.requestChangePersonalData(login, data);
 		return null;
 	}
 
@@ -88,9 +94,8 @@ public class BaseServerImpl
 	public String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException
 	{
 		System.out.println("ANSWERADDACCOUNTREQ");
-		String err = computingSever.answerAddAccountReq(login, data);
+		return computingSever.answerAddAccountReq(login, data);
 
-		return err;
 	}
 
 	@Override
@@ -115,8 +120,7 @@ public class BaseServerImpl
 	public String getBalance(String login) throws RemoteException
 	{
 //		System.out.println("GETBALANCE");
-//		String balance = computingSever.getBalance(login);
-//		return balance;
+//		return computingSever.getBalance(login);
 		return null;
 	}
 
@@ -148,9 +152,7 @@ public class BaseServerImpl
 	public RequestListAddAccount getRequestAddAccount(String login) throws RemoteException
 	{
 		System.out.println("Zakladanie konta(wniosek)");
-		RequestListAddAccount list = computingSever.getRequestAddAccount(login);
-
-		return list;
+		return computingSever.getRequestAddAccount(login);
 	}
 
 	@Override

@@ -77,7 +77,7 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object restartPassword(String login, Object data) throws RemoteException
+    public String restartPassword(String login) throws RemoteException
     {
 //        try {
 //            statement.executeUpdate("Update users set password='" + check.generatePassword() + "' where login='"+login+"'");
@@ -121,7 +121,7 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object changePassword(String login, Object data) throws RemoteException
+    public String changePassword(LogTo data) throws RemoteException
     {
 //        try {
 //            statement.executeUpdate("Update users set password='" + data.password + "' where login='"+data.login+"'");
@@ -155,7 +155,7 @@ public class ComputingServerImpl
 
                 statement.executeUpdate("INSERT INTO newaccountrequest VALUES('"+id_req+ "','"+data.firstName+
                         "','"+data.lastName+"','"+data.street+"','"+data.city+"','"+data.zipCode+
-                        "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1)");
+                        "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1,1)");
 
             }
         }catch (SQLException e){
@@ -170,8 +170,32 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object requestChangePersonalData(String login, Object data) throws RemoteException
+    public String requestChangePersonalData(String login, PersonalData data) throws RemoteException
     {
+//        int id_req=0;
+//        try{
+//            if( check.checkIfCustomerExist(data.pesel) &&
+//                    check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
+//                statement.execute("SELECT id_request FROM newaccountrequest");
+//                rS=statement.getResultSet();
+//                while (rS.next())
+//                    id_req = Integer.parseInt(rS.getString(1));
+//
+//                id_req+=1;
+//
+//                statement.executeUpdate("INSERT INTO newaccountrequest VALUES('"+id_req+ "','"+data.firstName+
+//                        "','"+data.lastName+"','"+data.street+"','"+data.city+"','"+data.zipCode+
+//                        "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1,0)");
+//
+//            }
+//        }catch (SQLException e){
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }
+//        return "0";
         return null;
     }
 
@@ -281,7 +305,7 @@ public class ComputingServerImpl
         RequestListAddAccount req=new RequestListAddAccount();
         req.data=new ArrayList<>();
         try {
-            ResultSet rS=statement.executeQuery("SELECT * from newaccountrequest");
+            ResultSet rS=statement.executeQuery("SELECT * from newaccountrequest where reqstatus=1");
             while(rS.next()){
                 AddAccountRequest addAcc=new AddAccountRequest(rS.getString("id_request"),rS.getString("firstname"),
                         rS.getString("lastname"),rS.getString("street"),rS.getString("zipCode"),
