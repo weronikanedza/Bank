@@ -10,13 +10,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ControllerRegister
+public class RegisterController
 {
-    Client client = new Client();
+    private User user;
     @FXML
     Label frontText, errorText;
     @FXML
     TextField name, lastName, pesel, city, street, houseNo1, houseNo2, zipCode, idNumber, phoneNum, email, emailRepeated;
+
+    public void setsetControllerRegister(User user)
+    {
+        this.user = user;
+    }
 
     @FXML
     public void handleGetBack() throws IOException
@@ -32,7 +37,7 @@ public class ControllerRegister
     {
         int errorCode;
 
-        errorCode = client.register(name.getText(),
+        errorCode = user.register(name.getText(),
                                     lastName.getText(),
                                     pesel.getText(),
                                     city.getText(),

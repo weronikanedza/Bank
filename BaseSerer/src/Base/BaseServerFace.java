@@ -9,8 +9,9 @@ public interface BaseServerFace
     LogFrom logIn(String login, LogTo data) throws RemoteException; //ok
     Object restartPassword(String login, Object data) throws RemoteException;
     String transfer(Transfer data) throws RemoteException; //OK --now
-    Object changePassword(String login, Object data) throws RemoteException;
+    String changePassword(LogTo data) throws RemoteException;
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
+    String addFunds(Object data) throws RemoteException;
 
     String requestAddAccount(String login, PersonalData data) throws RemoteException; //ok
     Object requestChangePersonalData(String login, Object data) throws RemoteException;

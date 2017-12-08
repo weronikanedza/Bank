@@ -123,13 +123,19 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object changePassword(String login, Object data) throws RemoteException
+    public String changePassword(LogTo data) throws RemoteException
     {
         return null;
     }
 
     @Override
     public Object makeDeposit(String login, String accTo, Object data) throws RemoteException
+    {
+        return null;
+    }
+
+    @Override
+    public String addFunds(Object data) throws RemoteException
     {
         return null;
     }

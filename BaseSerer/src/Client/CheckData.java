@@ -42,16 +42,14 @@ public class CheckData
         return false;
     }
 
-    public boolean checkLoginData(String login, String password)
+    public boolean checkPassword(String password)
     {
-        boolean isCorrect;
-        isCorrect = textHasCapital(password) &&
-                !textHasSpecial(login) &&
-                !textHasSpecial(password) &&
-                textHasNumber(login) &&
-                !textHasCharacter(login);
-                textHasNumber(password);
-        return isCorrect;
+        return !password.isEmpty() && textHasCapital(password) && !textHasSpecial(password) && textHasNumber(password);
+    }
+
+    public boolean checkLogin(String login)
+    {
+        return !login.isEmpty() && textHasCapital(login) && !textHasSpecial(login) && textHasNumber(login);
     }
 
     public boolean checkTransferData(String accNoTo, String amount, String amountAfterComma, String transferTitle)

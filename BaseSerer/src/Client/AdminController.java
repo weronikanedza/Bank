@@ -13,8 +13,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class ControllerAdmin
+public class AdminController
 {
+    private Admin admin;
 
     @FXML
     private Button home;
@@ -22,11 +23,11 @@ public class ControllerAdmin
     private Label reqAmountLab, errGetAddAccReg;
     @FXML
     private Label idReq, nameAndLastName, pesel, idNumber, street, city, zipCode, email, phoneNumber, switchReq, doubleClick;
-    private Client client;
     private List<AddAccountRequest> listAddAccReq;
     private int regAmount;
     private int currentReq;
     private int clicks;
+
 
     @FXML
     private AnchorPane currentPane;
@@ -37,13 +38,12 @@ public class ControllerAdmin
     @FXML
     private AnchorPane viewAddAccPane;
 
-    public void setClient(Client client)
+    public void setControllerAdmin(Admin admin)
     {
-        this.client = client;
+        this.admin = admin;
         currentPane = greetingPane;
-        addAccPane.setVisible(false);
-        viewAddAccPane.setVisible(false);
     }
+
     private void loadAddAccReqData(int index)
     {
         AddAccountRequest el= listAddAccReq.get(index);
@@ -85,7 +85,7 @@ public class ControllerAdmin
         }
         else if(clicks == 1)
         {   doubleClick.setText("Zatwierdzono wybór");
-            er = client.sendAddAccDecision(listAddAccReq.get(currentReq).id_request, decision);
+            er = admin.sendAddAccDecision(listAddAccReq.get(currentReq).id_request, decision);
 
             if (er == -2)
             {
@@ -99,7 +99,7 @@ public class ControllerAdmin
             {
                 System.out.println("decuzja : " + decision);
                 listAddAccReq.remove(currentReq);
-                listAddAccReq = client.getListAddAccReq();
+                listAddAccReq = admin.getListAddAccReq();
                 regAmount = listAddAccReq.size();
                 currentReq = 0;
 
@@ -171,7 +171,7 @@ public class ControllerAdmin
         currentPane = addAccPane;
         currentPane.setVisible(true);
 
-        listAddAccReq = client.getListAddAccReq();
+        listAddAccReq = admin.getListAddAccReq();
 
         if(listAddAccReq != null)
         {
