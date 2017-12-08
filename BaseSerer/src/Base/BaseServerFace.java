@@ -6,17 +6,10 @@ import java.rmi.RemoteException;
 public interface BaseServerFace
         extends Remote
 {
-<<<<<<< HEAD
     LogFrom logIn(String login, LogTo data) throws RemoteException; //checked
     String restartPassword(String login) throws RemoteException;//ok (w)
     String transfer(Transfer data) throws RemoteException; //test
     String changePassword(LogTo data) throws RemoteException; // ok(w)
-=======
-    LogFrom logIn(String login, LogTo data) throws RemoteException; //ok
-    Object restartPassword(String login, Object data) throws RemoteException;
-    String transfer(Transfer data) throws RemoteException; //OK --now
-    String changePassword(LogTo data) throws RemoteException;
->>>>>>> 3aeb2514ed691d653eb9e58801ada8d5dfb8f3d0
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
     String addFunds(Object data) throws RemoteException;
 
