@@ -16,30 +16,46 @@
         <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-773">
-              <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+              <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
               <folding>
                 <element signature="e#2748#2763#0" expanded="false" />
                 <element signature="e#3212#3270#0" expanded="false" />
                 <element signature="e#4462#4477#0" expanded="false" />
-                <element signature="method#requestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-                <element signature="e#6229#6252#0" expanded="false" />
-                <element signature="method#answerAddAccountReq#0;class#ComputingServerImpl#0" expanded="false" />
-                <element signature="e#9783#9798#0" expanded="false" />
-                <element signature="method#getRequestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-                <marker date="1512769001712" expanded="true" signature="1458:1553" ph="Select passw... users" />
-                <marker date="1512769001712" expanded="true" signature="2000:2096" ph="Select balan... account" />
-                <marker date="1512769001712" expanded="true" signature="5312:5352" ph="SELECT id_re... newaccountrequest" />
-                <marker date="1512769001712" expanded="true" signature="5569:5845" ph="INSERT INTO newaccountrequest... " />
-                <marker date="1512769001712" expanded="true" signature="6463:6503" ph="SELECT id_re... newaccountrequest" />
-                <marker date="1512769001712" expanded="true" signature="6734:7014" ph="INSERT INTO newaccountrequest... " />
-                <marker date="1512769001712" expanded="true" signature="7857:7966" ph="INSERT INTO users... " />
-                <marker date="1512769001712" expanded="true" signature="8011:8304" ph="INSERT INTO customers... " />
-                <marker date="1512769001712" expanded="true" signature="8148:8304" ph="SELECT pesel... newaccountrequest" />
-                <marker date="1512769001712" expanded="true" signature="8349:8540" ph="INSERT into account... " />
-                <marker date="1512769001712" expanded="true" signature="8396:8540" ph="SELECT 'miss... newaccountrequest" />
-                <marker date="1512769001712" expanded="true" signature="8585:8653" ph="Delete from newaccountrequest... " />
-                <marker date="1512769001712" expanded="true" signature="8933:9001" ph="Delete from newaccountrequest... " />
-                <marker date="1512769001712" expanded="true" signature="10963:11012" ph="SELECT * fro... newaccountrequest" />
+                <element signature="e#6508#6531#0" expanded="false" />
+                <element signature="e#10062#10077#0" expanded="false" />
+                <marker date="1512769355879" expanded="true" signature="1458:1553" ph="Select passw... users" />
+                <marker date="1512769355879" expanded="true" signature="2000:2096" ph="Select balan... account" />
+                <marker date="1512769355879" expanded="false" signature="5366:6386" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="5591:5631" ph="SELECT id_re... newaccountrequest" />
+                <marker date="1512769355879" expanded="true" signature="5848:6124" ph="INSERT INTO newaccountrequest... " />
+                <marker date="1512769355879" expanded="true" signature="6506:7595" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="6742:6782" ph="SELECT id_re... newaccountrequest" />
+                <marker date="1512769355879" expanded="true" signature="7013:7293" ph="INSERT INTO newaccountrequest... " />
+                <marker date="1512769355879" expanded="true" signature="7695:7723" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="7829:7857" ph="{...}" />
+                <marker date="1512769355879" expanded="false" signature="7976:9506" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="8136:8245" ph="INSERT INTO users... " />
+                <marker date="1512769355879" expanded="true" signature="8290:8583" ph="INSERT INTO customers... " />
+                <marker date="1512769355879" expanded="true" signature="8427:8583" ph="SELECT pesel... newaccountrequest" />
+                <marker date="1512769355879" expanded="true" signature="8628:8819" ph="INSERT into account... " />
+                <marker date="1512769355879" expanded="true" signature="8675:8819" ph="SELECT 'miss... newaccountrequest" />
+                <marker date="1512769355879" expanded="true" signature="8864:8932" ph="Delete from newaccountrequest... " />
+                <marker date="1512769355879" expanded="true" signature="9212:9280" ph="Delete from newaccountrequest... " />
+                <marker date="1512769355879" expanded="true" signature="9622:9650" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="9781:9809" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="9946:9974" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="10060:10484" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="10578:10606" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="10697:10725" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="10815:10843" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="10939:10967" ph="{...}" />
+                <marker date="1512769355879" expanded="false" signature="11078:11931" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="11242:11291" ph="SELECT * fro... newaccountrequest" />
+                <marker date="1512769355879" expanded="true" signature="12035:12063" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="12153:12181" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="12277:12305" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="12387:12415" ph="{...}" />
+                <marker date="1512769355879" expanded="true" signature="12504:12532" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -49,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="15" column="95" lean-forward="false" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
+              <caret line="23" column="95" lean-forward="false" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -59,9 +75,10 @@
         <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="76" selection-end-column="70" />
+              <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="82" selection-end-column="70" />
               <folding>
                 <element signature="e#1006#1041#0" expanded="false" />
+                <marker date="1512769355973" expanded="true" signature="1665:1770" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -94,7 +111,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -337,15 +354,15 @@
       <updated>1512672725917</updated>
       <workItem from="1512672727812" duration="804000" />
       <workItem from="1512677167522" duration="55000" />
-      <workItem from="1512763410124" duration="5490000" />
+      <workItem from="1512763410124" duration="5775000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6349000" />
+    <option name="totallyTimeSpent" value="6634000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -392,25 +409,41 @@
             <element signature="e#2748#2763#0" expanded="false" />
             <element signature="e#3212#3270#0" expanded="false" />
             <element signature="e#4462#4477#0" expanded="false" />
-            <element signature="method#requestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#6229#6252#0" expanded="false" />
-            <element signature="method#answerAddAccountReq#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#9783#9798#0" expanded="false" />
-            <element signature="method#getRequestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-            <marker date="1512769001712" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1512769001712" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1512769001712" expanded="true" signature="5312:5352" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="5569:5845" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="6463:6503" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="6734:7014" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="7857:7966" ph="INSERT INTO users... " />
-            <marker date="1512769001712" expanded="true" signature="8011:8304" ph="INSERT INTO customers... " />
-            <marker date="1512769001712" expanded="true" signature="8148:8304" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="8349:8540" ph="INSERT into account... " />
-            <marker date="1512769001712" expanded="true" signature="8396:8540" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="8585:8653" ph="Delete from newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="8933:9001" ph="Delete from newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="10963:11012" ph="SELECT * fro... newaccountrequest" />
+            <element signature="e#6508#6531#0" expanded="false" />
+            <element signature="e#10062#10077#0" expanded="false" />
+            <marker date="1512769355879" expanded="true" signature="1458:1553" ph="Select passw... users" />
+            <marker date="1512769355879" expanded="true" signature="2000:2096" ph="Select balan... account" />
+            <marker date="1512769355879" expanded="false" signature="5366:6386" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="5591:5631" ph="SELECT id_re... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="5848:6124" ph="INSERT INTO newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="6506:7595" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="6742:6782" ph="SELECT id_re... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="7013:7293" ph="INSERT INTO newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="7695:7723" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="7829:7857" ph="{...}" />
+            <marker date="1512769355879" expanded="false" signature="7976:9506" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="8136:8245" ph="INSERT INTO users... " />
+            <marker date="1512769355879" expanded="true" signature="8290:8583" ph="INSERT INTO customers... " />
+            <marker date="1512769355879" expanded="true" signature="8427:8583" ph="SELECT pesel... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="8628:8819" ph="INSERT into account... " />
+            <marker date="1512769355879" expanded="true" signature="8675:8819" ph="SELECT 'miss... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="8864:8932" ph="Delete from newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="9212:9280" ph="Delete from newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="9622:9650" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="9781:9809" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="9946:9974" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10060:10484" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10578:10606" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10697:10725" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10815:10843" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10939:10967" ph="{...}" />
+            <marker date="1512769355879" expanded="false" signature="11078:11931" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="11242:11291" ph="SELECT * fro... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="12035:12063" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12153:12181" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12277:12305" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12387:12415" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12504:12532" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -431,25 +464,41 @@
             <element signature="e#2748#2763#0" expanded="false" />
             <element signature="e#3212#3270#0" expanded="false" />
             <element signature="e#4462#4477#0" expanded="false" />
-            <element signature="method#requestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#6229#6252#0" expanded="false" />
-            <element signature="method#answerAddAccountReq#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#9783#9798#0" expanded="false" />
-            <element signature="method#getRequestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-            <marker date="1512769001712" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1512769001712" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1512769001712" expanded="true" signature="5312:5352" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="5569:5845" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="6463:6503" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="6734:7014" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="7857:7966" ph="INSERT INTO users... " />
-            <marker date="1512769001712" expanded="true" signature="8011:8304" ph="INSERT INTO customers... " />
-            <marker date="1512769001712" expanded="true" signature="8148:8304" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="8349:8540" ph="INSERT into account... " />
-            <marker date="1512769001712" expanded="true" signature="8396:8540" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="8585:8653" ph="Delete from newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="8933:9001" ph="Delete from newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="10963:11012" ph="SELECT * fro... newaccountrequest" />
+            <element signature="e#6508#6531#0" expanded="false" />
+            <element signature="e#10062#10077#0" expanded="false" />
+            <marker date="1512769355879" expanded="true" signature="1458:1553" ph="Select passw... users" />
+            <marker date="1512769355879" expanded="true" signature="2000:2096" ph="Select balan... account" />
+            <marker date="1512769355879" expanded="false" signature="5366:6386" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="5591:5631" ph="SELECT id_re... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="5848:6124" ph="INSERT INTO newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="6506:7595" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="6742:6782" ph="SELECT id_re... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="7013:7293" ph="INSERT INTO newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="7695:7723" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="7829:7857" ph="{...}" />
+            <marker date="1512769355879" expanded="false" signature="7976:9506" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="8136:8245" ph="INSERT INTO users... " />
+            <marker date="1512769355879" expanded="true" signature="8290:8583" ph="INSERT INTO customers... " />
+            <marker date="1512769355879" expanded="true" signature="8427:8583" ph="SELECT pesel... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="8628:8819" ph="INSERT into account... " />
+            <marker date="1512769355879" expanded="true" signature="8675:8819" ph="SELECT 'miss... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="8864:8932" ph="Delete from newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="9212:9280" ph="Delete from newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="9622:9650" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="9781:9809" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="9946:9974" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10060:10484" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10578:10606" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10697:10725" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10815:10843" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10939:10967" ph="{...}" />
+            <marker date="1512769355879" expanded="false" signature="11078:11931" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="11242:11291" ph="SELECT * fro... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="12035:12063" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12153:12181" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12277:12305" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12387:12415" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12504:12532" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -529,7 +578,7 @@
     <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="15" column="95" lean-forward="false" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
+          <caret line="23" column="95" lean-forward="false" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
           <folding />
         </state>
       </provider>
@@ -537,9 +586,10 @@
     <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="76" selection-end-column="70" />
+          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="82" selection-end-column="70" />
           <folding>
             <element signature="e#1006#1041#0" expanded="false" />
+            <marker date="1512769355973" expanded="true" signature="1665:1770" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -547,30 +597,46 @@
     <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-773">
-          <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
           <folding>
             <element signature="e#2748#2763#0" expanded="false" />
             <element signature="e#3212#3270#0" expanded="false" />
             <element signature="e#4462#4477#0" expanded="false" />
-            <element signature="method#requestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#6229#6252#0" expanded="false" />
-            <element signature="method#answerAddAccountReq#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#9783#9798#0" expanded="false" />
-            <element signature="method#getRequestAddAccount#0;class#ComputingServerImpl#0" expanded="false" />
-            <marker date="1512769001712" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1512769001712" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1512769001712" expanded="true" signature="5312:5352" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="5569:5845" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="6463:6503" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="6734:7014" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="7857:7966" ph="INSERT INTO users... " />
-            <marker date="1512769001712" expanded="true" signature="8011:8304" ph="INSERT INTO customers... " />
-            <marker date="1512769001712" expanded="true" signature="8148:8304" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="8349:8540" ph="INSERT into account... " />
-            <marker date="1512769001712" expanded="true" signature="8396:8540" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1512769001712" expanded="true" signature="8585:8653" ph="Delete from newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="8933:9001" ph="Delete from newaccountrequest... " />
-            <marker date="1512769001712" expanded="true" signature="10963:11012" ph="SELECT * fro... newaccountrequest" />
+            <element signature="e#6508#6531#0" expanded="false" />
+            <element signature="e#10062#10077#0" expanded="false" />
+            <marker date="1512769355879" expanded="true" signature="1458:1553" ph="Select passw... users" />
+            <marker date="1512769355879" expanded="true" signature="2000:2096" ph="Select balan... account" />
+            <marker date="1512769355879" expanded="false" signature="5366:6386" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="5591:5631" ph="SELECT id_re... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="5848:6124" ph="INSERT INTO newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="6506:7595" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="6742:6782" ph="SELECT id_re... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="7013:7293" ph="INSERT INTO newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="7695:7723" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="7829:7857" ph="{...}" />
+            <marker date="1512769355879" expanded="false" signature="7976:9506" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="8136:8245" ph="INSERT INTO users... " />
+            <marker date="1512769355879" expanded="true" signature="8290:8583" ph="INSERT INTO customers... " />
+            <marker date="1512769355879" expanded="true" signature="8427:8583" ph="SELECT pesel... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="8628:8819" ph="INSERT into account... " />
+            <marker date="1512769355879" expanded="true" signature="8675:8819" ph="SELECT 'miss... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="8864:8932" ph="Delete from newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="9212:9280" ph="Delete from newaccountrequest... " />
+            <marker date="1512769355879" expanded="true" signature="9622:9650" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="9781:9809" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="9946:9974" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10060:10484" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10578:10606" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10697:10725" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10815:10843" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="10939:10967" ph="{...}" />
+            <marker date="1512769355879" expanded="false" signature="11078:11931" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="11242:11291" ph="SELECT * fro... newaccountrequest" />
+            <marker date="1512769355879" expanded="true" signature="12035:12063" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12153:12181" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12277:12305" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12387:12415" ph="{...}" />
+            <marker date="1512769355879" expanded="true" signature="12504:12532" ph="{...}" />
           </folding>
         </state>
       </provider>

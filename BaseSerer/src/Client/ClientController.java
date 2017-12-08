@@ -4,21 +4,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ControllerClient
+public class ClientController
 {
+    private int doubleClick;
+
     @FXML
     private Button home;
     @FXML
-    private Label accNo, balance;
+    private Label accNo, balance, errHomePage;
     @FXML
     private Label errDataTransfer, accNoToTran, resourcesTran;
     @FXML
@@ -27,17 +26,21 @@ public class ControllerClient
     private TextField accNoTo, amount, amountAfterComma;
     @FXML
     private TextArea transferTitle;
+    @FXML
+    private PasswordField newPassword, newPasswordRepeat;
+    @FXML
+    private Label errChangePass;
 
     @FXML
     private AnchorPane currentPane;
     @FXML
     private AnchorPane greetingPane;
     @FXML
-    private AnchorPane transferPane;
-    @FXML
-    private AnchorPane endTransferPane;
+    private AnchorPane transferPane, endTransferPane;
     @FXML
     private AnchorPane homePane;
+    @FXML
+    private AnchorPane changePasswordPane, endChangePasswordPane;
 
     private Client client;
 
@@ -58,7 +61,7 @@ public class ControllerClient
 
     // handlers switching mian content
     @FXML
-    public void handleMainPage()
+    public void handleMainPane()
     {   currentPane.setVisible(false);
         currentPane = homePane;
         currentPane.setVisible(true);
@@ -68,7 +71,24 @@ public class ControllerClient
     }
 
     @FXML
-    public void handleTransfer()
+    public void handleBalanceRefreash() throws IOException
+    {
+        int errorCode = 1;
+
+        errorCode = client.getBalance();
+
+        if(errorCode == 0)
+        {
+            balance.setText(client.balance);
+            errHomePage.setText("Odświeżno.");
+        }
+        else
+            errHomePage.setText("Wystąpił problem z bazą danych, spróbuj ponowanie za chwile.");
+
+    }
+
+    @FXML
+    public void handleTransferPane()
     {   currentPane.setVisible(false);
         currentPane = transferPane;
         currentPane.setVisible(true);
@@ -112,4 +132,44 @@ public class ControllerClient
         else if (errorCode == 5)
             errDataTransfer.setText("Sprawdź wprowadzone dane:\n1.	Wszystkie pola są obowiązkowe.\n2.	Numer konta powinien miec 9 cyfr.\n3. 	Kwota może mieć tylko dwie liczby po przecinku.");
     }
+
+    @FXML
+    public void handleChangePasswordPane()
+     {
+         currentPane.setVisible(false);
+         currentPane = changePasswordPane;
+         currentPane.setVisible(true);
+
+         errChangePass.setText("");
+         doubleClick = 0;
+     }
+
+     @FXML
+     public void handleChangePass() throws IOException
+     {
+         int errorCode = 1;
+        if(doubleClick == 0)
+        {
+            doubleClick = 0;
+            errorCode = client.changePassword(newPassword.getText(), newPasswordRepeat.getText());
+
+            if (errorCode == 0)
+            {
+                currentPane.setVisible(false);
+                currentPane = endChangePasswordPane;
+                currentPane.setVisible(true);
+            } else if (errorCode == 1)
+                errChangePass.setText("Wystąpił problem z baza danych, spróboj ponownie za chwile.");
+            else if (errorCode == 2)
+                errChangePass.setText("Wprowadzone hasło nie spenia wymagan:\nHasło musi zawierac co najmniej jedna duża litere oraz cyfre.");
+            else if (errorCode == 3)
+                errChangePass.setText("Nie poprawnie powtórzono hasło.");
+        }
+        else
+        {
+            errChangePass.setText("Kliknij jeszcze raz aby potwierdzić wybór.");
+            doubleClick++;
+        }
+
+     }
 }

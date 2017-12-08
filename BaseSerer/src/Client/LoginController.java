@@ -12,9 +12,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class LoginController extends Application {
 
+    User user = new User();
     Client client = new Client();
+    Admin admin = new Admin();
 
     @FXML
     private TextField login;
@@ -28,16 +30,18 @@ public class Main extends Application {
     {
         int errorCode;
 
-        errorCode = client.login(login.getText(), password.getText());
+        errorCode = user.login(login.getText(), password.getText());
         //admin
         if (errorCode==1)
         {   labLoginProblem.setText("Zalogowany!");
             //changing scene for admin
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePageAdminFX.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminFX.fxml"));
             Parent homePageParent = (Parent) fxmlLoader.load();
 
-            ControllerAdmin controller = fxmlLoader.<ControllerAdmin>getController();
-            controller.setClient(client);
+            AdminController controller = fxmlLoader.<AdminController>getController();
+            admin.userId = user.userId;
+            admin.server = user.server;
+            controller.setControllerAdmin(admin);
 
             Scene homePageScene = new Scene(homePageParent);
             Stage appStage = (Stage) labLoginProblem.getScene().getWindow();
@@ -48,10 +52,14 @@ public class Main extends Application {
         {
             labLoginProblem.setText("Zalogowany!");
             //changing scene for client
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePageClientFX.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ClientFX.fxml"));
             Parent homePageParent = (Parent) fxmlLoader.load();
 
-            ControllerClient controller = fxmlLoader.<ControllerClient>getController();
+            ClientController controller = fxmlLoader.<ClientController>getController();
+            client.userId = user.userId;
+            client.server = user.server;
+            client.accNo = user.accNo;
+            client.balance = user.balance;
             controller.setControllerClient(client);
 
             Scene homePageScene = new Scene(homePageParent);
@@ -67,11 +75,16 @@ public class Main extends Application {
     @FXML
     public void handleBtnRegister() throws IOException
     {
-            Parent homePageParent = FXMLLoader.load(getClass().getResource("RegisterFX.fxml"));
-            Scene homePageScene = new Scene(homePageParent);
-            Stage appStage = (Stage) labLoginProblem.getScene().getWindow();
-            appStage.setScene(homePageScene);
-            appStage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterFX.fxml"));
+        Parent homePageParent = (Parent) fxmlLoader.load();
+
+        RegisterController controller = fxmlLoader.<RegisterController>getController();
+        controller.setsetControllerRegister(user);
+
+        Scene homePageScene = new Scene(homePageParent);
+        Stage appStage = (Stage) labLoginProblem.getScene().getWindow();
+        appStage.setScene(homePageScene);
+        appStage.show();
     }
 
     @Override

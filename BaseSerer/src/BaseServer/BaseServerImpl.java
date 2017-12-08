@@ -63,6 +63,12 @@ public class BaseServerImpl
 	}
 
 	@Override
+	public String addFunds(Object data) throws RemoteException
+	{
+		return null;
+	}
+
+	@Override
 	public String requestAddAccount(String login, PersonalData data) throws RemoteException
 	{
 		System.out.println("requestaddaccount");

@@ -141,7 +141,18 @@ public class ComputingServerImpl
     }
 
     @Override
+<<<<<<< HEAD
+    public String addFunds(Object data) throws RemoteException
+    {
+        return null;
+    }
+
+    @Override
+    public String requestAddAccount(String login, PersonalData data) throws RemoteException
+    {
+=======
     public String requestAddAccount(String login, PersonalData data) throws RemoteException{
+>>>>>>> 0c564d16615be81eff0665ee141f44018324d80f
         int id_req=0;
         try{
             if( check.checkIfCustomerExist(data.pesel) &&
