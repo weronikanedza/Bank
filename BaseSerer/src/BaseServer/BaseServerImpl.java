@@ -26,10 +26,9 @@ public class BaseServerImpl
 	public synchronized LogFrom logIn(String login, LogTo data) throws RemoteException
 	{
 		System.out.println("LOGIN");
-		LogFrom logFrom = computingSever.logIn(login, data);
-
+		LogFrom logFrom= computingSever.logIn(login, data);
 		return logFrom;
-	}
+}
 
 	@Override
 	public Object restartPassword(String login, Object data) throws RemoteException

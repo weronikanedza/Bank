@@ -3,6 +3,9 @@ package ComputingServer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 /**
  * additional class with checks requiered data
@@ -87,8 +90,40 @@ public class Checker {
         return "";
     }
 
+    /**
+     * checks if someone is mature and date in pesel
+     * @param pesel
+     * @return false in case incorrect date or age under 18
+     */
     public boolean checkAge(String pesel){
-        return false;
+
+        String year=pesel.substring(0,2);
+        String month=pesel.substring(2,4);
+        String day=pesel.substring(4,6);
+
+        if(Integer.parseInt(month) > 20){
+            year="20"+year;
+            month= (Integer.parseInt(month)-20)+"";
+            if(Integer.parseInt(month)<10)
+                month="0"+month;
+        }else {
+            year="19"+year;
+        }
+
+        LocalDate localDate = LocalDate.now();
+        String peselDate = year+month+day;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        try {
+            LocalDate date = LocalDate.parse(peselDate, formatter);
+            Period p = Period.between(date, localDate);
+            if(p.getYears()<18)
+                return false;
+        }catch (Exception e){
+            System.out.println("Zla data");
+            return false;
+        }
+        return true;
     }
 
 }

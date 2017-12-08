@@ -30,8 +30,6 @@ public class ComputingServerImpl
             statement=connection.createStatement();
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
-            e.printStackTrace();
-            return;
         }
 
         if (connection != null) {
@@ -81,22 +79,29 @@ public class ComputingServerImpl
     @Override
     public Object restartPassword(String login, Object data) throws RemoteException
     {
+//        try {
+//            statement.executeUpdate("Update users set password='" + check.generatePassword() + "' where login='"+login+"'");
+//        }catch (SQLException e){
+//            System.out.println("restartPassword sql exception");
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }
+//        return "0";
         return null;
     }
 
     @Override
     public String transfer(Transfer data) throws RemoteException {
-//        double balance,transferAmount,senderBalance;
-//
-//        if(!check.checkBalance(data.accNoFrom).equals("")) {
+//            double balance,transferAmount,senderBalance;
+
 //            balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
 //            transferAmount = Double.parseDouble(data.amount);
 //            senderBalance = balance - transferAmount;
 //
 //            if (senderBalance < 0 ) {
-//                return "You don't have enough money";
+//                return "1";
 //            }else if(check.findAccount(data.accNoTo).equals("")){
-//                return "there is no account with given number";
+//                return "2";
 //                }
 //            else {
 //                try {
@@ -108,16 +113,9 @@ public class ComputingServerImpl
 //                                            + "' WHERE id_account='" + data.accNoTo + "'");
 //                } catch (SQLException e) {
 //                    System.out.println(e.getMessage());
-//                    return "1";
-//                } catch (Exception e) {
-//                    System.out.println("balance function exception");
-//                    System.out.println(e.getMessage());
-//                    return"1";
-//                }
+//                    return "3";
 //            }
-//        }else {
-//            return "1";
-//        }
+
 //        return "0";
         return null;
     }
@@ -125,6 +123,14 @@ public class ComputingServerImpl
     @Override
     public String changePassword(LogTo data) throws RemoteException
     {
+//        try {
+//            statement.executeUpdate("Update users set password='" + data.password + "' where login='"+data.login+"'");
+//        }catch (SQLException e){
+//            System.out.println("restartPassword sql exception");
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }
+//        return "0";
         return null;
     }
 
@@ -135,6 +141,7 @@ public class ComputingServerImpl
     }
 
     @Override
+<<<<<<< HEAD
     public String addFunds(Object data) throws RemoteException
     {
         return null;
@@ -143,10 +150,13 @@ public class ComputingServerImpl
     @Override
     public String requestAddAccount(String login, PersonalData data) throws RemoteException
     {
+=======
+    public String requestAddAccount(String login, PersonalData data) throws RemoteException{
+>>>>>>> 0c564d16615be81eff0665ee141f44018324d80f
         int id_req=0;
         try{
             if( check.checkIfCustomerExist(data.pesel) &&
-                    check.checkCustomerInAddAccReq(data.pesel) ){ //+++age
+                    check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
                 statement.execute("SELECT id_request FROM newaccountrequest");
                 rS=statement.getResultSet();
                 while (rS.next())
@@ -158,12 +168,15 @@ public class ComputingServerImpl
                         "','"+data.lastName+"','"+data.street+"','"+data.city+"','"+data.zipCode+
                         "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1)");
 
-            }else throw new Exception();
-
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return "1";
         }catch (Exception e){
             System.out.println(e.getMessage());
             return "1";
         }
+
         return "0";
     }
 
@@ -197,7 +210,7 @@ public class ComputingServerImpl
                 statement.executeUpdate("INSERT into account (id_account,balance,pesel) SELECT '" + generator.generateAccNr() + "',0.00,pesel " +
                         "from newaccountrequest where id_request='" + data.id_req + "'");
                 statement.executeUpdate("Delete from newaccountrequest where id_request='" + data.id_req + "'");
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("answer add acc req exception");
                 System.out.println(e.getMessage());
                 return "1";
@@ -245,11 +258,7 @@ public class ComputingServerImpl
 //        }catch(SQLException e){
 //            System.out.println(e.getMessage());
 //            return "1";
-//        }catch(Exception e){  //there is no client with
-//            System.out.println("balance function exception");
-//            System.out.println(e.getMessage());
-//            return "1";
-//        }
+        //}
         return null;
     }
 
@@ -292,7 +301,7 @@ public class ComputingServerImpl
                 req.data.add(addAcc);
             }
             req.error="0";
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println(e.getMessage());
             req.error="1";
         }
