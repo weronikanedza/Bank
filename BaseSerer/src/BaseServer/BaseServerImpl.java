@@ -14,7 +14,7 @@ public class BaseServerImpl
 	private static final long serialVersionUID = 1L;
 
 	// This collection contain current user session.
-	private static Map<String, ClientData> clientDataMap;
+	//private static Map<String, ClientData> clientDataMap;
 
 	BaseServerFace computingSever;
 
@@ -41,19 +41,16 @@ public class BaseServerImpl
 	@Override
 	public String transfer( Transfer data) throws RemoteException
 	{
-//		System.out.println("TRANSFER");
-//		String transfer = computingSever.transfer(login, accFrom,accTo,data);
-//		return transfer;
-		return null;
+		System.out.println("TRANSFER");
+		return computingSever.transfer(data);
 	}
 
 	@Override
 	public String changePassword(LogTo data) throws RemoteException
 	{
-//		System.out.println("changepassword");
-//		return computingSever.changePassword(data);
-//
-		return null;
+		System.out.println("changepassword");
+		return computingSever.changePassword(data);
+
 	}
 
 	@Override
@@ -63,8 +60,10 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public String addFunds(Object data) throws RemoteException
+	public String addFunds(Funds data) throws RemoteException
 	{
+//		System.out.println("addFunds");
+//		return computingSever.addFunds(data);
 		return null;
 	}
 
@@ -105,7 +104,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object answerChangePersonalDataReq(String login, Object data) throws RemoteException
+	public String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException
 	{
 		return null;
 	}
@@ -125,19 +124,18 @@ public class BaseServerImpl
 	@Override
 	public String getBalance(String login) throws RemoteException
 	{
-//		System.out.println("GETBALANCE");
-//		return computingSever.getBalance(login);
-		return null;
+		System.out.println("GETBALANCE");
+		return computingSever.getBalance(login);
 	}
 
 	@Override
-	public Object getTransferHistory(String login) throws RemoteException
+	public TransferData getTransferHistory(TransferHistory data) throws RemoteException
 	{
 		return null;
 	}
 
 	@Override
-	public Object getPersonalData(String login) throws RemoteException
+	public PersonalData getPersonalData(String login) throws RemoteException
 	{
 		return null;
 	}
@@ -162,7 +160,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getRequestChangePersonalData(String login) throws RemoteException
+	public  RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException
 	{
 		return null;
 	}

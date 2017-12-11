@@ -92,46 +92,44 @@ public class ComputingServerImpl
 
     @Override
     public String transfer(Transfer data) throws RemoteException {
-//            double balance,transferAmount,senderBalance;
+        double balance, transferAmount, senderBalance;
 
-//            balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
-//            transferAmount = Double.parseDouble(data.amount);
-//            senderBalance = balance - transferAmount;
-//
-//            if (senderBalance < 0 ) {
-//                return "1";
-//            }else if(check.findAccount(data.accNoTo).equals("")){
-//                return "2";
-//                }
-//            else {
-//                try {
-//
-//                    statement.executeUpdate("UPDATE account a  join customers c on a.pesel=c.pesel  " +
-//                                            "set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + data.login + "'"); //update sender account
-//
-//                    statement.executeUpdate("UPDATE account SET balance=balance+'" + transferAmount
-//                                            + "' WHERE id_account='" + data.accNoTo + "'");
-//                } catch (SQLException e) {
-//                    System.out.println(e.getMessage());
-//                    return "3";
-//            }
+        balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
+        transferAmount = Double.parseDouble(data.amount);
+        senderBalance = balance - transferAmount;
 
-//        return "0";
-        return null;
+        if (senderBalance < 0) {
+            return "1";
+        } else if (check.findAccount(data.accNoTo).equals("")) {
+            return "2";
+        } else {
+            try {
+
+                statement.executeUpdate("UPDATE account a  join customers c on a.pesel=c.pesel  " +
+                        "set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + data.login + "'"); //update sender account
+
+                statement.executeUpdate("UPDATE account SET balance=balance+'" + transferAmount
+                        + "' WHERE id_account='" + data.accNoTo + "'");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return "3";
+            }
+
+            return "0";
+        }
     }
 
     @Override
     public String changePassword(LogTo data) throws RemoteException
     {
-//        try {
-//            statement.executeUpdate("Update users set password='" + data.password + "' where login='"+data.login+"'");
-//        }catch (SQLException e){
-//            System.out.println("restartPassword sql exception");
-//            System.out.println(e.getMessage());
-//            return "1";
-//        }
-//        return "0";
-        return null;
+        try {
+            statement.executeUpdate("Update users set password='" + data.password + "' where login='"+data.login+"'");
+        }catch (SQLException e){
+            System.out.println("restartPassword sql exception");
+            System.out.println(e.getMessage());
+            return "1";
+        }
+        return "0";
     }
 
     @Override
@@ -141,7 +139,7 @@ public class ComputingServerImpl
     }
 
     @Override
-    public String addFunds(Object data) throws RemoteException
+    public String addFunds(Funds data) throws RemoteException
     {
         return null;
     }
@@ -250,7 +248,7 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object answerChangePersonalDataReq(String login, Object data) throws RemoteException
+    public String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException
     {
         return null;
     }
@@ -270,26 +268,25 @@ public class ComputingServerImpl
     @Override
     public String getBalance(String login) throws RemoteException
     {
-//        try {
-//            ResultSet rS = statement.executeQuery("Select balance from account natural join customers where customer_nr='"+login+"'");
-//            if( rS.next())
-//                return rS.getString("balance");
-//            else throw new Exception();
-//        }catch(SQLException e){
-//            System.out.println(e.getMessage());
-//            return "1";
-        //}
-        return null;
+        try {
+            ResultSet rS = statement.executeQuery("Select balance from account natural join customers where customer_nr='"+login+"'");
+            rS.next();
+            System.out.println(rS.getString("balance"));
+            return rS.getString("balance");
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return "-1";
+        }
     }
 
     @Override
-    public Object getTransferHistory(String login) throws RemoteException
+    public TransferData getTransferHistory(TransferHistory data) throws RemoteException
     {
         return null;
     }
 
     @Override
-    public Object getPersonalData(String login) throws RemoteException
+    public PersonalData getPersonalData(String login) throws RemoteException
     {
         return null;
     }
@@ -330,7 +327,7 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object getRequestChangePersonalData(String login) throws RemoteException
+    public  RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException
     {
         return null;
     }

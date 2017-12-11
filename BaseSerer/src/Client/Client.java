@@ -68,18 +68,18 @@ public class Client
         //TO DO
 
 //---------------------------------poprawne wysylanie------------------------------------------
-//        //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.changePassword(userId, toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return errorCode;
-//        }
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.changePassword(toSend);
+        }
+        catch (Exception e)
+        {
+            return errorCode;
+        }
 
         // testy
-        received = "0";
+        //received = "0";
 
 
         //chcek if received if null !!!
@@ -106,18 +106,18 @@ public class Client
        int errorCode = -1;
        String received;
 
-//        try
-//        {
-//            received = server.getBalance(userId);
-//        }
-//        catch (Exception e)
-//        {
-//            return errorCode;
-//        }
+        try
+        {
+            received = server.getBalance(userId);
+        }
+        catch (Exception e)
+        {
+            return errorCode;
+        }
 
 
        //test
-       received = "23.45";
+       //received = "23.45";
 
        //chcek if received if null !!!
        if(received == null)
@@ -172,18 +172,18 @@ public class Client
         //TO DO
 
 //---------------------------------poprawne wysylanie------------------------------------------
-//        //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.transfer(toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return errorCode;
-//        }
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.transfer(toSend);
+        }
+        catch (Exception e)
+        {
+            return errorCode;
+        }
 
         // testy
-        received = "0";
+       // received = "0";
 
 
         //chcek if received if null !!!

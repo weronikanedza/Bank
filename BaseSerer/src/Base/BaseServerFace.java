@@ -8,10 +8,10 @@ public interface BaseServerFace
 {
     LogFrom logIn(String login, LogTo data) throws RemoteException; //checked
     String restartPassword(String login) throws RemoteException;//ok (w)
-    String transfer(Transfer data) throws RemoteException; //test
+    String transfer(Transfer data) throws RemoteException; //checked
     String changePassword(LogTo data) throws RemoteException; // ok(w)
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
-    String addFunds(Object data) throws RemoteException;
+    String addFunds(Funds data) throws RemoteException; //to do
 
     String requestAddAccount(String login, PersonalData data) throws RemoteException; //checked
     String requestChangePersonalData(String login, PersonalData data) throws RemoteException;//ok(w)
@@ -19,17 +19,17 @@ public interface BaseServerFace
     Object requestInvestment(String login, Object data) throws RemoteException;
 
     String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //checked
-    Object answerChangePersonalDataReq(String login, Object data) throws RemoteException;
+    String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException; //to do
     Object answerLoanReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
     Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
 
-    String getBalance(String login) throws RemoteException; // test
-    Object getTransferHistory(String login) throws RemoteException;
-    Object getPersonalData(String login) throws RemoteException;
+    String getBalance(String login) throws RemoteException; // checked
+    TransferData getTransferHistory(TransferHistory data) throws RemoteException; //to do
+    PersonalData getPersonalData(String login) throws RemoteException; //to do
     Object getLoanHistory(String login) throws RemoteException;
     Object getInvestmentHistory(String login) throws RemoteException;
     RequestListAddAccount getRequestAddAccount(String login) throws RemoteException; //checked
-    Object getRequestChangePersonalData(String login) throws RemoteException;
+    RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException; // to do
     Object getRequestLoan(String login) throws RemoteException;
     Object getRequestInvestment(String login) throws RemoteException;
 
