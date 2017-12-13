@@ -70,7 +70,22 @@ public class Checker {
             return "";
         }
     }
-
+    /**
+     * function gets balance of client with given client number
+     * @param login
+     * @return balance
+     */
+    public String checkBalanceLogin(String login){
+        try {
+            rS=statement.executeQuery("Select * from account natural join customers where customer_nr='"+login+"'");
+            rS.next();
+            return rS.getString("balance");
+        }catch (Exception e){
+            System.out.println("generateAccNr exception");
+            System.out.println(e.getMessage());
+            return "";
+        }
+    }
     /**
      * function checks if given account number exists
      * @param accTo
