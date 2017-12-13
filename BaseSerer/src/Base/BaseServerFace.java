@@ -11,7 +11,7 @@ public interface BaseServerFace
     String transfer(Transfer data) throws RemoteException; //checked
     String changePassword(LogTo data) throws RemoteException; // ok(w)
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
-    String addFunds(Funds data) throws RemoteException; //to do
+    String addFunds(String login,Funds data) throws RemoteException; //to do
 
     String requestAddAccount(String login, PersonalData data) throws RemoteException; //checked
     String requestChangePersonalData(String login, PersonalData data) throws RemoteException;//ok(w)

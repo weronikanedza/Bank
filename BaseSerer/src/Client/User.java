@@ -113,6 +113,7 @@ public class User
         else if(received.error.equals("1"))// sht wrong
             errorCode=-1;
 
+
         //end thread
 
         //can I return sth inside a thread or better outside??

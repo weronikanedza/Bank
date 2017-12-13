@@ -64,14 +64,11 @@ public class ComputingServerImpl
                     logFrom.accNo= rS.getString("id_account");
                 }
 
-            }else throw new Exception();
-        } catch(SQLException e){
+            }
+        } catch(SQLException e) {
             System.out.println("resultset exception");
             System.out.println(e.getMessage());
-            logFrom.error="1";
-        } catch (Exception e){
-            System.out.println("There is no that person in database");
-            logFrom.error="1";
+            logFrom.error = "1";
         }
         return logFrom;
     }
@@ -139,7 +136,7 @@ public class ComputingServerImpl
     }
 
     @Override
-    public String addFunds(Funds data) throws RemoteException
+    public String addFunds(String login,Funds data) throws RemoteException
     {
         return null;
     }
