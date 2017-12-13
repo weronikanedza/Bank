@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="800.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.AdminController">
+   <children>
+      <AnchorPane prefHeight="150.0" prefWidth="1060.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="1060.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundUpAdmin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="144.0" fitWidth="161.0" layoutX="42.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pkLogo02.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="150.0" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: #AACCFF;">
+         <children>
+            <VBox layoutX="28.0" layoutY="29.0" spacing="25.0">
+               <children>
+                  <Button fx:id="home" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Strona główna">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleAddAccRequests" prefHeight="55.0" prefWidth="175.0" text="Wnisoki o założenie &#10;konta" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="378.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="175.0" text="Wnisoki o zmiane&#10;danych osobowych" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="67.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" text="Wnisoki o założenie &#10;lokaty" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="233.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" text="Wmisoki o udzielenie&#10;pożyczki" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleAddFundsPane" prefHeight="40.0" prefWidth="175.0" text="Dodaj środki" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleChangePasswordPane" prefHeight="40.0" prefWidth="175.0" text="Zmień hasło" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleLogOut" prefHeight="40.0" prefWidth="175.0" text="Wyloguj">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="greetingPane" accessibleRole="NODE" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label alignment="TOP_CENTER" layoutX="183.0" layoutY="134.0" prefHeight="108.0" prefWidth="436.0" text="Witaj w elektroniczej administracji &#10;PK Bank" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="243.0" layoutY="258.0" text="Wybierz operacje jakiej chcesz dokonać.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="viewAddAccPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="244.0" layoutY="69.0" text="Numer wniosku:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="idReq" layoutX="401.0" layoutY="69.0" prefHeight="27.0" prefWidth="78.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="665.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleNextAddAccReq" prefHeight="30.0" prefWidth="137.0" text="Następny wniosek">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#handlePreviousAddAccReq" text="Poprzedni wniosek">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Line endX="500.0" layoutX="170.0" layoutY="97.0" startX="-100.0" stroke="#aaccff" strokeWidth="3.0" />
+            <VBox layoutX="70.0" layoutY="155.0" prefHeight="70.0" prefWidth="116.0" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="115.0" text="Imie Nazwisko : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="115.0" text="PESEL : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="115.0" text="Numer dowodu : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="209.0" layoutY="150.0" prefWidth="180.0" spacing="10.0">
+               <children>
+                  <Label fx:id="nameAndLastName" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pesel" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="idNumber" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="487.0" layoutY="155.0" prefWidth="180.0" spacing="10.0">
+               <children>
+                  <Label fx:id="street" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="city" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="zipCode" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="343.0" layoutY="160.0" prefHeight="70.0" prefWidth="116.0" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="115.0" text="Ulica : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="115.0" text="Miasto : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="115.0" text="Kod pocztowy : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label layoutX="70.0" layoutY="114.0" text="Dane osobowe">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="500.0" layoutX="170.0" layoutY="134.0" startX="-100.0" stroke="#aaccff" />
+            <Label layoutX="428.0" layoutY="114.0" text="Dane adresowe">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="237.0" text="Dane kontaktowe">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="500.0" layoutX="170.0" layoutY="257.0" startX="-100.0" stroke="#aaccff" />
+            <VBox layoutX="69.0" layoutY="272.0" prefHeight="70.0" prefWidth="116.0" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="115.0" text="E-mail : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="115.0" text="Numer telefonu : ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="209.0" layoutY="268.0" prefWidth="180.0" spacing="10.0">
+               <children>
+                  <Label fx:id="email" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="phoneNumber" prefWidth="180.0" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Button layoutX="65.0" layoutY="534.0" mnemonicParsing="false" onAction="#handleAcceptAddAccReq" text="Zatwierdź">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="185.0" layoutY="534.0" mnemonicParsing="false" onAction="#handleRefuseAddAccReq" prefHeight="30.0" prefWidth="86.0" text="Odrzuć">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <TextArea layoutX="69.0" layoutY="403.0" prefHeight="108.0" prefWidth="603.0" />
+            <Label layoutX="69.0" layoutY="378.0" prefHeight="17.0" prefWidth="51.0" text="Uwagi">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="errAddAcc" layoutX="65.0" layoutY="574.0" prefHeight="30.0" prefWidth="279.0" text="Kliknij jeszcze raz aby potwierdzić wybór" textFill="#00801a">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="switchReq" alignment="CENTER" layoutX="244.0" layoutY="25.0" prefHeight="20.0" prefWidth="269.0" text="Nie ma kolejnego wnisoku" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addAccPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="42.0" text="Wnioski o założenie konta">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" fill="#aaccff" layoutX="-56.0" layoutY="76.0" startX="700.0" stroke="#aaccff" strokeWidth="3.0" />
+            <Label layoutX="56.0" layoutY="109.0" text="Ilość wniosków do sprawdzenia :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="reqAmountLab" layoutX="331.0" layoutY="109.0" prefHeight="27.0" prefWidth="64.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="errGetAddAccReg" layoutX="52.0" layoutY="155.0" prefHeight="27.0" prefWidth="677.0" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="52.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleViewAddAccReq" text="Przeglądaj wnioski">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changePasswordPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="45.0" layoutY="51.0" text="Zmiana hasła">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="146.0" layoutY="85.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="45.0" layoutY="134.0" text="Wprowadż nowe hasło :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="185.0" text="Powtórz nowe hasło :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="newPassword" layoutX="274.0" layoutY="128.0" prefHeight="39.0" prefWidth="268.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="newPasswordRepeat" layoutX="274.0" layoutY="178.0" prefHeight="39.0" prefWidth="268.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="45.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleChangePass" text="Zmień hasło">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errChangePass" layoutX="45.0" layoutY="392.0" prefHeight="86.0" prefWidth="496.0" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="274.0" text="Po udanej próbie zmiany hasła zostaniesz automatycznie wylogowany." textFill="GREEN">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addFundsPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="26.0" text="Dodaj środki">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="142.0" layoutY="60.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Button layoutX="35.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleAddFunds" text="Wykonaj">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errAddFunds" layoutX="31.0" layoutY="335.0" prefHeight="86.0" prefWidth="496.0" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="97.0" text="Wprowadź dane :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="136.0" layoutY="129.0" startX="-100.0" stroke="#aaccff" strokeWidth="2.0" />
+            <TextField fx:id="addFundsLogin" layoutX="204.0" layoutY="142.0" prefHeight="39.0" prefWidth="150.0" promptText="00000000">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <VBox alignment="CENTER_RIGHT" layoutX="54.0" layoutY="146.0" spacing="25.0">
+               <children>
+                  <Label text="Numer klientka :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Kwota :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <TextField fx:id="addFundsAmount" alignment="CENTER" layoutX="204.0" layoutY="196.0" prefHeight="39.0" prefWidth="94.0" promptText="000">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="addFundsAmountAfterComma" alignment="CENTER" layoutX="325.0" layoutY="196.0" prefHeight="39.0" prefWidth="59.0" promptText="00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="307.0" layoutY="202.0" text=",">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

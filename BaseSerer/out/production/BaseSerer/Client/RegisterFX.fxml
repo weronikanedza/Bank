@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1060.0" style="-fx-background-image: url(&quot;background.png&quot;);" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.RegisterController">
+   <children>
+      <ImageView fitHeight="730.0" fitWidth="1060.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="146.0" prefWidth="1060.0" style="-fx-background-color: #0044AA;">
+         <children>
+            <ImageView fitHeight="131.0" fitWidth="140.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pkLogo02.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label fx:id="frontText" layoutX="31.0" layoutY="165.0" prefHeight="29.0" prefWidth="136.0" text="Dane osobowe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="153.0" layoutY="208.0">
+         <font>
+            <Font size="13.0" />
+         </font></TextField>
+      <TextField fx:id="lastName" layoutX="449.0" layoutY="208.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="pesel" layoutX="153.0" layoutY="256.0" prefHeight="26.0" prefWidth="222.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="idNumber" layoutX="153.0" layoutY="301.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Line endX="600.0" layoutX="131.0" layoutY="194.0" startX="-100.0" />
+      <Label layoutX="348.0" layoutY="213.0" text="Nazwisko :">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <VBox layoutX="22.0" layoutY="211.0" prefHeight="120.0" prefWidth="115.0" spacing="30.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="115.0" text="Imie : ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="115.0" text="PESEL : ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="115.0" text="Numer dowodu : ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <Label layoutX="28.0" layoutY="347.0" prefHeight="29.0" prefWidth="173.0" text="Dane adresowe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="700.0" layoutX="130.0" layoutY="383.0" startX="-100.0" />
+      <VBox layoutX="79.0" layoutY="403.0" spacing="30.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="52.0" text="Ulica : ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER_RIGHT" text="MIasto : ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <TextField fx:id="street" layoutX="154.0" layoutY="400.0" prefHeight="26.0" prefWidth="260.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="439.0" layoutY="405.0" text="Nr domu / Nr lokalu : ">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="666.0" layoutY="405.0" text="/">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="houseNo1" layoutX="598.0" layoutY="400.0" prefHeight="26.0" prefWidth="52.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="houseNo2" layoutX="686.0" layoutY="400.0" prefHeight="26.0" prefWidth="52.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="zipCode" layoutX="501.0" layoutY="448.0" prefHeight="26.0" prefWidth="196.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="city" layoutX="154.0" layoutY="448.0" prefHeight="26.0" prefWidth="196.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="381.0" layoutY="453.0" text="Kod pocztowy : ">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <VBox layoutX="55.0" layoutY="548.0" spacing="30.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="75.0" text="E-mail : ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER_RIGHT" text="Nr telefonu: ">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <Label layoutX="28.0" layoutY="500.0" prefHeight="29.0" prefWidth="173.0" text="Dane kontatktowe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="700.0" layoutX="130.0" layoutY="529.0" startX="-100.0" />
+      <TextField fx:id="email" layoutX="154.0" layoutY="548.0" prefHeight="29.0" prefWidth="196.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="phoneNum" layoutX="154.0" layoutY="592.0" prefHeight="29.0" prefWidth="196.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="emailRepeated" layoutX="519.0" layoutY="548.0" prefHeight="29.0" prefWidth="222.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="385.0" layoutY="553.0" prefHeight="18.0" prefWidth="108.0" text="Powtórz E-mail : ">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button layoutX="67.0" layoutY="694.0" mnemonicParsing="false" onAction="#handleSendRequest" prefHeight="63.0" prefWidth="222.0" text="Złóż wniosek">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="774.0" layoutY="694.0" mnemonicParsing="false" onAction="#handleGetBack" prefHeight="63.0" prefWidth="222.0" text="Powrót do logowania">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label fx:id="errorText" layoutX="28.0" layoutY="636.0" prefHeight="42.0" prefWidth="684.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

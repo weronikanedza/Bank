@@ -15,118 +15,44 @@
       <file leaf-file-name="Admin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/Admin.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="272">
+            <state relative-caret-position="476">
               <caret line="41" column="116" lean-forward="false" selection-start-line="41" selection-start-column="116" selection-end-line="41" selection-end-column="116" />
               <folding>
                 <element signature="method#logOut#0;class#Admin#0" expanded="false" />
                 <element signature="method#getListAddAccReq#0;class#Admin#0" expanded="false" />
                 <element signature="method#sendAddAccDecision#0;class#Admin#0" expanded="false" />
-=======
-            <state relative-caret-position="211">
-              <caret line="303" column="24" lean-forward="true" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="24" />
-              <folding>
-                <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-                <element signature="e#2591#2606#0" expanded="false" />
-                <element signature="e#6609#6632#0" expanded="false" />
-                <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-                <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-                <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-                <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-                <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-                <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-                <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-                <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-                <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-                <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-                <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-                <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-                <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-                <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-                <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-                <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseServerFace.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BaseServerFace.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="646">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-=======
-            <state relative-caret-position="399">
-              <caret line="26" column="77" lean-forward="false" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Checker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ComputingServer/Checker.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Client/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+            <state relative-caret-position="170">
+              <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding>
-                <marker date="1513174578432" expanded="true" signature="746:801" ph="Select * fro... newaccountrequest" />
-                <marker date="1513174578432" expanded="true" signature="1258:1305" ph="Select * fro... customers" />
-                <marker date="1513174578432" expanded="true" signature="1732:1782" ph="Select * fro... account" />
-                <marker date="1513174578432" expanded="true" signature="2256:2330" ph="Select * fro... account" />
-                <marker date="1513174578432" expanded="true" signature="2792:2851" ph="Select id_ac... account" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Client/CheckData.java">
+      <file leaf-file-name="ComputingServerImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-902">
-              <caret line="49" column="28" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Client/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="70" column="64" lean-forward="false" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Client/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Funds.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Base/Funds.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransferHistory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Base/TransferHistory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
+            <state relative-caret-position="202">
+              <caret line="336" column="16" lean-forward="false" selection-start-line="336" selection-start-column="16" selection-end-line="336" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -151,14 +77,11 @@
       <find>getb</find>
       <find>addfun</find>
       <find>addfu</find>
+      <find>getper</find>
       <find>answer</find>
       <find>gettra</find>
       <find>gett</find>
       <find>answe</find>
-      <find>logIn</find>
-      <find>logI</find>
-      <find>addFu</find>
-      <find>getper</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -173,22 +96,16 @@
         <option value="$PROJECT_DIR$/src/Base/Funds.java" />
         <option value="$PROJECT_DIR$/src/Base/TransferData.java" />
         <option value="$PROJECT_DIR$/src/Base/TransferHistory.java" />
+        <option value="$PROJECT_DIR$/src/Base/BaseServerFace.java" />
+        <option value="$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java" />
         <option value="$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Client/ClientFX.fxml" />
         <option value="$PROJECT_DIR$/src/Client/AdminController.java" />
         <option value="$PROJECT_DIR$/src/Client/ClientController.java" />
         <option value="$PROJECT_DIR$/src/Client/Admin.java" />
-        <option value="$PROJECT_DIR$/src/Client/User.java" />
         <option value="$PROJECT_DIR$/src/Client/CheckData.java" />
         <option value="$PROJECT_DIR$/src/Client/AdminFX.fxml" />
-=======
-        <option value="$PROJECT_DIR$/src/Client/LoginController.java" />
         <option value="$PROJECT_DIR$/src/Client/User.java" />
-        <option value="$PROJECT_DIR$/src/ComputingServer/Checker.java" />
-        <option value="$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java" />
-        <option value="$PROJECT_DIR$/src/Base/BaseServerFace.java" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
       </list>
     </option>
   </component>
@@ -220,6 +137,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
@@ -227,6 +145,24 @@
           <expand>
             <path>
               <item name="BaseSerer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BaseSerer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaseSerer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BaseSerer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaseSerer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BaseSerer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaseSerer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BaseSerer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
               <item name="BaseSerer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -262,18 +198,12 @@
           <select />
         </subPane>
       </pane>
-<<<<<<< HEAD
-=======
-      <pane id="Scratches" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../serwer obliczeniowy/Bank-serwer_obliczeniowy/Server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -481,46 +411,36 @@
       <workItem from="1512834606940" duration="2564000" />
       <workItem from="1512842350481" duration="15000" />
       <workItem from="1512919514472" duration="649000" />
-      <workItem from="1513016184376" duration="1086000" />
-      <workItem from="1513167135804" duration="5528000" />
+      <workItem from="1513016184376" duration="907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17539000" />
+    <option name="totallyTimeSpent" value="11832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.678125" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16861081" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16861081" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-=======
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16861081" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16927083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997879" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-=======
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -545,8 +465,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -556,8 +476,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,68 +493,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/src/Base/TransferHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="101" column="49" lean-forward="true" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4935">
-          <caret line="273" column="52" lean-forward="false" selection-start-line="273" selection-start-column="52" selection-end-line="273" selection-end-column="52" />
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2793">
-          <caret line="135" column="4" lean-forward="false" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
     <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -651,31 +514,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4935">
           <caret line="273" column="52" lean-forward="false" selection-start-line="273" selection-start-column="52" selection-end-line="273" selection-end-column="52" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -683,7 +522,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2835">
           <caret line="135" column="4" lean-forward="false" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="method#changePassword#0;class#Client#0" expanded="false" />
+            <element signature="method#getBalance#0;class#Client#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -691,9 +533,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -710,31 +550,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4935">
           <caret line="273" column="52" lean-forward="false" selection-start-line="273" selection-start-column="52" selection-end-line="273" selection-end-column="52" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -742,7 +558,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2793">
           <caret line="135" column="4" lean-forward="true" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="method#changePassword#0;class#Client#0" expanded="false" />
+            <element signature="method#getBalance#0;class#Client#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -750,9 +569,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -769,31 +586,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -801,9 +594,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -819,31 +610,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -851,9 +618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -869,31 +634,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -901,9 +642,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="23" column="95" lean-forward="false" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -919,31 +658,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -952,31 +667,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
     </entry>
@@ -1025,121 +716,34 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Client/LoginController.java" />
     <entry file="file://$PROJECT_DIR$/src/Base/LogFrom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2793">
-          <caret line="135" column="4" lean-forward="false" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="4" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Base/TransferData.java" />
     <entry file="file://$PROJECT_DIR$/src/Base/TransferHistory.java" />
     <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="113" column="5" lean-forward="false" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Base/LogFrom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5542">
-          <caret line="331" column="20" lean-forward="false" selection-start-line="331" selection-start-column="20" selection-end-line="331" selection-end-column="20" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Base/TransferData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Bank/BaseSerer/src/Client/AdminController.java" />
     <entry file="file://$PROJECT_DIR$/src/Base/Funds.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://E:/Bank/BaseSerer/src/Client/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="213" column="0" lean-forward="false" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
-          <folding>
-            <element signature="method#handleAcceptAddAccReq#0;class#AdminController#0" expanded="false" />
-            <element signature="method#handleRefuseAddAccReq#0;class#AdminController#0" expanded="false" />
-            <element signature="method#decideAddAccReq#0;class#AdminController#0" expanded="false" />
-            <element signature="method#handleNextAddAccReq#0;class#AdminController#0" expanded="false" />
-            <element signature="method#handlePreviousAddAccReq#0;class#AdminController#0" expanded="false" />
-            <element signature="method#handleViewAddAccReq#0;class#AdminController#0" expanded="false" />
-            <element signature="method#handleAddAccRequests#0;class#AdminController#0" expanded="false" />
-            <element signature="method#handleLogOut#0;class#AdminController#0" expanded="false" />
-            <element signature="method#setControllerAdmin#0;class#AdminController#0" expanded="false" />
-            <element signature="method#loadAddAccReqData#0;class#AdminController#0" expanded="false" />
-          </folding>
-=======
-    <entry file="file://$PROJECT_DIR$/src/Client/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/CheckData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-902">
-          <caret line="49" column="28" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="62" column="40" lean-forward="false" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/TransferHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-=======
-        <state relative-caret-position="84">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -1152,14 +756,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientFX.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientController.java">
@@ -1176,55 +780,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="59" column="47" lean-forward="false" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/Admin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="476">
           <caret line="41" column="116" lean-forward="false" selection-start-line="41" selection-start-column="116" selection-end-line="41" selection-end-column="116" />
           <folding>
             <element signature="method#logOut#0;class#Admin#0" expanded="false" />
             <element signature="method#getListAddAccReq#0;class#Admin#0" expanded="false" />
             <element signature="method#sendAddAccDecision#0;class#Admin#0" expanded="false" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Client/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="70" column="64" lean-forward="false" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ComputingServer/Checker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding>
-            <marker date="1513174578432" expanded="true" signature="746:801" ph="Select * fro... newaccountrequest" />
-            <marker date="1513174578432" expanded="true" signature="1258:1305" ph="Select * fro... customers" />
-            <marker date="1513174578432" expanded="true" signature="1732:1782" ph="Select * fro... account" />
-            <marker date="1513174578432" expanded="true" signature="2256:2330" ph="Select * fro... account" />
-            <marker date="1513174578432" expanded="true" signature="2792:2851" ph="Select id_ac... account" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Client/CheckData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1242,44 +809,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/AdminFX.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
-=======
-    <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="303" column="24" lean-forward="true" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="24" />
-          <folding>
-            <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
-            <element signature="e#2591#2606#0" expanded="false" />
-            <element signature="e#6609#6632#0" expanded="false" />
-            <marker date="1513175757836" expanded="true" signature="1458:1553" ph="Select passw... users" />
-            <marker date="1513175757836" expanded="true" signature="2000:2096" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="3517:3680" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="3750:3873" ph="UPDATE account... " />
-            <marker date="1513175757836" expanded="true" signature="4191:4269" ph="Update users... " />
-            <marker date="1513175757836" expanded="true" signature="5692:5732" ph="SELECT id_re... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="5949:6225" ph="INSERT INTO newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="8237:8346" ph="INSERT INTO users... " />
-            <marker date="1513175757836" expanded="true" signature="8391:8684" ph="INSERT INTO customers... " />
-            <marker date="1513175757836" expanded="true" signature="8528:8684" ph="SELECT pesel... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8729:8920" ph="INSERT into account... " />
-            <marker date="1513175757836" expanded="true" signature="8776:8920" ph="SELECT 'miss... newaccountrequest" />
-            <marker date="1513175757836" expanded="true" signature="8965:9033" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="9313:9381" ph="Delete from newaccountrequest... " />
-            <marker date="1513175757836" expanded="true" signature="10238:10318" ph="Select balan... account" />
-            <marker date="1513175757836" expanded="true" signature="12032:12081" ph="SELECT * fro... newaccountrequest" />
-          </folding>
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Client/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1251">
@@ -1304,14 +843,26 @@
     <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="77" lean-forward="false" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
->>>>>>> 80cb0f1940cf4874e65e450150924cbdb071d084
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="336" column="16" lean-forward="false" selection-start-line="336" selection-start-column="16" selection-end-line="336" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

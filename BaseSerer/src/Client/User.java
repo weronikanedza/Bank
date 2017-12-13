@@ -1,6 +1,5 @@
 package Client;
 
-
 import Base.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
