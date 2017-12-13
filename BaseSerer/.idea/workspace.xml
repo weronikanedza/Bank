@@ -16,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
-              <caret line="138" column="21" lean-forward="false" selection-start-line="138" selection-start-column="18" selection-end-line="138" selection-end-column="21" />
+              <caret line="138" column="4" lean-forward="false" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="74" />
               <folding>
                 <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
                 <element signature="e#2591#2606#0" expanded="false" />
@@ -146,7 +146,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -423,15 +423,15 @@
       <workItem from="1512842350481" duration="15000" />
       <workItem from="1512919514472" duration="649000" />
       <workItem from="1513016184376" duration="1086000" />
-      <workItem from="1513167135804" duration="2588000" />
+      <workItem from="1513167135804" duration="3735000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14599000" />
+    <option name="totallyTimeSpent" value="15746000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1042,7 +1042,7 @@
     <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
-          <caret line="138" column="21" lean-forward="false" selection-start-line="138" selection-start-column="18" selection-end-line="138" selection-end-column="21" />
+          <caret line="138" column="4" lean-forward="false" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="74" />
           <folding>
             <element signature="method#restartPassword#0;class#ComputingServerImpl#0" expanded="false" />
             <element signature="e#2591#2606#0" expanded="false" />
