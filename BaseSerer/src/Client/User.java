@@ -57,7 +57,7 @@ public class User
             return errorCode;
 
         //check whether data is correct
-        if (!checkData.checkLogin(login) && !checkData.checkPassword(password))
+        if (!checkData.checkIfOnlyNum(login) || !checkData.checkPassword(password))
         {
             errorCode = -2;
             return errorCode;

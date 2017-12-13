@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="800.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.ClientController">
+<Pane prefHeight="800.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.ClientController">
    <children>
       <AnchorPane layoutY="150.0" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: #AACCFF;">
          <children>
@@ -303,6 +303,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Label fx:id="infoTran" layoutX="302.0" layoutY="162.0" text="W tej chwili nie można odświeżyć stanu konta." textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="changePasswordPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
@@ -338,28 +343,19 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button layoutX="35.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleChangePass" text="Zmień hasło">
+            <Button layoutX="35.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleChangePass" text="Zmień hasło">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label fx:id="errChangePass" layoutX="35.0" layoutY="325.0" prefHeight="86.0" prefWidth="496.0" textFill="RED">
+            <Label fx:id="errChangePass" layoutX="35.0" layoutY="379.0" prefHeight="86.0" prefWidth="496.0" textFill="RED">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="endChangePasswordPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
-         <children>
-            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@backgroundSmaller.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="157.0" layoutY="114.0" prefHeight="158.0" prefWidth="516.0" text="Twoje hasło zostało zmienione z powodzeniem." textAlignment="CENTER" wrapText="true">
+            <Label layoutX="35.0" layoutY="252.0" text="Po udanej próbie zmiany hasła zostaniesz automatycznie wylogowany." textFill="GREEN">
                <font>
-                  <Font size="36.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>

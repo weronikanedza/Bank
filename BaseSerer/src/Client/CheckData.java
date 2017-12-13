@@ -47,9 +47,9 @@ public class CheckData
         return !password.isEmpty() && textHasCapital(password) && !textHasSpecial(password) && textHasNumber(password);
     }
 
-    public boolean checkLogin(String login)
+    public boolean checkIfOnlyNum(String login)
     {
-        return !login.isEmpty() && textHasCapital(login) && !textHasSpecial(login) && textHasNumber(login);
+        return !login.isEmpty() && !textHasCharacter(login) && !textHasSpecial(login) && textHasNumber(login);
     }
 
     public boolean checkTransferData(String accNoTo, String amount, String amountAfterComma, String transferTitle)

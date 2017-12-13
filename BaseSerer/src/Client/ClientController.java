@@ -19,7 +19,7 @@ public class ClientController
     @FXML
     private Label accNo, balance, errHomePage;
     @FXML
-    private Label errDataTransfer, accNoToTran, resourcesTran;
+    private Label errDataTransfer, accNoToTran, resourcesTran, infoTran;
     @FXML
     private Label  accNoToTranEnd, resourcesTranEnd, accNoToEnd, amountEnd, transferTitleEnd;
     @FXML
@@ -40,7 +40,7 @@ public class ClientController
     @FXML
     private AnchorPane homePane;
     @FXML
-    private AnchorPane changePasswordPane, endChangePasswordPane;
+    private AnchorPane changePasswordPane;
 
     private Client client;
 
@@ -59,7 +59,6 @@ public class ClientController
         appStage.show();
     }
 
-    // handlers switching mian content
     @FXML
     public void handleMainPane()
     {   currentPane.setVisible(false);
@@ -115,6 +114,13 @@ public class ClientController
             currentPane = endTransferPane;
             currentPane.setVisible(true);
 
+            errorCode = client.getBalance();
+
+            if(errorCode != 0)
+                infoTran.setText("W tej chwili nie można odświeżyć stanu konta.");
+            else
+                infoTran.setText("");
+
             accNoToTranEnd.setText(client.accNo);
             resourcesTranEnd.setText(client.balance);
             accNoToEnd.setText(accNoTo.getText());
@@ -148,17 +154,14 @@ public class ClientController
      public void handleChangePass() throws IOException
      {
          int errorCode = 1;
-        if(doubleClick == 0)
+        if(doubleClick == 1)
         {
             doubleClick = 0;
             errorCode = client.changePassword(newPassword.getText(), newPasswordRepeat.getText());
 
             if (errorCode == 0)
-            {
-                currentPane.setVisible(false);
-                currentPane = endChangePasswordPane;
-                currentPane.setVisible(true);
-            } else if (errorCode == 1)
+                handleLogOut();
+            else if (errorCode == 1)
                 errChangePass.setText("Wystąpił problem z baza danych, spróboj ponownie za chwile.");
             else if (errorCode == 2)
                 errChangePass.setText("Wprowadzone hasło nie spenia wymagan:\nHasło musi zawierac co najmniej jedna duża litere oraz cyfre.");
