@@ -60,7 +60,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public String addFunds(Funds data) throws RemoteException
+	public String addFunds(String login,Funds data) throws RemoteException
 	{
 //		System.out.println("addFunds");
 //		return computingSever.addFunds(data);

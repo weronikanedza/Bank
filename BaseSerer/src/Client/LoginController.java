@@ -67,10 +67,9 @@ public class LoginController extends Application {
             appStage.setScene(homePageScene);
             appStage.show();
 
-        }else if (errorCode==-1)
-            labLoginProblem.setText("Nie można połaczyc sie z serwerem!");
-        else if (errorCode== -2)
+        }else if (errorCode==-1 || errorCode==-2)
             labLoginProblem.setText("Niepoprawny login lub hasło!");
+
     }
     @FXML
     public void handleBtnRegister() throws IOException

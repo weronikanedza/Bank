@@ -64,14 +64,11 @@ public class ComputingServerImpl
                     logFrom.accNo= rS.getString("id_account");
                 }
 
-            }else throw new Exception();
-        } catch(SQLException e){
+            }
+        } catch(SQLException e) {
             System.out.println("resultset exception");
             System.out.println(e.getMessage());
-            logFrom.error="1";
-        } catch (Exception e){
-            System.out.println("There is no that person in database");
-            logFrom.error="1";
+            logFrom.error = "1";
         }
         return logFrom;
     }
@@ -139,8 +136,21 @@ public class ComputingServerImpl
     }
 
     @Override
-    public String addFunds(Funds data) throws RemoteException
+    public String addFunds(String login,Funds data) throws RemoteException
     {
+//        try{
+//            if(check.checkBalanceLogin(data.login).equals("")){
+//                return "2";
+//            }else {
+//                Double balance = Double.parseDouble(check.checkBalanceLogin(data.login));
+//                balance+=Double.parseDouble(data.amount);
+//                statement.executeUpdate("update account a join customers c on a.pesel = c.pesel set a.balance ='"+balance+"' WHERE c.customer_nr='"+data.login+"'");
+//            }
+//        }catch (SQLException e){
+//            System.out.println("Error addFunds");
+//            return "1";
+//        }
+//        return "0";
         return null;
     }
 
@@ -288,6 +298,19 @@ public class ComputingServerImpl
     @Override
     public PersonalData getPersonalData(String login) throws RemoteException
     {
+//        PersonalData data;
+//        try{
+//            ResultSet rS=statement.executeQuery("SELECT * from customers where customer_nr='"+login+"'");
+//            rS.next();
+//            data=new PersonalData(rS.getString("firstname"),rS.getString("lastname"),rS.getString("street"),rS.getString("zipcode"),
+//                    rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),rS.getString("email"),
+//                    rS.getString("phoneNumber"));
+//        }catch (SQLException e){
+//            System.out.println("getPersonalData exception");
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
+//        return data;
         return null;
     }
 

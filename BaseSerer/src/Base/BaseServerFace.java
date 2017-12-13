@@ -11,8 +11,7 @@ public interface BaseServerFace
     String transfer(Transfer data) throws RemoteException; //checked
     String changePassword(LogTo data) throws RemoteException; // ok(w)
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
-    String addFunds(Funds data) throws RemoteException; //to do
-
+    String addFunds(String login,Funds data) throws RemoteException; //ok (w)
     String requestAddAccount(String login, PersonalData data) throws RemoteException; //checked
     String requestChangePersonalData(String login, PersonalData data) throws RemoteException;//ok(w)
     Object requestLoan(String login, Object data) throws RemoteException;
@@ -25,7 +24,7 @@ public interface BaseServerFace
 
     String getBalance(String login) throws RemoteException; // checked
     TransferData getTransferHistory(TransferHistory data) throws RemoteException; //to do
-    PersonalData getPersonalData(String login) throws RemoteException; //to do
+    PersonalData getPersonalData(String login) throws RemoteException; //ok(w)
     Object getLoanHistory(String login) throws RemoteException;
     Object getInvestmentHistory(String login) throws RemoteException;
     RequestListAddAccount getRequestAddAccount(String login) throws RemoteException; //checked
