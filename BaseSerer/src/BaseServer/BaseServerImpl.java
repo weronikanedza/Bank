@@ -4,8 +4,6 @@ import Base.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
-import java.util.Map;
 
 public class BaseServerImpl
 	extends UnicastRemoteObject
@@ -13,8 +11,12 @@ public class BaseServerImpl
 {
 	private static final long serialVersionUID = 1L;
 
-	// This collection contain current user session.
-	//private static Map<String, ClientData> clientDataMap;
+	// Object logServer print and hold (not yet) information about route on server.
+	// Something like information about client and server errors.
+	LogServer logServer = new LogServer();
+
+	// This object hold every client who is now login on server.
+	ClientSession clientSession = new ClientSession();
 
 	BaseServerFace computingSever;
 
@@ -24,11 +26,20 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public synchronized LogFrom logIn(String login, LogTo data) throws RemoteException
+	public LogFrom logIn(String login, LogTo data) throws RemoteException
 	{
-		System.out.println("LOGIN");
-		return computingSever.logIn(login, data);
-}
+		LogFrom user = computingSever.logIn(login, data);
+
+		System.out.println(user);
+
+		if(user.error.equals("0"))
+		{
+			logServer.addLog("Add client " + login + " to session.");
+			clientSession.addClient(login, new ClientData());
+		}
+
+		return user;
+	}
 
 	@Override
 	public String restartPassword(String login) throws RemoteException
@@ -60,7 +71,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public String addFunds(String login,Funds data) throws RemoteException
+	public String addFunds(Funds data) throws RemoteException
 	{
 //		System.out.println("addFunds");
 //		return computingSever.addFunds(data);

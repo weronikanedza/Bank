@@ -7,6 +7,11 @@ public class ClientData
 	private String account;
 	private String other;
 
+	public ClientData()
+	{
+
+	}
+
 	public ClientData(String name, Object data)
 	{
 		this.name = name;
