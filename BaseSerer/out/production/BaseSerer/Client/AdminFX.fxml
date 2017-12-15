@@ -2,7 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +31,7 @@
       </AnchorPane>
       <AnchorPane layoutY="150.0" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: #AACCFF;">
          <children>
-            <VBox layoutX="28.0" layoutY="45.0" spacing="35.0">
+            <VBox layoutX="28.0" layoutY="29.0" spacing="25.0">
                <children>
                   <Button fx:id="home" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Strona główna">
                      <font>
@@ -56,6 +58,16 @@
                         <Font name="Calibri" size="17.0" />
                      </font>
                   </Button>
+                  <Button layoutX="10.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleAddFundsPane" prefHeight="40.0" prefWidth="175.0" text="Dodaj środki" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleChangePasswordPane" prefHeight="40.0" prefWidth="175.0" text="Zmień hasło" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#handleLogOut" prefHeight="40.0" prefWidth="175.0" text="Wyloguj">
                      <font>
                         <Font name="Calibri" size="17.0" />
@@ -63,6 +75,25 @@
                   </Button>
                </children>
             </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="greetingPane" accessibleRole="NODE" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label alignment="TOP_CENTER" layoutX="183.0" layoutY="134.0" prefHeight="108.0" prefWidth="436.0" text="Witaj w elektroniczej administracji &#10;PK Bank" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="243.0" layoutY="258.0" text="Wybierz operacje jakiej chcesz dokonać.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="viewAddAccPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
@@ -227,7 +258,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label fx:id="doubleClick" layoutX="69.0" layoutY="564.0" prefHeight="30.0" prefWidth="279.0" text="Kliknij jeszcze raz aby potwierdzić wybór" textFill="#00801a">
+            <Label fx:id="errAddAcc" layoutX="65.0" layoutY="574.0" prefHeight="30.0" prefWidth="279.0" text="Kliknij jeszcze raz aby potwierdzić wybór" textFill="#00801a">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -235,25 +266,6 @@
             <Label fx:id="switchReq" alignment="CENTER" layoutX="244.0" layoutY="25.0" prefHeight="20.0" prefWidth="269.0" text="Nie ma kolejnego wnisoku" textFill="RED">
                <font>
                   <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="greetingPane" accessibleRole="NODE" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0">
-         <children>
-            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@mainBackgroundAdmin.png" />
-               </image>
-            </ImageView>
-            <Label alignment="TOP_CENTER" layoutX="183.0" layoutY="134.0" prefHeight="108.0" prefWidth="436.0" text="Witaj w elektroniczej administracji &#10;PK Bank" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="243.0" layoutY="258.0" text="Wybierz operacje jakiej chcesz dokonać.">
-               <font>
-                  <Font size="18.0" />
                </font>
             </Label>
          </children>
@@ -291,6 +303,121 @@
                   <Font size="14.0" />
                </font>
             </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changePasswordPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="45.0" layoutY="51.0" text="Zmiana hasła">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="146.0" layoutY="85.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="45.0" layoutY="134.0" text="Wprowadż nowe hasło :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="185.0" text="Powtórz nowe hasło :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="newPassword" layoutX="274.0" layoutY="128.0" prefHeight="39.0" prefWidth="268.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="newPasswordRepeat" layoutX="274.0" layoutY="178.0" prefHeight="39.0" prefWidth="268.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="45.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleChangePass" text="Zmień hasło">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errChangePass" layoutX="45.0" layoutY="392.0" prefHeight="86.0" prefWidth="496.0" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="274.0" text="Po udanej próbie zmiany hasła zostaniesz automatycznie wylogowany." textFill="GREEN">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addFundsPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainBackgroundAdmin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="26.0" text="Dodaj środki">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="142.0" layoutY="60.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Button layoutX="35.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleAddFunds" text="Wykonaj">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errAddFunds" layoutX="31.0" layoutY="335.0" prefHeight="86.0" prefWidth="496.0" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="97.0" text="Wprowadź dane :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="136.0" layoutY="129.0" startX="-100.0" stroke="#aaccff" strokeWidth="2.0" />
+            <TextField fx:id="addFundsLogin" layoutX="204.0" layoutY="142.0" prefHeight="39.0" prefWidth="150.0" promptText="00000000">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <VBox alignment="CENTER_RIGHT" layoutX="54.0" layoutY="146.0" spacing="25.0">
+               <children>
+                  <Label text="Numer klientka :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Kwota :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <TextField fx:id="addFundsAmount" alignment="CENTER" layoutX="204.0" layoutY="196.0" prefHeight="39.0" prefWidth="94.0" promptText="000">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="addFundsAmountAfterComma" alignment="CENTER" layoutX="325.0" layoutY="196.0" prefHeight="39.0" prefWidth="59.0" promptText="00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="307.0" layoutY="202.0" text=",">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

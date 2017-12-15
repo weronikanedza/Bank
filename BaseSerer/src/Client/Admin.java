@@ -1,9 +1,6 @@
 package Client;
 
-import Base.AddAccReqDecision;
-import Base.AddAccountRequest;
-import Base.BaseServerFace;
-import Base.RequestListAddAccount;
+import Base.*;
 
 import java.util.List;
 
@@ -29,6 +26,139 @@ public class Admin
     //----------------------------------------------------------------------------------------------
     //***********************8*********Admin's Operations*******************************************
     //----------------------------------------------------------------------------------------------
+/* errocode:
+* 0 everything ok
+* 1 sth wrong with base server
+* 2 there is no such client
+* 3 unsuitable data in field
+* */
+    public int addFunds(String login, String amount, String amountAfterComma)
+    {
+        int errorCode = 1;
+        Funds toSend = new Funds();
+        String received;
+
+        //check data
+        if (!checkData.checkIfOnlyNum(login) || !checkData.checkIfOnlyNum(amount) || amountAfterComma.length() != 2 || !checkData.checkIfOnlyNum(amountAfterComma))
+        {
+            errorCode = 3;
+            return errorCode;
+        }
+
+        //Putting everything in to a list S
+
+        toSend.login = login;
+        toSend.amount = amount + "." + amountAfterComma;
+
+        //encoding the list S of data
+        //TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+
+//---------------------------------poprawne wysylanie------------------------------------------
+//        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.addFunds(toSend);
+//        }
+//        catch (Exception e)
+//        {
+//            return errorCode;
+//        }
+
+         //testy
+        received = "0";
+
+
+        //chcek if received if null !!!
+        if(received == null)
+            return errorCode;
+//----------------------------------------------------------------------------------------------
+
+        if(received.equals("0"))
+            errorCode = 0;
+        else if(received.equals("1"))
+            errorCode = 1;
+        else if(received.equals("2"))
+            errorCode = 2;
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode; // only to tests
+
+    }
+
+    /*
+* errocode:
+* 0 everything ok
+* 1 sth wrong with base server
+* 2 unsuitable data in field
+* 3 not equal password and repeated password
+* */
+    public int changePassword( String newPassword, String newPasswordRepeat)
+    {
+        int errorCode = 1;
+        LogTo toSend = new LogTo();
+        String received;
+
+        if(!newPassword.equals(newPasswordRepeat))
+        {
+            errorCode = 3;
+            return errorCode;
+        }
+
+        if (!checkData.checkPassword(newPassword))
+        {
+            errorCode = 2;
+            return errorCode;
+        }
+
+        //Putting everything in to a list S
+        toSend.login = userId;
+        toSend.password = newPassword;
+        //encoding the list S of data
+        //TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            received = server.changePassword(toSend);
+        }
+        catch (Exception e)
+        {
+            return errorCode;
+        }
+
+        // testy
+        //received = "0";
+
+
+        //chcek if received if null !!!
+        if(received == null)
+            return errorCode;
+//----------------------------------------------------------------------------------------------
+
+        if(received.equals("0"))
+            errorCode = 0;
+        else if(received.equals("1"))
+            errorCode = 1;
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode; // only to tests
+    }
+
     /*
     *
     * */
