@@ -1,9 +1,15 @@
 package BaseServer;
 
+import java.util.Date;
+
 public class LogServer
 {
+    Object object = new Object();
     void addLog(String message)
     {
-       System.out.println(message);
+        synchronized (object)
+        {
+            System.out.println(new Date().toString() + " " + message);
+        }
     }
 }
