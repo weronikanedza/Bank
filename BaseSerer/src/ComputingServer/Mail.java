@@ -1,3 +1,7 @@
+package ComputingServer;
+
+import ComputingServer.MailSend;
+
 public class Mail
 {
     public static void main(String[] args) {
