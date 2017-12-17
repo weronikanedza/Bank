@@ -16,6 +16,19 @@ public class ClientSession
 
     public void addClient(String login, ClientData data)
     {
-        clientSessions.put(login, data);
+        synchronized (clientSessions)
+        {
+            clientSessions.put(login, data);
+        }
+
     }
+
+    public ClientData findClient(String login)
+    {
+        synchronized (clientSessions)
+        {
+            return clientSessions.get(login);
+        }
+    }
+
 }
