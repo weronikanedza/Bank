@@ -1,67 +1,23 @@
 package BaseServer;
 
+import Base.*;
+
 public class ClientData
 {
-	private String name;
-	private String password;
-	private String account;
-	private String other;
+	private BaseServerFace computingSever_1;
 
-	public ClientData()
+	ClientData()
 	{
 
 	}
 
-	public ClientData(String name, Object data)
+	public BaseServerFace getComputingSever_1()
 	{
-		this.name = name;
-		this.other = (String)data;
+		return computingSever_1;
 	}
 
-	public ClientData(String name, String password, String account)
+	public void setComputingSever(BaseServerFace computingSever_1)
 	{
-		this.name = name;
-		this.password = password;
-		this.account = account;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public void setPassword(String password)
-	{
-		this.password = password;
-	}
-
-	public void setAccount(String account)
-	{
-		this.account = account;
-	}
-
-	public void setOther(String other)
-	{
-		this.other = other;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public String getPassword()
-	{
-		return password;
-	}
-
-	public String getAccount()
-	{
-		return account;
-	}
-
-	public String getOther()
-	{
-		return other;
+		this.computingSever_1 = computingSever_1;
 	}
 }
