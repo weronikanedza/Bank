@@ -292,6 +292,25 @@ public class ComputingServerImpl
     @Override
     public TransferData getTransferHistory(TransferHistory data) throws RemoteException
     {
+
+//        TransferData tranferData=new TransferData();
+//        tranferData.transferList=new ArrayList<>();
+//        try{
+//            rS=statement.executeQuery("select * from transfer t join account a on a.id_account=t.accFrom join customers c " +
+//                    "on c.pesel=a.pesel where c.customer_nr='"+data.login+"' and t.date>=DATE_ADD(CURDATE(),INTERVAL '" +"-" +data.date+"' DAY)");
+//
+//            while (rS.next()){
+//                tranferData.transferList.add(new Transfer(data.login,rS.getString("accFrom"),rS.getString("accTo"),
+//                        rS.getString("amount"),rS.getString("title"),rS.getString("date")));
+//
+//
+//            }
+//            tranferData.error="0";
+//        }catch (SQLException e){
+//            System.out.println(e.getMessage());
+//            tranferData.error="1";
+//        }
+//        return tranferData;
         return null;
     }
 
@@ -352,6 +371,24 @@ public class ComputingServerImpl
     @Override
     public  RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException
     {
+//        RequestListAddAccount req=new RequestListAddAccount();
+//        req.data=new ArrayList<>();
+//        try {
+//            ResultSet rS=statement.executeQuery("SELECT * from newaccountrequest where reqstatus='0'");
+//            while(rS.next()){
+//                AddAccountRequest addAcc=new AddAccountRequest(rS.getString("id_request"),rS.getString("firstname"),
+//                        rS.getString("lastname"),rS.getString("street"),rS.getString("zipCode"),
+//                        rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),
+//                        rS.getString("email"),rS.getString("phoneNumber"));
+//                req.data.add(addAcc);
+//            }
+//            req.error="0";
+//        }catch(Exception e){
+//            System.out.println(e.getMessage());
+//            req.error="1";
+//        }
+//
+//        return  req;
         return null;
     }
 

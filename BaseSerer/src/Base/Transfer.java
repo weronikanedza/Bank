@@ -8,6 +8,16 @@ public class Transfer implements Serializable {
     public String accNoTo;
     public String amount;
     public String title;
+    public String date;
+
+    public Transfer(String login, String accNoFrom, String accNoTo, String amount, String title,String date) {
+        this.login = login;
+        this.accNoFrom = accNoFrom;
+        this.accNoTo = accNoTo;
+        this.amount = amount;
+        this.title = title;
+        this.date=date;
+    }
 
     public Transfer(String login, String accNoFrom, String accNoTo, String amount, String title) {
         this.login = login;
@@ -15,6 +25,9 @@ public class Transfer implements Serializable {
         this.accNoTo = accNoTo;
         this.amount = amount;
         this.title = title;
+    }
+
+    public Transfer() {
     }
 
     @Override

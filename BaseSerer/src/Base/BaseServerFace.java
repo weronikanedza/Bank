@@ -23,12 +23,12 @@ public interface BaseServerFace
     Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
 
     String getBalance(String login) throws RemoteException; // checked
-    TransferData getTransferHistory(TransferHistory data) throws RemoteException; //to do
+    TransferData getTransferHistory(TransferHistory data) throws RemoteException; //ok(w)
     PersonalData getPersonalData(String login) throws RemoteException; //ok(w)
     Object getLoanHistory(String login) throws RemoteException;
     Object getInvestmentHistory(String login) throws RemoteException;
     RequestListAddAccount getRequestAddAccount(String login) throws RemoteException; //checked
-    RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException; // to do
+    RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException; // ok(w)
     Object getRequestLoan(String login) throws RemoteException;
     Object getRequestInvestment(String login) throws RemoteException;
 
