@@ -1,5 +1,8 @@
 package ComputingServer;
 
+import Base.LogFrom;
+import Base.LogTo;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -8,8 +11,7 @@ import java.sql.SQLException;
 
 public class ComputingServer
 {
-    public static void main(String args[])
-    {
+    public static void main(String args[]) throws RemoteException, SQLException {
         System.out.println("Server start!");
         try
         {
@@ -38,5 +40,6 @@ public class ComputingServer
         {
             e.printStackTrace();
         }
+
     }
 }

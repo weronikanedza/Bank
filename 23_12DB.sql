@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2017 at 04:04 PM
+-- Generation Time: Dec 23, 2017 at 07:52 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -39,8 +39,9 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id_account`, `balance`, `pesel`) VALUES
-('111111111', '220.39', '90020197652'),
-('222222222', '940.45', '96020598652');
+('111111111', '824.46', '90020197652'),
+('222222222', '500.00', '96020598652'),
+('619335823', '0.00', '96121458741');
 
 -- --------------------------------------------------------
 
@@ -86,8 +87,9 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`pesel`, `customer_nr`, `firstname`, `lastname`, `idNumber`, `street`, `email`, `zipcode`, `city`, `phonenumber`) VALUES
-('90020197652', '2', 'Anna', 'Dzik', 'AYD234187', 'ul.Nowa 43/23', 'nowy@gmail.com', '23-862', 'Kraków', '987234123'),
-('96020598652', '3', 'Karol', 'Nowak', 'AYD234978', 'ul.Warszawska 12/13', 'weronika439@gmail.com', '12-562', 'Warszawa', '256387654');
+('90020197652', '2', 'Anna', 'Dzik', 'AYD234187', 'ul.Nowa 43/23', 'nowy@gmail.com', '23-862', NULL, '987234123'),
+('96020598652', '3', 'Alan', 'Kubik', 'ASC546123', 'ul.?wietlista 3', 'kubik@gmail.com', '12-345', 'Warszawa', '789456123'),
+('96121458741', '98667', 'Natalia', 'Gawor', 'AZK874512', 'Wielicka11u/12', 'niebieskiePatyki@gmail.com', '30-552', 'Wrocłam', '123456789');
 
 -- --------------------------------------------------------
 
@@ -115,9 +117,7 @@ CREATE TABLE `newaccountrequest` (
 --
 
 INSERT INTO `newaccountrequest` (`id_request`, `firstname`, `lastname`, `street`, `city`, `zipcode`, `idNumber`, `email`, `phoneNumber`, `pesel`, `id_admin`, `reqstatus`) VALUES
-('3', 'Aleksandra ', 'Kozak', 'ul 1/2', 'Wrocłam', '12-987', 'RTZ567123', 'rt@wp.pl', '456789123', '92020198567', '1', '1'),
-('7', 'Natalia', 'Gawor', 'Wielicka11u/12', 'Kraków', '30-552', 'AZK874512', 'niebieskiePatyki@gmail.com', '123456789', '96121458741', '1', '1'),
-('8', 'we', 'we', 'j5/6', 'm', '11-123', 'AYD234567', 'k@.', '678', '15110489123', '1', '1');
+('5', 'Aleksandra ', 'Bożek', 'ul 1/2', 'Wrocłam', '12-987', 'RTZ567123', 'rt@wp.pl', '456789123', '96121458741', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -141,7 +141,9 @@ CREATE TABLE `transfer` (
 INSERT INTO `transfer` (`id_transfer`, `accFrom`, `accTo`, `amount`, `title`, `date`) VALUES
 ('1', '111111111', '222222222', '20', 'tytul', '2017/11/26'),
 ('2', '111111111', '222222222', '20', 'tytul', '2017/11/26'),
-('3', '111111111', '222222222', '20', 'tytul', '2017/11/28');
+('3', '111111111', '222222222', '20', 'tytul', '2017/11/28'),
+('6', '111111111', '222222222', '12.98', '\"HALO\"', '2017/04/12'),
+('7', '111111111', '222222222', '12.98', '\"bufalo\"', '2017/12/12');
 
 -- --------------------------------------------------------
 
@@ -152,17 +154,19 @@ INSERT INTO `transfer` (`id_transfer`, `accFrom`, `accTo`, `amount`, `title`, `d
 CREATE TABLE `users` (
   `login` varchar(100) COLLATE utf8_polish_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
-  `status` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
+  `status` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `counter` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`login`, `password`, `status`) VALUES
-('1', 'Admin1', 'A'),
-('2', 'Klient2', 'C'),
-('3', 'k3', 'C');
+INSERT INTO `users` (`login`, `password`, `status`, `counter`) VALUES
+('1', 'Admin1', 'A', 0),
+('2', 'Lubie1', 'C', 0),
+('3', 'k3', 'C', 0),
+('98667', 'ZMULA1', 'C', 0);
 
 --
 -- Indexes for dumped tables

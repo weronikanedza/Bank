@@ -18,7 +18,7 @@ public interface BaseServerFace
     Object requestInvestment(String login, Object data) throws RemoteException;
 
     String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //checked
-    String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException; //to do
+    String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException; //ok(w)
     Object answerLoanReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
     Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
 

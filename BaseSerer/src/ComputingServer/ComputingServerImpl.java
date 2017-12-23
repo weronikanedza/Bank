@@ -49,9 +49,11 @@ public class ComputingServerImpl
         System.out.println("LOGIN");
         LogFrom logFrom=new LogFrom();
         try {
-            rS= statement.executeQuery("Select password,status from users where login='"+data.login+"' and password='"+data.password+"'" );
+            rS= statement.executeQuery("Select password,status,counter from users where login='"+data.login+"'" );
             rS.next();
-            if(data.password.equals(rS.getString("password"))){ //checks password capital/small letters
+            Integer counter= Integer.parseInt(rS.getString("counter"));
+            System.out.println(counter);
+            if(data.password.equals(rS.getString("password")) && counter<3 ){  //checks password capital/small letters
                 logFrom.error="0";
                 logFrom.status=rS.getString("status");
                 logFrom.login=data.login;
@@ -63,7 +65,19 @@ public class ComputingServerImpl
                     logFrom.balance= rS.getString("balance");
                     logFrom.accNo= rS.getString("id_account");
                 }
+                statement.executeUpdate("UPDATE users SET counter=0 where login='" + data.login + "' ");
 
+            }else if (!data.login.equals("1")){
+                rS=statement.executeQuery("SELECT counter from users where login='"+data.login+"'");
+                rS.next();
+
+                if (counter<3) {
+                    statement.executeUpdate("UPDATE users SET counter=counter+1 where login='" + data.login + "' ");
+                }else
+                    logFrom.error="2";
+
+            }else {
+                logFrom.error="1";
             }
         } catch(SQLException e) {
             System.out.println("resultset exception");
@@ -260,6 +274,34 @@ public class ComputingServerImpl
     @Override
     public String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException
     {
+//        if(data.decision.equals("y")){
+//            System.out.println("jestem tu");
+//            System.out.println(data.personalData);
+//            try {
+//                statement.executeUpdate("UPDATE customers SET city = '"+data.personalData.city+"', email='"+data.personalData.email+"'," +
+//                        "firstname='"+data.personalData.firstName+"',idNumber='"+data.personalData.idNumber+"'," +
+//                        "lastname='"+data.personalData.lastName+"',phoneNumber='"+data.personalData.phoneNumber+"'," +
+//                        "street='"+data.personalData.street+"',zipcode='"+data.personalData.zipCode + "' where pesel='"+data.personalData.pesel+"'");
+//
+//                statement.executeUpdate("Delete from newaccountrequest where id_req='"+data.id_req+"'");
+//            } catch (Exception e) {
+//                System.out.println("answer change personal data exception");
+//                System.out.println(e.getMessage());
+//                return "1";
+//            }
+//        }
+//        else{
+//            try{
+//                statement.executeUpdate("Delete from newaccountrequest where id_request='" + data.id_req + "'");
+//            } catch (SQLException e) {
+//                System.out.println("answer change personal data req exception");
+//                e.printStackTrace();
+//                return "1";
+//            }
+//
+//        }
+//        return "0";
+
         return null;
     }
 
