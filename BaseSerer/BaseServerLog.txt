@@ -2,3 +2,6 @@ Add client 1 to session.
 Add client 1 to session.
 Add client 2 to session.
 Add client 2 to session.
+Add client 2 to session.
+Add client 2 to session.
+Add client 1 to session.

@@ -12,14 +12,14 @@ public interface BaseServerFace
     String changePassword(LogTo data) throws RemoteException; // ok(w)
     Object makeDeposit(String login, String accTo, Object data) throws RemoteException;
     String addFunds(String login,Funds data) throws RemoteException; //ok (w)
+    String requestLoan(Loan data) throws RemoteException; //ok(w)
     String requestAddAccount(String login, PersonalData data) throws RemoteException; //checked
     String requestChangePersonalData(String login, PersonalData data) throws RemoteException;//ok(w)
-    Object requestLoan(String login, Object data) throws RemoteException;
     Object requestInvestment(String login, Object data) throws RemoteException;
 
     String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //checked
     String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException; //ok(w)
-    Object answerLoanReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
+    String answerLoanReq(String login,LoanDecision data) throws RemoteException; // ok(w)
     Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException; // dogaduje sie z Dominikiem ale raczej tak zostanie
 
     String getBalance(String login) throws RemoteException; // checked
@@ -29,7 +29,7 @@ public interface BaseServerFace
     Object getInvestmentHistory(String login) throws RemoteException;
     RequestListAddAccount getRequestAddAccount(String login) throws RemoteException; //checked
     RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException; // ok(w)
-    Object getRequestLoan(String login) throws RemoteException;
+    ListLoanReq getRequestLoan(String login) throws RemoteException; //ok(w)
     Object getRequestInvestment(String login) throws RemoteException;
 
     Object LogOut(String login) throws RemoteException;

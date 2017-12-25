@@ -5,6 +5,7 @@ import Base.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -104,6 +105,7 @@ public class ComputingServerImpl
     @Override
     public String transfer(Transfer data) throws RemoteException {
         double balance, transferAmount, senderBalance;
+        int id_transfer=0;
 
         balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
         transferAmount = Double.parseDouble(data.amount);
@@ -115,12 +117,19 @@ public class ComputingServerImpl
             return "2";
         } else {
             try {
-
+                LocalDate date=LocalDate.now();
                 statement.executeUpdate("UPDATE account a  join customers c on a.pesel=c.pesel  " +
                         "set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + data.login + "'"); //update sender account
 
                 statement.executeUpdate("UPDATE account SET balance=balance+'" + transferAmount
                         + "' WHERE id_account='" + data.accNoTo + "'");
+                rS=statement.executeQuery("SELECT id_transfer from transfer");
+                while(rS.next())
+                    id_transfer= Integer.parseInt(rS.getString("id_transfer"));
+
+                id_transfer+=1;
+                statement.executeUpdate("INSERT into transfer values('"+id_transfer+"','"+data.accNoFrom+"','"+data.accNoTo+"','"+data.amount+"','"+data.title+"','" +
+                        ""+date.toString()+"')");
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 return "3";
@@ -229,8 +238,23 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object requestLoan(String login, Object data) throws RemoteException
+    public ListLoanReq getRequestLoan(String login) throws RemoteException
     {
+//        ListLoanReq list=new ListLoanReq();
+//        list.loanList =new ArrayList<>();
+//
+//        try{
+//            rS=statement.executeQuery("Select * from loan where status=0");
+//            while (rS.next()){
+//                list.loanList.add(new LoanReq(rS.getString("customer_nr"),rS.getString("amount"),rS.getString("instalment"),
+//                        rS.getString("numberOfMonths"),rS.getString("bankRate"),rS.getString("salary"),rS.getString("id_loan")));
+//            }
+//            list.error="0";
+//        }catch (SQLException e){
+//            System.out.println(e.getMessage());
+//            list.error="1";
+//        }
+//        return list;
         return null;
     }
 
@@ -306,8 +330,30 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object answerLoanReq(String login, String answer, String accTo, Object data) throws RemoteException
+    public String answerLoanReq(String login, LoanDecision data) throws RemoteException
     {
+//        if(data.decision.equals("y")){
+//            LocalDate date=LocalDate.now();
+//            try {
+//                rS=statement.executeQuery("SELECT * from loan where id_loan='"+data.id_req+"'");;
+//                rS.next();
+//                String customer_nr=rS.getString("customer_nr");
+//                double amount=Double.parseDouble(rS.getString("amount"));
+//                double balance=Double.parseDouble(check.checkBalanceLogin(customer_nr));
+//                balance+= amount;
+//                System.out.println(balance);
+//                statement.executeUpdate("UPDATE account a natural join customers c set a.balance='"+balance+"' WHERE " +
+//                        "c.customer_nr='"+customer_nr+"'");
+//
+//                statement.executeUpdate("UPDATE Loan set status=1, date='" + date.toString() + "' where id_loan='" + data.id_req + "'");
+//            }catch (SQLException e){
+//                System.out.println(e.getMessage());
+//                return "1";
+//            }
+//        } else{
+//            statement.executeUpdate("Delete from Loan where id_loan='" + data.id_req + "'");
+//        }
+//        return "0";
         return null;
     }
 
@@ -435,8 +481,27 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object getRequestLoan(String login) throws RemoteException
+    public String requestLoan(Loan data) throws RemoteException
     {
+//        int id_loan=0;
+//        try {
+//            if(check.checkLoan(data.login)) {
+//                statement.execute("SELECT id_loan FROM loan");
+//                rS = statement.getResultSet();
+//                while (rS.next())
+//                    id_loan = Integer.parseInt(rS.getString(1));
+//
+//                id_loan += 1;
+//                statement.executeUpdate("INSERT into loan VALUES ('" + id_loan + "','" + data.amount + "'," +
+//                        "'5','" + data.instalment + "','" + data.numberOfMonths + "','" + data.login + "','" + data.salary + "','0','0')");
+//            }else{
+//                return "2";
+//            }
+//        }catch(SQLException e){
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }
+//        return "0";
         return null;
     }
 

@@ -123,7 +123,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object requestLoan(String login, Object data) throws RemoteException
+	public ListLoanReq getRequestLoan(String login) throws RemoteException
 	{
 		return null;
 	}
@@ -149,7 +149,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object answerLoanReq(String login, String answer, String accTo, Object data) throws RemoteException
+	public String answerLoanReq(String login,LoanDecision data) throws RemoteException
 	{
 		return null;
 	}
@@ -205,7 +205,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getRequestLoan(String login) throws RemoteException
+	public String requestLoan(Loan data) throws RemoteException
 	{
 		return null;
 	}

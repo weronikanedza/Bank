@@ -141,4 +141,22 @@ public class Checker {
         return true;
     }
 
+    /**
+     * function checks if customer has a loan or request for loan in database
+     * @param login
+     * @return true when customer does't have any loan
+     * @throws SQLException
+     */
+    public boolean checkLoan(String login) throws SQLException {
+        try {
+            rS=statement.executeQuery("Select * from loan where customer_nr='"+login+"'");
+            rS.next();
+            rS.getString(1);
+            return false;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return true;
+        }
+    }
+
 }

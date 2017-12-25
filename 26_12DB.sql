@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2017 at 07:52 PM
+-- Generation Time: Dec 26, 2017 at 12:34 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -39,8 +39,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id_account`, `balance`, `pesel`) VALUES
-('111111111', '824.46', '90020197652'),
-('222222222', '500.00', '96020598652'),
+('111111111', '10380.0', '90020197652'),
+('222222222', '1720', '96020598652'),
 ('619335823', '0.00', '96121458741');
 
 -- --------------------------------------------------------
@@ -94,6 +94,31 @@ INSERT INTO `customers` (`pesel`, `customer_nr`, `firstname`, `lastname`, `idNum
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `loan`
+--
+
+CREATE TABLE `loan` (
+  `id_loan` varchar(100) COLLATE utf8_polish_ci NOT NULL,
+  `amount` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `bankRate` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `instalment` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `numberOfMonths` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `customer_nr` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `salary` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `date` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `status` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `loan`
+--
+
+INSERT INTO `loan` (`id_loan`, `amount`, `bankRate`, `instalment`, `numberOfMonths`, `customer_nr`, `salary`, `date`, `status`) VALUES
+('1', '2500', '5', '250', '12', '2', '3500', '2017-12-26', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `newaccountrequest`
 --
 
@@ -140,10 +165,13 @@ CREATE TABLE `transfer` (
 
 INSERT INTO `transfer` (`id_transfer`, `accFrom`, `accTo`, `amount`, `title`, `date`) VALUES
 ('1', '111111111', '222222222', '20', 'tytul', '2017/11/26'),
+('10', '111111111', '222222222', '200.00', 'ble', '2017-12-25'),
 ('2', '111111111', '222222222', '20', 'tytul', '2017/11/26'),
 ('3', '111111111', '222222222', '20', 'tytul', '2017/11/28'),
 ('6', '111111111', '222222222', '12.98', '\"HALO\"', '2017/04/12'),
-('7', '111111111', '222222222', '12.98', '\"bufalo\"', '2017/12/12');
+('7', '111111111', '222222222', '12.98', '\"bufalo\"', '2017/12/12'),
+('8', '111111111', '222222222', '200', 'ble', '2017-12-25'),
+('9', '111111111', '222222222', '200.00', 'ble', '2017-12-25');
 
 -- --------------------------------------------------------
 
@@ -164,7 +192,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`login`, `password`, `status`, `counter`) VALUES
 ('1', 'Admin1', 'A', 0),
-('2', 'Lubie1', 'C', 0),
+('2', 'Admin1', 'C', 0),
 ('3', 'k3', 'C', 0),
 ('98667', 'ZMULA1', 'C', 0);
 
@@ -191,6 +219,13 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`pesel`),
+  ADD KEY `customer_nr` (`customer_nr`);
+
+--
+-- Indexes for table `loan`
+--
+ALTER TABLE `loan`
+  ADD PRIMARY KEY (`id_loan`),
   ADD KEY `customer_nr` (`customer_nr`);
 
 --
@@ -234,6 +269,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `customers`
   ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`customer_nr`) REFERENCES `users` (`login`);
+
+--
+-- Constraints for table `loan`
+--
+ALTER TABLE `loan`
+  ADD CONSTRAINT `loan_ibfk_1` FOREIGN KEY (`customer_nr`) REFERENCES `customers` (`customer_nr`);
 
 --
 -- Constraints for table `newaccountrequest`
