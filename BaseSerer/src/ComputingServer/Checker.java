@@ -3,9 +3,12 @@ package ComputingServer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+
+import static java.lang.Math.pow;
 
 /**
  * additional class with checks requiered data
@@ -157,6 +160,52 @@ public class Checker {
             System.out.println(e.getMessage());
             return true;
         }
+    }
+    /**
+     * calculate final amoun
+     * @param time
+     * @return
+     */
+    public String checkAmount(String amount,String time,String rate){
+        Double Ko=Double.parseDouble(amount);
+        Double p=Double.parseDouble(rate);
+        Double n=Double.parseDouble(time);
+        Double result=Ko* pow(1+p*1/100,n);
+        DecimalFormat df=new DecimalFormat("#.##");
+        return df.format(result);
+    }
+    /**
+     * checks Bank rate depending on time
+     * @param time
+     * @return corretc bank rate
+     */
+    public String checkBankRate(String time) throws SQLException {
+        String rate="";
+        switch(time){
+            case "1":
+                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS.next();
+                rate= rS.getString("rate");
+                break;
+            case "3":
+                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS.next();
+                rate= rS.getString("rate");
+                break;
+            case "6":
+                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS.next();
+                rate= rS.getString("rate");
+                break;
+            case "12":
+                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS.next();
+                rate= rS.getString("rate");
+                break;
+            default: break;
+        }
+        System.out.println("RATA "+ rate);
+        return rate;
     }
 
 }

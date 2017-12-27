@@ -35,6 +35,16 @@ public class Generator {
         return saltStr;
     }
 
+    public String[] dateGenerate(String time){
+        String tab[]= new String[2];
+        LocalDate dateFrom=LocalDate.now();
+        LocalDate dateTo=LocalDate.now( ).plusMonths( Integer.parseInt(time) );
+        tab[0]=dateFrom.toString();
+        tab[1]=dateTo.toString();
+
+        return tab;
+    }
+
     public String generateLogin() throws SQLException {
         Random random= new Random();
         while(true) {

@@ -4,6 +4,7 @@ import Base.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 public class BaseServerImpl
 	extends UnicastRemoteObject
@@ -92,11 +93,7 @@ public class BaseServerImpl
 
 	}
 
-	@Override
-	public Object makeDeposit(String login, String accTo, Object data) throws RemoteException
-	{
-		return null;
-	}
+
 
 	@Override
 	public String addFunds(String login,Funds data) throws RemoteException
@@ -129,7 +126,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object requestInvestment(String login, Object data) throws RemoteException
+	public String requestInvestment(Investment data) throws RemoteException
 	{
 		return null;
 	}
@@ -154,11 +151,7 @@ public class BaseServerImpl
 		return null;
 	}
 
-	@Override
-	public Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException
-	{
-		return null;
-	}
+
 
 	@Override
 	public String getBalance(String login) throws RemoteException
@@ -213,6 +206,11 @@ public class BaseServerImpl
 	@Override
 	public Object getRequestInvestment(String login) throws RemoteException
 	{
+		return null;
+	}
+
+	@Override
+	public String unlockUser(String login, String pesel) {
 		return null;
 	}
 

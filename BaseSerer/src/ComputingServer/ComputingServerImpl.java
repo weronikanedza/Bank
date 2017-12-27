@@ -152,11 +152,6 @@ public class ComputingServerImpl
         return "0";
     }
 
-    @Override
-    public Object makeDeposit(String login, String accTo, Object data) throws RemoteException
-    {
-        return null;
-    }
 
     @Override
     public String addFunds(String login,Funds data) throws RemoteException
@@ -259,8 +254,32 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object requestInvestment(String login, Object data) throws RemoteException
+    public String requestInvestment(Investment data) throws RemoteException
     {
+//        		int id=0;
+//		System.out.println(data);
+//		try {
+//			if(Double.parseDouble(check.checkBalanceLogin(data.login))>=Double.parseDouble(data.amount)) {
+//				String rate = check.checkBankRate(data.time);
+//				String tab[] = generator.dateGenerate(data.time);
+//				String finalAmount = check.checkAmount(data.amount, data.time, rate);
+//				rS = statement.executeQuery("Select id_investment FROM investment");
+//				while (rS.next())
+//					id = Integer.parseInt(rS.getString("id_investment"));
+//
+//				++id;
+//
+//				statement.executeUpdate("INSERT INTO investment values('" + id + "','" + data.amount + "','" + tab[0] + "','" + tab[1] + "','" + rate + "',0,'" + finalAmount + "','"+data.login+"')");
+//				statement.executeUpdate("UPDATE account NATURAL join customers set balance=balance-'"+data.amount+"'where customer_nr='"+data.login+"'");
+//			}else{
+//				return"2";
+//			}
+//
+//		}catch (SQLException e){
+//			System.out.println(e.getMessage());
+//			return "1";
+//		}
+//		return "0";
         return null;
     }
 
@@ -357,11 +376,7 @@ public class ComputingServerImpl
         return null;
     }
 
-    @Override
-    public Object answerInvestmentReq(String login, String answer, String accTo, Object data) throws RemoteException
-    {
-        return null;
-    }
+
 
     @Override
     public String getBalance(String login) throws RemoteException
@@ -508,6 +523,11 @@ public class ComputingServerImpl
     @Override
     public Object getRequestInvestment(String login) throws RemoteException
     {
+        return null;
+    }
+
+    @Override
+    public String unlockUser(String login, String pesel) {
         return null;
     }
 
