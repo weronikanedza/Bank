@@ -526,10 +526,6 @@ public class ComputingServerImpl
         return null;
     }
 
-    @Override
-    public String unlockUser(String login, String pesel) {
-        return null;
-    }
 
     @Override
     public Object LogOut(String login) throws RemoteException

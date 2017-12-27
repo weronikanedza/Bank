@@ -31,7 +31,6 @@ public interface BaseServerFace
     Object getRequestInvestment(String login) throws RemoteException;
 
 
-    String unlockUser(String login,String pesel); //email
     Object LogOut(String login) throws RemoteException;
     //TESTY
 
