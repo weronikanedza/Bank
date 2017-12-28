@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2017 at 12:34 AM
+-- Generation Time: Dec 28, 2017 at 04:30 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id_account`, `balance`, `pesel`) VALUES
-('111111111', '10380.0', '90020197652'),
+('111111111', '11880.0', '90020197652'),
 ('222222222', '1720', '96020598652'),
 ('619335823', '0.00', '96121458741');
 
@@ -62,6 +62,28 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `firstname`, `lastname`, `login`) VALUES
 ('1', 'Admin', 'Admin', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bankrate`
+--
+
+CREATE TABLE `bankrate` (
+  `id_rate` varchar(100) COLLATE utf8_polish_ci NOT NULL,
+  `time` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `rate` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `bankrate`
+--
+
+INSERT INTO `bankrate` (`id_rate`, `time`, `rate`) VALUES
+('1', '1', '0.5'),
+('2', '3', '1'),
+('3', '6', '1.5'),
+('4', '12', '2');
 
 -- --------------------------------------------------------
 
@@ -94,6 +116,41 @@ INSERT INTO `customers` (`pesel`, `customer_nr`, `firstname`, `lastname`, `idNum
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `investment`
+--
+
+CREATE TABLE `investment` (
+  `id_investment` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `amount` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `dateFrom` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `dateTo` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `id_rate` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `status` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `finalamount` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `customer_nr` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `investment`
+--
+
+INSERT INTO `investment` (`id_investment`, `amount`, `dateFrom`, `dateTo`, `id_rate`, `status`, `finalamount`, `customer_nr`) VALUES
+('1', '2000', '2017-12-27', '2018-03-27', '1', '0', '20001.0303010000000001', NULL),
+('2', '2000', '2017-12-27', '2018-03-27', '1', '0', '2060.6020000000003', NULL),
+('3', '2000', '2017-12-27', '2018-03-27', '1', '0', 'java.text.DecimalFormat@674dc', NULL),
+('4', '2000', '2017-12-27', '2018-03-27', '1', '0', 'java.text.DecimalFormat@674dc', NULL),
+('5', '2000', '2017-12-27', '2018-03-27', '1', '0', 'java.text.DecimalFormat@674dc', NULL),
+('6', '2000', '2017-12-27', '2018-03-27', '1', '0', 'java.text.DecimalFormat@674dc', NULL),
+('7', '2000', '2017-12-27', '2018-03-27', '1', '0', '2060,6', NULL),
+('8', '2000', '2017-12-27', '2018-03-27', '1', '0', '2060,602', NULL),
+('9', '2000', '2017-12-27', '2018-03-27', '1', '0', '2060,6', NULL),
+('10', '2000', '2017-12-27', '2018-03-27', '1', '0', '2060,6', '2'),
+('11', '1000', '2017-12-28', '2018-03-28', '1', '0', '1030,3', '2'),
+('12', '1000', '2017-12-28', '2018-03-28', '1', '0', '1030,3', '2');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `loan`
 --
 
@@ -106,15 +163,16 @@ CREATE TABLE `loan` (
   `customer_nr` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
   `salary` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
   `date` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
-  `status` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
+  `status` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `dateTo` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Dumping data for table `loan`
 --
 
-INSERT INTO `loan` (`id_loan`, `amount`, `bankRate`, `instalment`, `numberOfMonths`, `customer_nr`, `salary`, `date`, `status`) VALUES
-('1', '2500', '5', '250', '12', '2', '3500', '2017-12-26', '1');
+INSERT INTO `loan` (`id_loan`, `amount`, `bankRate`, `instalment`, `numberOfMonths`, `customer_nr`, `salary`, `date`, `status`, `dateTo`) VALUES
+('1', '2500', '5', '250', '12', '2', '3500', '2017-12-28', '1', '2018-12-28');
 
 -- --------------------------------------------------------
 
@@ -215,10 +273,23 @@ ALTER TABLE `admin`
   ADD KEY `login` (`login`);
 
 --
+-- Indexes for table `bankrate`
+--
+ALTER TABLE `bankrate`
+  ADD PRIMARY KEY (`id_rate`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`pesel`),
+  ADD KEY `customer_nr` (`customer_nr`);
+
+--
+-- Indexes for table `investment`
+--
+ALTER TABLE `investment`
+  ADD KEY `id_rate` (`id_rate`),
   ADD KEY `customer_nr` (`customer_nr`);
 
 --
@@ -269,6 +340,13 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `customers`
   ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`customer_nr`) REFERENCES `users` (`login`);
+
+--
+-- Constraints for table `investment`
+--
+ALTER TABLE `investment`
+  ADD CONSTRAINT `investment_ibfk_1` FOREIGN KEY (`id_rate`) REFERENCES `bankrate` (`id_rate`),
+  ADD CONSTRAINT `investment_ibfk_2` FOREIGN KEY (`customer_nr`) REFERENCES `customers` (`customer_nr`);
 
 --
 -- Constraints for table `loan`

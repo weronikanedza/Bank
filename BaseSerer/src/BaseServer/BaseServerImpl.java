@@ -173,13 +173,13 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getLoanHistory(String login) throws RemoteException
+	public Loan getLoanHistory(String login) throws RemoteException
 	{
 		return null;
 	}
 
 	@Override
-	public Object getInvestmentHistory(String login) throws RemoteException
+	public ListInvestment getInvestmentHistory(String login) throws RemoteException
 	{
 		return null;
 	}
@@ -204,7 +204,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getRequestInvestment(String login) throws RemoteException
+	public String unlockAcc(String login,String cust_nr) throws RemoteException
 	{
 		return null;
 	}

@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/../mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar!/" />
       <root url="jar://$PROJECT_DIR$/../javaee.jar!/" />
       <root url="jar://$PROJECT_DIR$/../javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libPac.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
