@@ -29,6 +29,7 @@ public class ComputingServerImpl
         try {
             connection = DriverManager.getConnection(URL,"root","");
             statement=connection.createStatement();
+            statement.execute("SET NAMES 'UTF8'");
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
         }
@@ -176,11 +177,11 @@ public class ComputingServerImpl
 
     public String requestAddAccount(String login, PersonalData data) throws RemoteException{
         int id_req=0;
+        System.out.println(data);
         try{
             if( check.checkIfCustomerExist(data.pesel) &&
                     check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
-                statement.execute("SELECT id_request FROM newaccountrequest");
-                rS=statement.getResultSet();
+                rS=statement.executeQuery("SELECT id_request FROM newaccountrequest");
                 while (rS.next())
                     id_req = Integer.parseInt(rS.getString(1));
 
