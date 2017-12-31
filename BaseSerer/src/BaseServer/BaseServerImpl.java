@@ -4,7 +4,6 @@ import Base.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseServerImpl
@@ -71,12 +70,12 @@ public class BaseServerImpl
 
 		if(logFrom.error.equals("0"))
 		{
-			logServer.addMessageToLog("Add client " + login + " to session.");
+			logServer.AddMessageToLog("logIn true " + login);
 			clientSession.addClient(login, new ClientData());
 		}
 		else
 		{
-			logServer.addMessageToLog(login + " try add to session.");
+			logServer.AddMessageToLog("logIn false " + login);
 		}
 
 		return logFrom;
