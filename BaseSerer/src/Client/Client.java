@@ -443,7 +443,7 @@ public class Client
 * 0 ok
 * 1 sth wrong with database
 * */
-    public String sendReqLoan(String amount, String months, String workPlace, String salary)
+    public String sendReqLoan(String amount, String months, String workPlace, String salary, String instolment)
     {
         Loan toSend = new Loan();
         String received;
@@ -455,6 +455,7 @@ public class Client
         toSend.amount = amount;
         toSend.numberOfMonths = months;
         toSend.salary = salary;
+        toSend.instalment = instolment;
         toSend.login = userId;
 
         //checking whether new thread can be created

@@ -356,7 +356,7 @@ public class AdminController
     @FXML
     public void handleLogOut() throws IOException
     {
-        //log out server
+        admin.logOut();
 
         Parent homePageParent = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
         Scene homePageScene = new Scene(homePageParent);

@@ -220,8 +220,14 @@ public class BaseServerImpl
 		return null;
 	}
 
+    @Override
+    public String deleteAcc(String login) throws RemoteException
+    {
+        return null;
+    }
 
-	@Override
+
+    @Override
 	public Object LogOut(String login) throws RemoteException
 	{
 		return null;

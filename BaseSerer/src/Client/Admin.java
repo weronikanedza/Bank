@@ -422,6 +422,94 @@ public class Admin
         //can I return sth inside a thread or better outside??
         return errorCode;
     }
+
+    /*
+* errorCode:
+* */
+    public int unlockAcc()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+        //Pack and encode data
+        // TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
+    }
+
+    /*
+* errorCode:
+* */
+    public int deleteAcc()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+        //Pack and encode data
+        // TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
+    }
     //----------------------------------------------------------------------------------------------
     //**********************************************************************************************
     //----------------------------------------------------------------------------------------------

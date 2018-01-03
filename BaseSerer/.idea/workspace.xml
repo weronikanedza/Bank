@@ -12,37 +12,96 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BaseServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServer.java">
+      <file leaf-file-name="Admin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/Admin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="1581">
+              <caret line="470" column="12" lean-forward="true" selection-start-line="470" selection-start-column="12" selection-end-line="470" selection-end-column="12" />
+              <folding>
+                <element signature="method#addFunds#0;class#Admin#0" expanded="false" />
+                <element signature="method#changePassword#0;class#Admin#0" expanded="false" />
+                <element signature="method#getListAddAccReq#0;class#Admin#0" expanded="false" />
+                <element signature="method#sendAddAccDecision#0;class#Admin#0" expanded="false" />
+                <element signature="method#getListChangePersonalDataReq#0;class#Admin#0" expanded="false" />
+                <element signature="method#sendChangeDataDecision#0;class#Admin#0" expanded="false" />
+                <element signature="method#getListLoanReq#0;class#Admin#0" expanded="false" />
+                <element signature="method#loanReqDecison#0;class#Admin#0" expanded="false" />
+                <marker date="1514989667483" expanded="false" signature="12120:13080" ph="{...}" />
+                <marker date="1514989667483" expanded="false" signature="13138:14098" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/AdminController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="358" column="23" lean-forward="true" selection-start-line="358" selection-start-column="23" selection-end-line="358" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Client/LoginController.java">
+      <file leaf-file-name="BaseServerFace.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="255">
+              <caret line="16" column="77" lean-forward="true" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputingServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServer.java">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="378">
+              <caret line="457" column="39" lean-forward="false" selection-start-line="457" selection-start-column="39" selection-end-line="457" selection-end-column="39" />
+              <folding>
+                <element signature="method#changePassword#0;class#Client#0" expanded="false" />
+                <element signature="method#getBalance#0;class#Client#0" expanded="false" />
+                <element signature="method#sendTransfer#0;class#Client#0" expanded="false" />
+                <element signature="method#getPersonalData#0;class#Client#0" expanded="false" />
+                <element signature="method#changePersonalData#0;class#Client#0" expanded="false" />
+                <element signature="method#getInvestmentHistory#0;class#Client#0" expanded="false" />
+                <element signature="method#getLoanHistory#0;class#Client#0" expanded="false" />
+                <element signature="method#getTranserHistory#0;class#Client#0" expanded="false" />
+                <element signature="method#sendReqInvestment#0;class#Client#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/ClientController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="333" column="141" lean-forward="false" selection-start-line="333" selection-start-column="141" selection-end-line="333" selection-end-column="141" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminFX.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/AdminFX.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>logo</find>
+    </findStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -52,14 +111,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Client/Admin.java" />
-        <option value="$PROJECT_DIR$/src/Client/Client.java" />
         <option value="$PROJECT_DIR$/src/Client/User.java" />
+        <option value="$PROJECT_DIR$/src/Client/Admin.java" />
+        <option value="$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java" />
+        <option value="$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java" />
         <option value="$PROJECT_DIR$/src/Base/BaseServerFace.java" />
+        <option value="$PROJECT_DIR$/src/Client/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/Client/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/Client/Client.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1" />
     <option name="width" value="1930" />
     <option name="height" value="311" />
@@ -306,7 +369,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1930" height="311" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -317,12 +380,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.081654295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13322884" sideWeight="0.6703755" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1328125" sideWeight="0.6703755" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -364,6 +427,8 @@
             <element signature="method#sendChangeDataDecision#0;class#Admin#0" expanded="false" />
             <element signature="method#getListLoanReq#0;class#Admin#0" expanded="false" />
             <element signature="method#loanReqDecison#0;class#Admin#0" expanded="false" />
+            <marker date="1514989667483" expanded="false" signature="12120:13080" ph="{...}" />
+            <marker date="1514989667483" expanded="false" signature="13138:14098" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -373,15 +438,14 @@
         <state relative-caret-position="2380">
           <caret line="496" column="4" lean-forward="false" selection-start-line="496" selection-start-column="4" selection-end-line="496" selection-end-column="4" />
           <folding>
-            <element signature="method#logOut#0;class#Client#0" expanded="false" />
             <element signature="method#changePassword#0;class#Client#0" expanded="false" />
             <element signature="method#getBalance#0;class#Client#0" expanded="false" />
             <element signature="method#sendTransfer#0;class#Client#0" expanded="false" />
             <element signature="method#getPersonalData#0;class#Client#0" expanded="false" />
             <element signature="method#changePersonalData#0;class#Client#0" expanded="false" />
             <element signature="method#getInvestmentHistory#0;class#Client#0" expanded="false" />
+            <element signature="method#getLoanHistory#0;class#Client#0" expanded="false" />
             <element signature="method#getTranserHistory#0;class#Client#0" expanded="false" />
-            <element signature="method#sendReqLoan#0;class#Client#0" expanded="false" />
             <element signature="method#sendReqInvestment#0;class#Client#0" expanded="false" />
           </folding>
         </state>
@@ -407,42 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="385" column="4" lean-forward="false" selection-start-line="385" selection-start-column="4" selection-end-line="385" selection-end-column="4" />
-          <folding>
-            <element signature="method#addFunds#0;class#Admin#0" expanded="false" />
-            <element signature="method#changePassword#0;class#Admin#0" expanded="false" />
-            <element signature="method#getListAddAccReq#0;class#Admin#0" expanded="false" />
-            <element signature="method#sendAddAccDecision#0;class#Admin#0" expanded="false" />
-            <element signature="method#getListChangePersonalDataReq#0;class#Admin#0" expanded="false" />
-            <element signature="method#sendChangeDataDecision#0;class#Admin#0" expanded="false" />
-            <element signature="method#getListLoanReq#0;class#Admin#0" expanded="false" />
-            <element signature="method#loanReqDecison#0;class#Admin#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="496" column="4" lean-forward="false" selection-start-line="496" selection-start-column="4" selection-end-line="496" selection-end-column="4" />
-          <folding>
-            <element signature="method#logOut#0;class#Client#0" expanded="false" />
-            <element signature="method#changePassword#0;class#Client#0" expanded="false" />
-            <element signature="method#getBalance#0;class#Client#0" expanded="false" />
-            <element signature="method#sendTransfer#0;class#Client#0" expanded="false" />
-            <element signature="method#getPersonalData#0;class#Client#0" expanded="false" />
-            <element signature="method#changePersonalData#0;class#Client#0" expanded="false" />
-            <element signature="method#getInvestmentHistory#0;class#Client#0" expanded="false" />
-            <element signature="method#getTranserHistory#0;class#Client#0" expanded="false" />
-            <element signature="method#sendReqLoan#0;class#Client#0" expanded="false" />
-            <element signature="method#sendReqInvestment#0;class#Client#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
@@ -459,14 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="30" column="82" lean-forward="false" selection-start-line="30" selection-start-column="82" selection-end-line="30" selection-end-column="82" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -490,6 +510,110 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="572" column="0" lean-forward="false" selection-start-line="572" selection-start-column="0" selection-end-line="576" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/ListLoanReq.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/LoanReq.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BaseServer/BaseServerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="230" column="22" lean-forward="false" selection-start-line="230" selection-start-column="18" selection-end-line="230" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/AdminFX.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="457" column="39" lean-forward="false" selection-start-line="457" selection-start-column="39" selection-end-line="457" selection-end-column="39" />
+          <folding>
+            <element signature="method#changePassword#0;class#Client#0" expanded="false" />
+            <element signature="method#getBalance#0;class#Client#0" expanded="false" />
+            <element signature="method#sendTransfer#0;class#Client#0" expanded="false" />
+            <element signature="method#getPersonalData#0;class#Client#0" expanded="false" />
+            <element signature="method#changePersonalData#0;class#Client#0" expanded="false" />
+            <element signature="method#getInvestmentHistory#0;class#Client#0" expanded="false" />
+            <element signature="method#getLoanHistory#0;class#Client#0" expanded="false" />
+            <element signature="method#getTranserHistory#0;class#Client#0" expanded="false" />
+            <element signature="method#sendReqInvestment#0;class#Client#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/ClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="333" column="141" lean-forward="false" selection-start-line="333" selection-start-column="141" selection-end-line="333" selection-end-column="141" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="470" column="12" lean-forward="true" selection-start-line="470" selection-start-column="12" selection-end-line="470" selection-end-column="12" />
+          <folding>
+            <element signature="method#addFunds#0;class#Admin#0" expanded="false" />
+            <element signature="method#changePassword#0;class#Admin#0" expanded="false" />
+            <element signature="method#getListAddAccReq#0;class#Admin#0" expanded="false" />
+            <element signature="method#sendAddAccDecision#0;class#Admin#0" expanded="false" />
+            <element signature="method#getListChangePersonalDataReq#0;class#Admin#0" expanded="false" />
+            <element signature="method#sendChangeDataDecision#0;class#Admin#0" expanded="false" />
+            <element signature="method#getListLoanReq#0;class#Admin#0" expanded="false" />
+            <element signature="method#loanReqDecison#0;class#Admin#0" expanded="false" />
+            <marker date="1514989667483" expanded="false" signature="12120:13080" ph="{...}" />
+            <marker date="1514989667483" expanded="false" signature="13138:14098" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="358" column="23" lean-forward="true" selection-start-line="358" selection-start-column="23" selection-end-line="358" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="77" lean-forward="true" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
           <folding />
         </state>
       </provider>

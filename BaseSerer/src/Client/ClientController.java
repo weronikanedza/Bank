@@ -67,6 +67,8 @@ public class ClientController
     @FXML
     public void handleLogOut() throws IOException
     {
+        client.logOut();
+
         Parent homePageParent = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
         Scene homePageScene = new Scene(homePageParent);
         Stage appStage = (Stage) home.getScene().getWindow();
@@ -329,7 +331,7 @@ public class ClientController
         if(doubleClick == 1)
         {
             doubleClick = 0;
-            err = client.sendReqLoan(loanAmLab.getText(), loanMoLab.getText(), workPlace.getText(), salary.getText());
+            err = client.sendReqLoan(loanAmLab.getText(), loanMoLab.getText(), workPlace.getText(), salary.getText(), instolmentLab.getText());
 
             if (err.equals("-2"))
                 errLoanReq.setText("Dane nie zostały wprowadzone poprawnie:\n 1. Wszystkie pola są obowiązkowe\n 2. Średni dochód nie może zawierać przecinka ani kropki");

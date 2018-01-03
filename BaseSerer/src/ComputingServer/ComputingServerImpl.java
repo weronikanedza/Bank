@@ -570,6 +570,12 @@ public class ComputingServerImpl
         return null;
     }
 
+    @Override
+    public String deleteAcc(String login) throws RemoteException
+    {
+        return null;
+    }
+
 
     @Override
     public Object LogOut(String login) throws RemoteException

@@ -14,7 +14,7 @@ public interface BaseServerFace
     String requestLoan(Loan data) throws RemoteException; //ok(w) ok(n)
     String requestAddAccount(String login, PersonalData data) throws RemoteException; //checked
     String requestChangePersonalData(String login, PersonalData data) throws RemoteException;//ok(w) ok(n)
-    String requestInvestment(Investment data) throws RemoteException; //ok(w) ok(n)
+    String requestInvestment(Investment data) throws RemoteException; //ok(w)
 
     String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //checked //email
     String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException; //ok(w) ok(n)
@@ -29,6 +29,7 @@ public interface BaseServerFace
     RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException; // ok(w) ok(n)
     ListLoanReq getRequestLoan(String login) throws RemoteException; //ok(w)
     String unlockAcc (String login,String cust_nr) throws RemoteException; //ok(w)
+    String deleteAcc (String login) throws RemoteException;
 
 
     Object LogOut(String login) throws RemoteException;
