@@ -1,8 +1,12 @@
 package Client;
 
 import Base.*;
+
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import java.security.NoSuchAlgorithmException;
 
 public class User
 {
@@ -47,7 +51,7 @@ public class User
     * -2 unsuitable data in fields
     * -3 account is banned
     * */ // czy dostaje null po polaczaeniu
-    public String login(String login, String password)
+    public String login(String login, String password) throws Exception
     {
         LogTo toSend = new LogTo();
         LogFrom received;
@@ -62,8 +66,14 @@ public class User
 
 
         //Pack and encode data
-        toSend.login = login;
-        toSend.password = password;
+        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
+        DesEncrypter encrypter = new DesEncrypter(key);
+
+        String encrypted_login = encrypter.encrypt(login);
+        String encrypted_password = encrypter.encrypt(password);
+
+        toSend.login = encrypted_login;
+        toSend.password = encrypted_password;
 
         //checking whether new thread can be created
         //TO DO
@@ -129,7 +139,7 @@ public class User
     * -3 unsuitable data in fields
     * -4 cannot connect to server
     * */
-    public String register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated)
+    public String register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated) throws Exception
     {
         PersonalData toSend = new PersonalData();
         String receivedErr;
@@ -144,16 +154,31 @@ public class User
         if(communicateWithServer()==-1)
             return "-4";
 
+        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
+        DesEncrypter encrypter = new DesEncrypter(key);
+
+        String encrypted_pesel = encrypter.encrypt(pesel);
+        String encrypted_city = encrypter.encrypt(city);
+        String encrypted_email = encrypter.encrypt(email);
+        String encrypted_firstName = encrypter.encrypt(name);
+        String encrypted_idNumber = encrypter.encrypt(idNumber);
+        String encrypted_lastName = encrypter.encrypt(lastName);
+        String encrypted_phoneNumber = encrypter.encrypt(phoneNum);
+        String encrypted_street = encrypter.encrypt(street);
+        String encrypted_zipCode = encrypter.encrypt(zipCode);
+
+
+
         //Pack and encode data
-        toSend.pesel = pesel;
-        toSend.city = city;
-        toSend.email = email;
-        toSend.firstName = name;
-        toSend.idNumber = idNumber;
-        toSend.lastName = lastName;
-        toSend.phoneNumber = phoneNum;
-        toSend.street = street;
-        toSend.zipCode = zipCode;
+        toSend.pesel = encrypted_pesel;
+        toSend.city = encrypted_city;
+        toSend.email = encrypted_email;
+        toSend.firstName = encrypted_firstName;
+        toSend.idNumber = encrypted_idNumber;
+        toSend.lastName = encrypted_lastName;
+        toSend.phoneNumber = encrypted_phoneNumber;
+        toSend.street = encrypted_street;
+        toSend.zipCode = encrypted_zipCode;
 
         //checking whether new thread can be created
         //TO DO
