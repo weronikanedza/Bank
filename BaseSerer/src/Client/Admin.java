@@ -15,7 +15,7 @@ public class Admin
 
         try
         {
-            server.LogOut(userId);
+            server.LogOut(userId); //encoding userId
         }
         catch (Exception e)
         {
@@ -44,13 +44,9 @@ public class Admin
             return "3";
 
 
-        //Putting everything in to a list S
-
+        //Pack and encode data
         toSend.login = login;
         toSend.amount = amount + "." + amountAfterComma;
-
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -77,6 +73,7 @@ public class Admin
         if(receivedErr == null)
             return "1";
 //----------------------------------------------------------------------------------------------
+        //decoding?
 
         //end thread
 
@@ -103,11 +100,9 @@ public class Admin
         if (!checkData.checkPassword(newPassword))
             return "2";
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.login = userId;
         toSend.password = newPassword;
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -156,8 +151,7 @@ public class Admin
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.getRequestAddAccount(userId);
-
+            received = server.getRequestAddAccount(userId); // encoding userId
         }
         catch (Exception e)
         {
@@ -200,6 +194,9 @@ public class Admin
 //
 //        received.data = list;
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
         return  received.data;
     }
 
@@ -214,12 +211,9 @@ public class Admin
         AddAccReqDecision toSend = new AddAccReqDecision();
         String receivedErr;
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.id_req = idReq;
         toSend.decision = decision;
-        System.out.println("add acc decision send : " + decision);
-        //encoding data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -238,6 +232,8 @@ public class Admin
         }
 
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
 
         return receivedErr;
     }
@@ -253,7 +249,7 @@ public class Admin
         //sending and receiving data to/from main server, interpreting received data all in thread
 //        try
 //        {
-//            received = server.getRequestChangePersonalData(userId);
+//            received = server.getRequestChangePersonalData(userId); // encoding userId
 //
 //        }
 //        catch (Exception e)
@@ -297,6 +293,9 @@ public class Admin
 
         received.data = list;
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
         return  received.data;
     }
 
@@ -308,14 +307,10 @@ public class Admin
         AddAccReqDecision toSend = new AddAccReqDecision();
         String receivedErr;
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.id_req = idReq;
         toSend.decision = decision;
 
-        System.out.println("change data decision send : " + decision);
-
-        //encoding data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -334,6 +329,8 @@ public class Admin
 //        }
         receivedErr = "0";
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
 
         return receivedErr;
     }
@@ -347,12 +344,8 @@ public class Admin
         LogTo toSend = new LogTo();
         LogFrom received;
 
-
-        //encoding data to send
+        //Pack and encode data
         //TO DO
-
-        //Pack data to send
-
 
         //checking whether new thread can be created
         //TO DO
@@ -395,12 +388,8 @@ public class Admin
         LogTo toSend = new LogTo();
         LogFrom received;
 
-
-        //encoding data to send
-        //TO DO
-
-        //Pack data to send
-
+        //Pack and encode data
+        // TO DO
 
         //checking whether new thread can be created
         //TO DO

@@ -765,7 +765,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="218.0" layoutY="304.0" prefHeight="165.0" prefWidth="395.0" text="Decyzja o przydzieleniu kredty zosatnie przesłana na adres e-mail." textAlignment="CENTER" wrapText="true">
+            <Label layoutX="218.0" layoutY="304.0" prefHeight="165.0" prefWidth="395.0" text="Decyzja o przydzieleniu kredtu zostanie przesłana na adres e-mail." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

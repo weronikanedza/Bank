@@ -16,7 +16,7 @@ public class Client
 
         try
         {
-            server.LogOut(userId);
+            server.LogOut(userId); // encoding userId
         }
         catch (Exception e)
         {
@@ -47,12 +47,9 @@ public class Client
         if (!checkData.checkPassword(newPassword))
             return "2";
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.login = userId;
         toSend.password = newPassword;
-
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -79,6 +76,8 @@ public class Client
         if(receivedErr == null)
             return "1";
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
 
         //end thread
 
@@ -97,7 +96,7 @@ public class Client
 
         try
         {
-            received = server.getBalance(userId);
+            received = server.getBalance(userId); //encoding userId
         }
         catch (Exception e)
         {
@@ -143,14 +142,12 @@ public class Client
             return "5";
 
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.login = userId;
         toSend.accNoFrom = accNo;
         toSend.accNoTo = accNoTo;
-        toSend.amount = amount + "." + amountAfterComma; // czo ma byc . czy ,
+        toSend.amount = amount + "." + amountAfterComma;
         toSend.title = transferTitle;
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -195,9 +192,6 @@ public class Client
     {
         PersonalData received;
 
-        //encoding data to send => userId
-        //TO DO
-
         //checking whether new thread can be created
         //TO DO
 
@@ -207,7 +201,7 @@ public class Client
         //sending and receiving data to/from main server, interpreting received data all in thread
 //        try
 //        {
-//            received = server.getPersonalData(userId);
+//            received = server.getPersonalData(userId); //encoding userId
 //        }
 //        catch (Exception e)
 //        {
@@ -237,8 +231,6 @@ public class Client
         //decoding data
         //TO DO
 
-        // interpret data
-
         //end thread
 
         //can I return sth inside a thread or better outside??
@@ -265,7 +257,7 @@ public class Client
         if (!checkData.checkPersonalData(name, lastName, pesel, city, street, zipCode, idNumber, phoneNum, email))
             return "-3";
 
-        //Pack data to send
+        //Pack and encode data
         toSend.pesel = pesel;
         toSend.city = city;
         toSend.email = email;
@@ -275,9 +267,6 @@ public class Client
         toSend.phoneNumber = phoneNum;
         toSend.street = street;
         toSend.zipCode = zipCode;
-
-        //encoding data to send
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -303,8 +292,6 @@ public class Client
         if(received == null)
             return "-1";
 
-
-
         //decoding data
         //TO DO
 
@@ -325,12 +312,8 @@ public class Client
         LogTo toSend = new LogTo();
         LogFrom received;
 
-
-        //encoding data to send
+        //Pack and encode data
         //TO DO
-
-        //Pack data to send
-
 
         //checking whether new thread can be created
         //TO DO
@@ -374,11 +357,8 @@ public class Client
         LogFrom received;
 
 
-        //encoding data to send
+        //Pack and encode data
         //TO DO
-
-        //Pack data to send
-
 
         //checking whether new thread can be created
         //TO DO
@@ -421,12 +401,8 @@ public class Client
         LogTo toSend = new LogTo();
         LogFrom received;
 
-
-        //encoding data to send
+        //Pack and encode data
         //TO DO
-
-        //Pack data to send
-
 
         //checking whether new thread can be created
         //TO DO
@@ -475,9 +451,7 @@ public class Client
         if(!checkData.checkCompanyName(workPlace) || !checkData.checkIfOnlyNum(salary))
             return "-2";
 
-        //encoding data to send
-        //TO DO
-
+        //Pack and encode data
         toSend.amount = amount;
         toSend.numberOfMonths = months;
         toSend.salary = salary;
@@ -525,12 +499,8 @@ public class Client
         LogTo toSend = new LogTo();
         LogFrom received;
 
-
-        //encoding data to send
+        //Pack and encode data
         //TO DO
-
-        //Pack data to send
-
 
         //checking whether new thread can be created
         //TO DO

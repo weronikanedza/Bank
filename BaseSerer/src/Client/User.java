@@ -61,10 +61,7 @@ public class User
             return "-2";
 
 
-        //encoding data to send
-        //TO DO
-
-        //Pack data to send
+        //Pack and encode data
         toSend.login = login;
         toSend.password = password;
 
@@ -147,7 +144,7 @@ public class User
         if(communicateWithServer()==-1)
             return "-4";
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.pesel = pesel;
         toSend.city = city;
         toSend.email = email;
@@ -157,9 +154,6 @@ public class User
         toSend.phoneNumber = phoneNum;
         toSend.street = street;
         toSend.zipCode = zipCode;
-
-        //encoding data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -211,12 +205,6 @@ public class User
         if(!checkData.checkIfOnlyNum(clientNo) || !checkData.checkIfOnlyChars(name) || !checkData.checkIfOnlyChars(lastName))
             return "-2";
 
-        //encoding data to send
-        //TO DO
-
-        //Pack data to send
-        //nycz do pakwoania
-
         //checking whether new thread can be created
         //TO DO
 
@@ -226,7 +214,7 @@ public class User
         //sending and receiving data to/from main server, interpreting received data all in thread
 //        try
 //        {
-//           receivedErr = server.restartPassword(clientNo);
+//           receivedErr = server.restartPassword(clientNo); // encoding clientNo
 //        }
 //        catch (Exception e)
 //        {
