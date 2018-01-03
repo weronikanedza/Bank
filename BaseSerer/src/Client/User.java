@@ -8,10 +8,10 @@ public class User
 {
 
     private CheckData checkData = new CheckData();
-    String accNo;
-    String userId;
-    String balance;
-    BaseServerFace server;
+    public String accNo;
+    public String userId;
+    public String balance;
+    public BaseServerFace server;
 
     /*
     * errocode:
@@ -38,29 +38,28 @@ public class User
 
         return 0;
     }
+
     /*
     * erroCode:
     * 1 everything ok admin log in
     * 0 everything ok client log in
     * -1 cannot connect to server
     * -2 unsuitable data in fields
-    * */
-    public int login(String login, String password)
+    * -3 account is banned
+    * */ // czy dostaje null po polaczaeniu
+    public String login(String login, String password)
     {
-        int errorCode = -1;
         LogTo toSend = new LogTo();
         LogFrom received;
 
         // connect to server
         if(communicateWithServer()==-1)
-            return errorCode;
+            return "-1";
 
         //check whether data is correct
-        if (!checkData.checkIfOnlyNum(login) || !checkData.checkPassword(password))
-        {
-            errorCode = -2;
-            return errorCode;
-        }
+        if (!checkData.checkIfOnlyNum(login))
+            return "-2";
+
 
         //encoding data to send
         //TO DO
@@ -86,12 +85,12 @@ public class User
 
             System.out.println("Error: " + e);
             e.printStackTrace();
-            return -1;
+            return "-1";
         }
         //chcek if received if null !!!
 
         if(received == null)
-            return errorCode;
+            return "-1";
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
@@ -102,50 +101,51 @@ public class User
             {
                 balance = received.balance;
                 accNo = received.accNo;
-                errorCode = 0;
+                userId = received.login;
+                return "0";
             }
             else if (received.status.equals("A"))// ok and admin
-                errorCode = 1;
+            {
+                userId = received.login;
+                return "1";
+            }
 
-            userId = received.login;
+
         }
         else if(received.error.equals("1"))// sht wrong
-            errorCode=-1;
+            return "-1";
+        else if(received.error.equals("2"))// banned
+            return "-3";
 
 
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode;
+        return "-1";
     }
+
     /*
     * errocode:
+    * 1 request not accepted
     * 0 everything ok
-    * -1 cannot connect to server
     * -2 email != emailRepeated
     * -3 unsuitable data in fields
+    * -4 cannot connect to server
     * */
-    public int register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated)
+    public String register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated)
     {
-        int errorCode = -4;
         PersonalData toSend = new PersonalData();
-        String received;
+        String receivedErr;
 
         if(!email.equals(emailRepeated))
-        {
-            errorCode = -2;
-            return errorCode;
-        }
+            return "-2";
 
         if (!checkData.checkPersonalData(name, lastName, pesel, city, street, zipCode, idNumber, phoneNum, email))
-        {
-            errorCode = -3;
-            return errorCode;
-        }
+            return "-3";
 
         // connect to server
         if(communicateWithServer()==-1)
-            return errorCode;
+            return "-4";
 
         //Putting everything in to a list S
         toSend.pesel = pesel;
@@ -158,7 +158,7 @@ public class User
         toSend.street = street;
         toSend.zipCode = zipCode;
 
-        //encoding the list S of data
+        //encoding data
         //TO DO
 
         //checking whether new thread can be created
@@ -171,26 +171,83 @@ public class User
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.requestAddAccount(userId, toSend);
+            receivedErr = server.requestAddAccount(userId, toSend);
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "-4";
         }
 
         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+        if(receivedErr == null)
+            return "-4";
 //----------------------------------------------------------------------------------------------
-
-        if(received.equals("0"))
-            errorCode = 0;
-        else if(received.equals("1"))
-            errorCode=-1;
+        //decoding data
+        //TO DO
 
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode; // only to tests
+        return receivedErr; // only to tests
+    }
+
+    /*
+    * erroCode:
+    * -2 unsuitable data in fields
+    * -1 cannot connect to server
+    * 0 ok
+    * 1 sht wrong with data base
+    * 2 no such client
+    * */
+    public String resetPass(String clientNo, String name, String lastName)
+    {
+        String receivedErr;
+
+        // connect to server
+        if(communicateWithServer()==-1)
+            return "-1";
+
+        //check whether data is correct
+        if(!checkData.checkIfOnlyNum(clientNo) || !checkData.checkIfOnlyChars(name) || !checkData.checkIfOnlyChars(lastName))
+            return "-2";
+
+        //encoding data to send
+        //TO DO
+
+        //Pack data to send
+        //nycz do pakwoania
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//           receivedErr = server.restartPassword(clientNo);
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return "-1";
+//        }
+
+        receivedErr = "0";
+
+        //chcek if received if null !!!
+        if(receivedErr == null)
+            return "-1";
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return receivedErr;
     }
 }

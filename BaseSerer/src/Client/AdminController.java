@@ -22,22 +22,22 @@ public class AdminController
     @FXML
     private Button home;
     @FXML
-    private Label reqAmountLab, errGetAddAccReg, errAddFunds;
+    private Label reqAmountLab, errGetPersonalDataReg, errAddFunds;
     @FXML
     private TextField addFundsLogin, addFundsAmount, addFundsAmountAfterComma;
     @FXML
-    private Label idReq, nameAndLastName, pesel, idNumber, street, city, zipCode, email, phoneNumber, switchReq, errAddAcc;
-    @FXML
-    private List<AddAccountRequest> listAddAccReq;
+    private Label personalDataReqTitle, idReq, nameAndLastName, pesel, idNumber, street, city, zipCode, email, phoneNumber, switchReq, errPersonalData;
     @FXML
     private PasswordField newPassword, newPasswordRepeat;
     @FXML
     private Label errChangePass;
 
+    private List<AddAccountRequest> listPersonalDataReq;
     private int regAmount;
     private int currentReq;
     private int doubleClicks0;
     private int doubleClicks1;
+    private int newAccReq;
 
 
     @FXML
@@ -45,9 +45,9 @@ public class AdminController
     @FXML
     private AnchorPane greetingPane;
     @FXML
-    private AnchorPane addAccPane;
+    private AnchorPane personalDataReqPane;
     @FXML
-    private AnchorPane viewAddAccPane;
+    private AnchorPane viewPersonalDataPane;
     @FXML
     private AnchorPane addFundsPane;
     @FXML
@@ -74,24 +74,24 @@ public class AdminController
     @FXML
     public void handleAddFunds(){
 
-        int errorCode = 1;
+        String errorCode;
         if(doubleClicks0 == 1)
         {
             doubleClicks0 = 0;
             errorCode = admin.addFunds(addFundsLogin.getText(), addFundsAmount.getText(), addFundsAmountAfterComma.getText());
 
-            if (errorCode == 0)
+            if (errorCode.equals("0"))
             {
                 addFundsLogin.setText("");
                 addFundsAmount.setText("");
                 addFundsAmountAfterComma.setText("");
                 errAddFunds.setText("Dodano środki do konta wybranego klienta");
             }
-            else if (errorCode == 1)
+            else if (errorCode.equals("1"))
                 errAddFunds.setText("Wystąpił problem z baza danych, spróboj ponownie za chwile.");
-            else if (errorCode == 2)
+            else if (errorCode.equals("2"))
                 errAddFunds.setText("Klient o podanym numerze nie istnieje.");
-            else if (errorCode == 3)
+            else if (errorCode.equals("3"))
                 errAddFunds.setText("Wprowadzone dane są niepoprawne");
         }
         else
@@ -102,64 +102,85 @@ public class AdminController
     }
 
     @FXML
-    public void handleAcceptAddAccReq()
+    public void handleAcceptDataReq()
     {
         if(doubleClicks0 == 0)
         {
-            errAddAcc.setText("Kliknij, ponownie aby potwierdzić wybór!");
+            errPersonalData.setText("Kliknij, ponownie aby potwierdzić wybór!");
             doubleClicks0++;
+            doubleClicks1 = 0;
         }
         else if (doubleClicks0 == 1)
         {
-            errAddAcc.setText("");
+            errPersonalData.setText("");
             decideAddAccReq("y");
             doubleClicks0 = 0;
         }
     }
 
     @FXML
-    public void handleRefuseAddAccReq()
+    public void handleRefuseDataReq()
     {
         if(doubleClicks1 == 0)
         {
-            errAddAcc.setText("Kliknij, ponownie aby potwierdzić wybór!");
+            errPersonalData.setText("Kliknij, ponownie aby potwierdzić wybór!");
             doubleClicks1++;
+            doubleClicks0 = 0;
         }
         else if (doubleClicks1 == 1)
         {
-            errAddAcc.setText("");
+            errPersonalData.setText("");
             decideAddAccReq("n");
             doubleClicks1 = 0;
         }
     }
 
     public void decideAddAccReq(String decision)
-    {   int er;
+    {
+        String er;
 
+        errPersonalData.setText("Zatwierdzono wybór");
 
-        errAddAcc.setText("Zatwierdzono wybór");
-        er = admin.sendAddAccDecision(listAddAccReq.get(currentReq).id_request, decision);
+        if(newAccReq == 1)
+            er = admin.sendAddAccDecision(listPersonalDataReq.get(currentReq).id_request, decision);
+        else
+            er = admin.sendChangeDataDecision(listPersonalDataReq.get(currentReq).id_request, decision);
 
-        if (er == -2)
+        if (er.equals("1"))
         {
-            errAddAcc.setText("Wystąpił bład podczas przetważania wniosku.");
+            errPersonalData.setText("Wystąpił bład podczas przetważania wniosku.");
         }
-        else if (er == -1)
+        else if (er.equals("-1"))
         {
-            errAddAcc.setText("Wystąpił bład podczas wysyłania wniosku.");
+            errPersonalData.setText("Wystąpił bład podczas wysyłania wniosku.");
         }
-        else if (er == 0)
+        else if (er.equals("0"))
         {
-            System.out.println("decyzja : " + decision);
-            listAddAccReq.remove(currentReq);
-            listAddAccReq = admin.getListAddAccReq();
-            regAmount = listAddAccReq.size();
+            listPersonalDataReq.remove(currentReq);
+
+            // get list of requests, in case adding new one
+            if(newAccReq == 1)
+                listPersonalDataReq = admin.getListAddAccReq();
+            else
+                listPersonalDataReq = admin.getListChangePersonalDataReq();
+
+            if(listPersonalDataReq == null)
+            {
+                currentPane.setVisible(false);
+                currentPane = personalDataReqPane;
+                currentPane.setVisible(true);
+
+                errGetPersonalDataReg.setText("Wystąplił problem z probranie nowych wnioskow, spróbuj ponoawnie za chwile.");
+                regAmount = -1;
+            }
+
+            regAmount = listPersonalDataReq.size();
             currentReq = 0;
 
             if(regAmount == 0)
             {
                 currentPane.setVisible(false);
-                currentPane = addAccPane;
+                currentPane = personalDataReqPane;
                 currentPane.setVisible(true);
                 reqAmountLab.setText("0");
             }
@@ -173,7 +194,7 @@ public class AdminController
     }
 
     @FXML
-    public void handleNextAddAccReq()
+    public void handleNextPersonalData()
     {
 
         if(currentReq+1 == regAmount)
@@ -188,7 +209,7 @@ public class AdminController
     }
 
     @FXML
-    public void handlePreviousAddAccReq()
+    public void handlePreviousPersonalData()
     {
 
         if(currentReq-1 == -1)
@@ -203,12 +224,12 @@ public class AdminController
     }
 
     @FXML
-    public void handleViewAddAccReq()
+    public void handleViewPersonalData()
     {
         if(regAmount > 0)
         {
             currentPane.setVisible(false);
-            currentPane = viewAddAccPane;
+            currentPane = viewPersonalDataPane;
             currentPane.setVisible(true);
 
             currentReq = 0;
@@ -216,7 +237,7 @@ public class AdminController
         }
         else if(regAmount == 0)
         {
-            errGetAddAccReg.setText("Nie ma wniosków do sprawdzenia.");
+            errGetPersonalDataReg.setText("Nie ma wniosków do sprawdzenia.");
         }
     }
 
@@ -224,28 +245,59 @@ public class AdminController
     public void handleAddAccRequests()
     {
         currentPane.setVisible(false);
-        currentPane = addAccPane;
+        currentPane = personalDataReqPane;
         currentPane.setVisible(true);
 
-        listAddAccReq = admin.getListAddAccReq();
+        newAccReq = 1;
+        personalDataReqTitle.setText("Wnioski o założenie konta");
+        errGetPersonalDataReg.setText("");
 
-        if(listAddAccReq != null)
+        listPersonalDataReq = admin.getListAddAccReq();
+
+        if(listPersonalDataReq != null)
         {
-            regAmount = listAddAccReq.size();
+            regAmount = listPersonalDataReq.size();
             currentReq = 0;
             reqAmountLab.setText(regAmount + "");
 
         }
         else
         {
-            errGetAddAccReg.setText("Niestety obecnie nie jest możliwe pobranie wniosków, sprobój ponownie pożniej.");
+            errGetPersonalDataReg.setText("Niestety obecnie nie jest możliwe pobranie wniosków, sprobój ponownie pożniej.");
+            regAmount = -1;
+        }
+    }
+
+    @FXML
+    public void handleChangePersonalDataRequests()
+    {
+        currentPane.setVisible(false);
+        currentPane = personalDataReqPane;
+        currentPane.setVisible(true);
+
+        newAccReq = 0;
+        personalDataReqTitle.setText("Wnioski o zmianę danych osobowych");
+        errGetPersonalDataReg.setText("");
+
+        listPersonalDataReq = admin.getListChangePersonalDataReq();
+
+        if(listPersonalDataReq != null)
+        {
+            regAmount = listPersonalDataReq.size();
+            currentReq = 0;
+            reqAmountLab.setText(regAmount + "");
+
+        }
+        else
+        {
+            errGetPersonalDataReg.setText("Niestety obecnie nie jest możliwe pobranie wniosków, sprobój ponownie pożniej.");
             regAmount = -1;
         }
     }
 
     private void loadAddAccReqData(int index)
     {
-        AddAccountRequest el= listAddAccReq.get(index);
+        AddAccountRequest el= listPersonalDataReq.get(index);
 
         idReq.setText(el.id_request);
         nameAndLastName.setText(el.firstName + el.lastName);
@@ -257,7 +309,7 @@ public class AdminController
         email.setText(el.email);
         phoneNumber.setText(el.phoneNumber);
         switchReq.setText("");
-        errAddAcc.setText("");
+        errPersonalData.setText("");
 
         doubleClicks0 = 0;
         doubleClicks1 = 0;
@@ -277,19 +329,20 @@ public class AdminController
     @FXML
     public void handleChangePass() throws IOException
     {
-        int errorCode = 1;
+        String errorCode;
         if(doubleClicks0 == 1)
         {
             doubleClicks0 = 0;
+            System.out.println(newPassword.getText());
             errorCode = admin.changePassword(newPassword.getText(), newPasswordRepeat.getText());
 
-            if (errorCode == 0)
+            if (errorCode.equals("0"))
                 handleLogOut();
-            else if (errorCode == 1)
+            else if (errorCode.equals("1"))
                 errChangePass.setText("Wystąpił problem z baza danych, spróboj ponownie za chwile.");
-            else if (errorCode == 2)
+            else if (errorCode.equals("2"))
                 errChangePass.setText("Wprowadzone hasło nie spenia wymagan:\nHasło musi zawierac co najmniej jedna duża litere oraz cyfre.");
-            else if (errorCode == 3)
+            else if (errorCode.equals("3"))
                 errChangePass.setText("Nie poprawnie powtórzono hasło.");
         }
         else

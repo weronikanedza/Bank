@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="800.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.ClientController">
+<Pane prefHeight="800.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.ClientController">
    <children>
       <AnchorPane layoutY="150.0" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: #AACCFF;">
          <children>
@@ -29,7 +31,12 @@
                         <Font name="Calibri" size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="85.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" text="Podgląd danych">
+                  <Button mnemonicParsing="false" onAction="#handleLoanPane" prefHeight="45.0" prefWidth="170.0" text="Kredyty">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleViewPersonaData" prefHeight="45.0" prefWidth="170.0" text="Podgląd danych">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>
@@ -57,7 +64,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="greetingPane" accessibleRole="NODE" focusTraversable="true" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0">
+      <AnchorPane fx:id="greetingPane" accessibleRole="NODE" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0">
          <children>
             <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -110,7 +117,7 @@
                </font>
             </Label>
             <Line endX="150.0" fill="#0044aa" layoutX="493.0" layoutY="262.0" startX="-400.0" stroke="#0044aa" strokeWidth="2.0" />
-            <Button layoutX="92.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleBalanceRefreash" text="Odśwież">
+            <Button layoutX="92.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleBalanceRefresh" text="Odśwież">
                <font>
                   <Font size="18.0" />
                </font>
@@ -167,7 +174,7 @@
                </font>
             </Label>
             <Line endX="450.0" layoutX="126.0" layoutY="246.0" startX="-100.0" stroke="#aaccff" strokeWidth="2.0" />
-            <TextField fx:id="accNoTo" layoutX="241.0" layoutY="258.0" prefHeight="39.0" prefWidth="150.0" promptText="123456789">
+            <TextField fx:id="accNoToTr" layoutX="241.0" layoutY="258.0" prefHeight="39.0" prefWidth="150.0" promptText="123456789">
                <font>
                   <Font size="18.0" />
                </font>
@@ -191,12 +198,12 @@
                   </Label>
                </children>
             </VBox>
-            <TextField fx:id="amount" alignment="CENTER" layoutX="241.0" layoutY="306.0" prefHeight="39.0" prefWidth="94.0" promptText="000">
+            <TextField fx:id="amountTr" alignment="CENTER" layoutX="241.0" layoutY="306.0" prefHeight="39.0" prefWidth="94.0" promptText="000">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="amountAfterComma" alignment="CENTER" layoutX="362.0" layoutY="306.0" prefHeight="39.0" prefWidth="59.0" promptText="00">
+            <TextField fx:id="amountAfterCommaTr" alignment="CENTER" layoutX="362.0" layoutY="306.0" prefHeight="39.0" prefWidth="59.0" promptText="00">
                <font>
                   <Font size="18.0" />
                </font>
@@ -356,6 +363,411 @@
             <Label layoutX="35.0" layoutY="252.0" text="Po udanej próbie zmiany hasła zostaniesz automatycznie wylogowany." textFill="GREEN">
                <font>
                   <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="personaDataPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Line endX="450.0" layoutX="146.0" layoutY="94.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="45.0" layoutY="53.0" text="Dane osobowe">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="120.0" text="Imie i nazwisko :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="44.0" layoutY="159.0" text="PESEL :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="254.0" layoutY="159.0" text="Numer dowodu :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="272.0" text="Ulica :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="309.0" text="Miasto :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="309.0" text="Kod pocztowy :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="streetLab" layoutX="119.0" layoutY="272.0" prefHeight="27.0" prefWidth="373.0" text="ul. marszkala 3 piasta andersona 23/15">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="peselLab" layoutX="118.0" layoutY="159.0" text="96124578630">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLab" layoutX="193.0" layoutY="120.0" prefHeight="27.0" prefWidth="219.0" text="Natalia Gawor">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="idNumberLab" layoutX="413.0" layoutY="159.0" prefHeight="27.0" prefWidth="107.0" text="AZK124578">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="cityLab" layoutX="133.0" layoutY="309.0" prefHeight="27.0" prefWidth="180.0" text="Konstantynopol nowy">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="zipCodeLab" layoutX="472.0" layoutY="309.0" prefHeight="27.0" prefWidth="63.0" text="45-620">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="147.0" layoutY="247.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="45.0" layoutY="211.0" text="Adres">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="147.0" layoutY="401.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="45.0" layoutY="365.0" text="Kontakt">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="428.0" text="E-mail :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="465.0" text="Nr telefonu :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailLab" layoutX="126.0" layoutY="428.0" prefHeight="27.0" prefWidth="305.0" text="Konstantynopol nowy">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneNumLab" layoutX="170.0" layoutY="465.0" prefHeight="27.0" prefWidth="107.0" text="687453210">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="44.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleEditPersonaData" text="Edytuj">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errData" layoutX="44.0" layoutY="516.0" prefHeight="27.0" prefWidth="648.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="personaDataEditPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Line endX="450.0" layoutX="156.0" layoutY="81.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="55.0" layoutY="40.0" text="Dane osobowe">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="107.0" text="Imię :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="155.0" text="PESEL :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="155.0" text="Numer dowodu :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="59.0" layoutY="272.0" text="Ulica :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="325.0" text="Miasto :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="321.0" text="Kod pocztowy :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLab1" layoutX="271.0" layoutY="107.0" prefHeight="27.0" prefWidth="94.0" text="Nazwisko :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="157.0" layoutY="247.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="55.0" layoutY="211.0" text="Adres">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="159.0" layoutY="415.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="57.0" layoutY="379.0" text="Kontakt">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="434.0" text="E-mail :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="361.0" layoutY="432.0" text="Nr telefonu :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="55.0" layoutY="579.0" mnemonicParsing="false" onAction="#handleChangePersonaData" text="Wyślij dane">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errDataEdit" layoutX="54.0" layoutY="534.0" prefHeight="27.0" prefWidth="648.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="485.0" text="Powtórz E-mail :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" layoutX="112.0" layoutY="101.0" prefHeight="13.0" prefWidth="149.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="pesel" layoutX="128.0" layoutY="150.0" prefHeight="37.0" prefWidth="131.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="idNumber" layoutX="436.0" layoutY="150.0" prefHeight="37.0" prefWidth="108.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="lastName" layoutX="372.0" layoutY="102.0" prefHeight="37.0" prefWidth="160.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="street" layoutX="119.0" layoutY="267.0" prefHeight="37.0" prefWidth="457.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="city" layoutX="134.0" layoutY="316.0" prefHeight="37.0" prefWidth="189.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="zipCode" layoutX="475.0" layoutY="316.0" prefHeight="37.0" prefWidth="74.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="email" layoutX="135.0" layoutY="429.0" prefHeight="37.0" prefWidth="189.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailRepeated" layoutX="200.0" layoutY="478.0" prefHeight="37.0" prefWidth="189.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="phoneNum" layoutX="478.0" layoutY="427.0" prefHeight="37.0" prefWidth="100.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="personaDataEndPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="167.0" layoutY="113.0" prefHeight="212.0" prefWidth="496.0" text="Dane zostały przesłane do pracownikowa naszego banku, po sprawdzeniu ich poprawności, zatwierdzi on edycje danych." textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="loanPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="285.0" layoutY="446.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="247.0" text="Przegłądaj historie kredytów" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="285.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleLoanReqPane" prefHeight="86.0" prefWidth="247.0" text="Złóż wniosek o kredyt" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="180.0" layoutY="88.0" prefHeight="231.0" prefWidth="457.0" text="Nasz bank oferuje szybki i bezproblemowy kredyt. Wystarczy, że poświęcisz kilka chwil na złożenie wniosku a uzsykasz pieniądze aby spełnić swoje marzenia." textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="loanReqPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Line endX="550.0" layoutX="166.0" layoutY="91.0" startX="-100.0" stroke="#0044aa" strokeWidth="2.0" />
+            <Label layoutX="65.0" layoutY="50.0" text="Wniosek o kredyt">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Slider fx:id="loanAmount" blockIncrement="100.0" layoutX="65.0" layoutY="138.0" majorTickUnit="10000.0" max="50000.0" min="1000.0" minorTickCount="100" onKeyPressed="#calculateInstolment" onKeyReleased="#calculateInstolment" onMouseClicked="#calculateInstolment" onMousePressed="#calculateInstolment" prefHeight="60.0" prefWidth="613.0" showTickLabels="true" snapToTicks="true" value="1000.0" />
+            <Label layoutX="65.0" layoutY="113.0" text="Kwota kredytu">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="loanAmLab" alignment="CENTER_RIGHT" layoutX="531.0" layoutY="113.0" prefHeight="25.0" prefWidth="149.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Slider fx:id="loanMonths" blockIncrement="1.0" layoutX="64.0" layoutY="225.0" majorTickUnit="9.0" max="60.0" min="6.0" minorTickCount="9" onKeyPressed="#calculateInstolment" onKeyReleased="#calculateInstolment" onMouseClicked="#calculateInstolment" onMousePressed="#calculateInstolment" prefHeight="60.0" prefWidth="613.0" showTickLabels="true" snapToTicks="true" value="6.0" />
+            <Label layoutX="64.0" layoutY="201.0" prefHeight="25.0" prefWidth="74.0" text="Ilość rat">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="loanMoLab" alignment="CENTER_RIGHT" layoutX="530.0" layoutY="201.0" prefHeight="25.0" prefWidth="149.0" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="233.0" layoutY="296.0" prefHeight="25.0" prefWidth="122.0" text="Wysokość raty :">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="instolmentLab" alignment="CENTER_RIGHT" layoutX="363.0" layoutY="296.0" prefHeight="30.0" prefWidth="84.0" text="1800" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Line endX="550.0" layoutX="154.0" layoutY="394.0" startX="-100.0" stroke="#0044aa" strokeWidth="0.5" />
+            <Label layoutX="54.0" layoutY="359.0" text="Dodatkowe informacje">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <VBox layoutX="46.0" layoutY="417.0" spacing="11.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="210.0" text="Miejsce zatrudnienia :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="210.0" text="Średni miesięczny dochód :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+            <TextField fx:id="workPlace" layoutX="286.0" layoutY="417.0" prefHeight="31.0" prefWidth="417.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="salary" layoutX="286.0" layoutY="461.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Button layoutX="58.0" layoutY="538.0" mnemonicParsing="false" onAction="#handleSendLoanReq" prefHeight="60.0" prefWidth="160.0" text="Złóż wniosek">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="errLoanReq" layoutX="261.0" layoutY="510.0" prefHeight="120.0" prefWidth="536.0" textFill="RED" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="456.0" layoutY="299.0" prefHeight="25.0" prefWidth="24.0" text="zł">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="loanReqEndPane" layoutX="230.0" layoutY="150.0" prefHeight="650.0" prefWidth="830.0" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backgroundSmaller.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="167.0" layoutY="122.0" prefHeight="231.0" prefWidth="496.0" text="Dziękujemy za złożenie wniosku.&#10;Wkrótce zostanie on zweryfikowany przez naszego zaufanego pracownika. &#10;" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="218.0" layoutY="304.0" prefHeight="165.0" prefWidth="395.0" text="Decyzja o przydzieleniu kredty zosatnie przesłana na adres e-mail." textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>

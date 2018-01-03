@@ -1,8 +1,6 @@
 package Client;
 
-import Base.BaseServerFace;
-import Base.LogTo;
-import Base.Transfer;
+import Base.*;
 
 public class Client
 {
@@ -12,6 +10,7 @@ public class Client
     String userId;
     String balance;
     BaseServerFace server;
+    PersonalData personalData;
 
     public void logOut(){
 
@@ -37,27 +36,21 @@ public class Client
 * 2 unsuitable data in field
 * 3 not equal password and repeated password
 * */
-    public int changePassword( String newPassword, String newPasswordRepeat)
+    public String changePassword( String newPassword, String newPasswordRepeat)
     {
-        int errorCode = 1;
         LogTo toSend = new LogTo();
-        String received;
+        String receivedErr;
 
         if(!newPassword.equals(newPasswordRepeat))
-        {
-            errorCode = 3;
-            return errorCode;
-        }
+            return "3";
 
         if (!checkData.checkPassword(newPassword))
-        {
-            errorCode = 2;
-            return errorCode;
-        }
+            return "2";
 
         //Putting everything in to a list S
         toSend.login = userId;
         toSend.password = newPassword;
+
         //encoding the list S of data
         //TO DO
 
@@ -71,11 +64,11 @@ public class Client
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.changePassword(toSend);
+            receivedErr = server.changePassword(toSend);
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "1";
         }
 
         // testy
@@ -83,27 +76,23 @@ public class Client
 
 
         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+        if(receivedErr == null)
+            return "1";
 //----------------------------------------------------------------------------------------------
 
-        if(received.equals("0"))
-            errorCode = 0;
-        else if(received.equals("1"))
-            errorCode = 1;
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode; // only to tests
+        return receivedErr; // only to tests
     }
+
     /*
     * errocode:
     * 0 everything ok
     * -1 problem with data base
     * */
-   public int getBalance()
+   public String getBalance()
    {
-       int errorCode = -1;
        String received;
 
         try
@@ -112,7 +101,7 @@ public class Client
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "-1";
         }
 
 
@@ -121,17 +110,18 @@ public class Client
 
        //chcek if received if null !!!
        if(received == null)
-           return errorCode;
+           return "-1";
 
-       if(received.equals("-1"))
-           errorCode = -1;
-       else
+       //decoding data
+       //TO DO
+
+       if(!received.equals("-1"))
        {
            balance = received;
-           errorCode = 0;
+           return "0";
        }
 
-       return errorCode;
+       return "-1";
 
    }
 
@@ -144,17 +134,14 @@ public class Client
     * 4 sth wrong with base server
     * 5 unsuitable data in fields
     * */
-    public int sendTransfer(String accNoTo, String amount, String amountAfterComma, String transferTitle)
+    public String sendTransfer(String accNoTo, String amount, String amountAfterComma, String transferTitle)
     {
-        int errorCode = 4;
         Transfer toSend = new Transfer();
-        String received;
+        String receivedErr;
 
         if (!checkData.checkTransferData(accNoTo, amount, amountAfterComma, transferTitle))
-        {
-            errorCode = 5;
-            return errorCode;
-        }
+            return "5";
+
 
         //Putting everything in to a list S
         toSend.login = userId;
@@ -175,11 +162,11 @@ public class Client
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.transfer(toSend);
+            receivedErr = server.transfer(toSend);
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "4";
         }
 
         // testy
@@ -187,22 +174,394 @@ public class Client
 
 
         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+        if(receivedErr == null)
+            return "4";
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
 
-        if(received.equals("0"))
-            errorCode = 0;
-        else if(received.equals("1"))
-            errorCode = 1;
-        else if(received.equals("2"))
-            errorCode = 2;
-        else if(received.equals("3"))
-            errorCode = 3;
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode; // only to tests
+        return receivedErr; // only to tests
+    }
+
+    /*
+* erroCode:
+* PersonalData object   ok
+* null   sth wrong with server
+* */
+    public void getPersonalData()
+    {
+        PersonalData received;
+
+        //encoding data to send => userId
+        //TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.getPersonalData(userId);
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return null;
+//        }
+
+        //testy
+        PersonalData sample = new PersonalData();
+        sample.firstName = "Janusz";
+        sample.lastName = "Nędza";
+        sample.street = "Jana Pawła II 13c/14";
+        sample.zipCode = "37-450";
+        sample.city = "Stalowa Wola";
+        sample.pesel = "54092356981";
+        sample.idNumber = "AZK784512";
+        sample.email = "Janusz@gmail.com";
+        sample.phoneNumber = "759413682";
+
+        //chcek if received if null !!!
+//        if(received == null)
+//            return null;
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        personalData = sample; // zmienic na received przy laczeniu
+    }
+
+    /*
+* erroCode:
+* 1 sth wrong with data base
+* 0 ok
+* -1 sth wrong with base server
+* -2 email != emailRepeated
+* -3 unsuitable data in fields
+* */
+    public String changePersonalData(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated)
+    {
+
+        PersonalData toSend = new PersonalData();
+        String received;
+
+        if(!email.equals(emailRepeated))
+            return "-2";
+
+        if (!checkData.checkPersonalData(name, lastName, pesel, city, street, zipCode, idNumber, phoneNum, email))
+            return "-3";
+
+        //Pack data to send
+        toSend.pesel = pesel;
+        toSend.city = city;
+        toSend.email = email;
+        toSend.firstName = name;
+        toSend.idNumber = idNumber;
+        toSend.lastName = lastName;
+        toSend.phoneNumber = phoneNum;
+        toSend.street = street;
+        toSend.zipCode = zipCode;
+
+        //encoding data to send
+        //TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.requestChangePersonalData(userId, toSend);
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return "-1";
+//        }
+
+        received = "0";
+        //chcek if received if null !!!
+        if(received == null)
+            return "-1";
+
+
+
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return received;
+    }
+
+    /*
+* erroCode:
+* */
+    public int getInvestmentHistory()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+
+        //encoding data to send
+        //TO DO
+
+        //Pack data to send
+
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
+    }
+
+    /*
+* erroCode:
+* */
+    public int getLoanHistory()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+
+        //encoding data to send
+        //TO DO
+
+        //Pack data to send
+
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
+    }
+
+    /*
+* erroCode:
+* */
+    public int getTranserHistory()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+
+        //encoding data to send
+        //TO DO
+
+        //Pack data to send
+
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
+    }
+
+    /*
+* erroCode:
+* -2 wrong data
+* -1 sth worn with server
+* 0 ok
+* 1 sth wrong with database
+* */
+    public String sendReqLoan(String amount, String months, String workPlace, String salary)
+    {
+        Loan toSend = new Loan();
+        String received;
+
+        if(!checkData.checkCompanyName(workPlace) || !checkData.checkIfOnlyNum(salary))
+            return "-2";
+
+        //encoding data to send
+        //TO DO
+
+        toSend.amount = amount;
+        toSend.numberOfMonths = months;
+        toSend.salary = salary;
+        toSend.login = userId;
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            server.requestLoan(toSend);
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return "-1";
+//        }
+
+        received = "0";
+        //check if received if null !!!
+        if(received == null)
+            return "-1";
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return received;
+    }
+
+    /*
+* erroCode:
+* */
+    public int sendReqInvestment()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+
+        //encoding data to send
+        //TO DO
+
+        //Pack data to send
+
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
     }
 
     //----------------------------------------------------------------------------------------------

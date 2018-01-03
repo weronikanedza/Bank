@@ -28,11 +28,11 @@ public class LoginController extends Application {
     @FXML
     public void handleBtnLogin() throws IOException
     {
-        int errorCode;
+        String errorCode;
 
         errorCode = user.login(login.getText(), password.getText());
         //admin
-        if (errorCode==1)
+        if (errorCode.equals("1"))
         {   labLoginProblem.setText("Zalogowany!");
             //changing scene for admin
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminFX.fxml"));
@@ -48,7 +48,7 @@ public class LoginController extends Application {
             appStage.setScene(homePageScene);
             appStage.show();
 
-        }else if (errorCode==0)
+        }else if (errorCode.equals("0"))
         {
             labLoginProblem.setText("Zalogowany!");
             //changing scene for client
@@ -67,8 +67,10 @@ public class LoginController extends Application {
             appStage.setScene(homePageScene);
             appStage.show();
 
-        }else if (errorCode==-1 || errorCode==-2)
+        }else if (errorCode.equals("-1") || errorCode.equals("-2"))
             labLoginProblem.setText("Niepoprawny login lub hasło!");
+        else if (errorCode.equals("-3"))
+            labLoginProblem.setText("Twoje konto jest zablokowane.");
 
     }
     @FXML
@@ -78,7 +80,22 @@ public class LoginController extends Application {
         Parent homePageParent = (Parent) fxmlLoader.load();
 
         RegisterController controller = fxmlLoader.<RegisterController>getController();
-        controller.setsetControllerRegister(user);
+        controller.setControllerRegister(user);
+
+        Scene homePageScene = new Scene(homePageParent);
+        Stage appStage = (Stage) labLoginProblem.getScene().getWindow();
+        appStage.setScene(homePageScene);
+        appStage.show();
+    }
+
+    @FXML
+    public void handleResetPass() throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ResetPassFX.fxml")); // do zmiany
+        Parent homePageParent = (Parent) fxmlLoader.load();
+
+        ResetPassController controller = fxmlLoader.<ResetPassController>getController(); // do zmiany
+        controller.setController(user);
 
         Scene homePageScene = new Scene(homePageParent);
         Stage appStage = (Stage) labLoginProblem.getScene().getWindow();
