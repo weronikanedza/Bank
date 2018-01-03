@@ -19,16 +19,30 @@ public class ClientSession
         synchronized (clientSessions)
         {
             clientSessions.put(login, data);
+            show(); // for test
         }
 
     }
 
-    public ClientData findClient(String login)
+    public boolean removeClient(String login)
     {
         synchronized (clientSessions)
         {
-            return clientSessions.get(login);
+            if(clientSessions.remove(login) != null)
+            {
+                show(); // for test
+                return true;
+            }
+
         }
+        return false;
     }
+
+    public synchronized void show()
+    {
+        System.out.println(clientSessions);
+    }
+
+
 
 }
