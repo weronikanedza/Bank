@@ -1,9 +1,6 @@
 package BaseServer;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.File;
 import java.util.Date;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -12,12 +9,13 @@ public class LogServer
     extends Thread
 {
     private Queue<String> logServerQueue = new PriorityQueue<>();
-    private Object object = new Object();
 
     private boolean isRunning;
 
     LogServer()
     {
+        super("LogServer");
+
         this.start();
         this.isRunning = true;
     }
@@ -25,45 +23,39 @@ public class LogServer
     @Override
     public void run()
     {
-        Writer output = null;
-
-
+        String path = "C:\\Log";
         while(isRunning)
         {
             if(!logServerQueue.isEmpty())
             {
-                try
-                {
-                    output = new BufferedWriter(new FileWriter("BaseServerLog.txt", true));
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                String message;
-
+                // Take message from queue
+                String tempMessage;
                 synchronized (logServerQueue)
                 {
-                    message = logServerQueue.poll();
+                    tempMessage = logServerQueue.poll();
+                }
+                // Split this message
+                String[] message = tempMessage.split(" ");
+
+                // Return local date
+                String localDate;
+                {
+                    Date date = new Date();
+
+                    Integer day = date.getDate();
+                    Integer month = 1 + date.getMonth();
+                    Integer year = 1900 + date.getYear();
+
+                    localDate = day.toString() + '.' + month.toString() + '.' + year.toString();
                 }
 
-                try
-                {
-                    output.append(message + "\n");
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+                // Create folder for specific client
+                File file = CreateFolder(path, localDate, message);
 
-                try
+                // Create file
+                if(file != null)
                 {
-                    if(output != null)
-                        output.close();
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
+
                 }
 
             }
@@ -82,20 +74,36 @@ public class LogServer
 
     }
 
-    void addMessageToLog(String message)
+    File CreateFolder(String mPath, String mLocalDate, String[] mMessage)
+    {
+        if(mMessage[0].equals("logIn"))
+        {
+            if(mMessage[1].equals("true"))
+            {
+                mPath += "\\" + mLocalDate + "\\" + mMessage[2];
+            }
+            else
+            {
+                System.out.println("Error: Something wrong with folder creator!");
+                return null;
+            }
+        }
+        else
+        {
+            System.out.println("something else");
+        }
+
+        File file = new File(mPath);
+        file.mkdirs();
+
+        return file;
+    }
+
+    void AddMessageToLog(String message)
     {
         synchronized (logServerQueue)
         {
             logServerQueue.offer(message);
         }
     }
-
-    void showMessage(String message)
-    {
-        synchronized (object)
-        {
-            System.out.println(new Date().toString() + " " + message);
-        }
-    }
-
 }

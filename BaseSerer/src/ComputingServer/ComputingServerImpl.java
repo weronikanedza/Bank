@@ -29,6 +29,7 @@ public class ComputingServerImpl
         try {
             connection = DriverManager.getConnection(URL,"root","");
             statement=connection.createStatement();
+            statement.execute("SET NAMES 'UTF8'");
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
         }
@@ -176,11 +177,11 @@ public class ComputingServerImpl
 
     public String requestAddAccount(String login, PersonalData data) throws RemoteException{
         int id_req=0;
+        System.out.println(data);
         try{
             if( check.checkIfCustomerExist(data.pesel) &&
                     check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
-                statement.execute("SELECT id_request FROM newaccountrequest");
-                rS=statement.getResultSet();
+                rS=statement.executeQuery("SELECT id_request FROM newaccountrequest");
                 while (rS.next())
                     id_req = Integer.parseInt(rS.getString(1));
 
@@ -352,10 +353,10 @@ public class ComputingServerImpl
     public String answerLoanReq(String login, LoanDecision data) throws RemoteException
     {
 //        if(data.decision.equals("y")){
-//            LocalDate date=LocalDate.now();
 //            try {
 //                rS=statement.executeQuery("SELECT * from loan where id_loan='"+data.id_req+"'");;
 //                rS.next();
+//                String tab[]=generator.dateGenerate(rS.getString("numberOfMonths"));
 //                String customer_nr=rS.getString("customer_nr");
 //                double amount=Double.parseDouble(rS.getString("amount"));
 //                double balance=Double.parseDouble(check.checkBalanceLogin(customer_nr));
@@ -364,13 +365,17 @@ public class ComputingServerImpl
 //                statement.executeUpdate("UPDATE account a natural join customers c set a.balance='"+balance+"' WHERE " +
 //                        "c.customer_nr='"+customer_nr+"'");
 //
-//                statement.executeUpdate("UPDATE Loan set status=1, date='" + date.toString() + "' where id_loan='" + data.id_req + "'");
+//                statement.executeUpdate("UPDATE Loan set status=1, date='" + tab[0] + "',dateTo='"+tab[1]+"' where id_loan='" + data.id_req + "'");
 //            }catch (SQLException e){
 //                System.out.println(e.getMessage());
 //                return "1";
 //            }
 //        } else{
-//            statement.executeUpdate("Delete from Loan where id_loan='" + data.id_req + "'");
+//            try {
+//                statement.executeUpdate("Delete from Loan where id_loan='" + data.id_req + "'");
+//            } catch (SQLException e) {
+//                System.out.println(e.getMessage());
+//            }
 //        }
 //        return "0";
         return null;
@@ -437,14 +442,45 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object getLoanHistory(String login) throws RemoteException
+    public Loan getLoanHistory(String login) throws RemoteException
     {
+//        Loan loan;
+//        try {
+//            rS=statement.executeQuery("SELECT * from loan where customer_nr='"+login+"' and status=1");
+//            rS.next();
+//            loan=new Loan(login, rS.getString("amount"),rS.getString("instalment"),rS.getString("numberOfMonths"),
+//                    rS.getString("bankRate"),rS.getString("salary"),rS.getString("date"),rS.getString("dateTo"),
+//                    "0");
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            loan=new Loan();
+//            loan.error="1";
+//        }
+//        return loan;
         return null;
     }
 
     @Override
-    public Object getInvestmentHistory(String login) throws RemoteException
+    public ListInvestment getInvestmentHistory(String login) throws RemoteException
     {
+//        ListInvestment listInvestment=new ListInvestment();
+//        listInvestment.list= new ArrayList<>();
+//        try {
+//            rS=statement.executeQuery("Select rate from bankRate natural join investment where customer_nr='"+login+"'");
+//            rS.next();
+//            String rate=rS.getString("rate");
+//
+//            rS=statement.executeQuery("SELECT * from investment where customer_nr='"+login+"'");
+//            while(rS.next())
+//                listInvestment.list.add(new InvestmentHistory(rS.getString("amount"),rS.getString("dateFrom"),
+//                        rS.getString("dateTo"),rate,rS.getString("status"),rS.getString("finalAmount")));
+//            listInvestment.error="0";
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//            listInvestment.error="1";
+//        }
+//        return listInvestment;
         return null;
     }
 
@@ -508,7 +544,7 @@ public class ComputingServerImpl
 //
 //                id_loan += 1;
 //                statement.executeUpdate("INSERT into loan VALUES ('" + id_loan + "','" + data.amount + "'," +
-//                        "'5','" + data.instalment + "','" + data.numberOfMonths + "','" + data.login + "','" + data.salary + "','0','0')");
+//                        "'5','" + data.instalment + "','" + data.numberOfMonths + "','" + data.login + "','" + data.salary + "','0','0','0')");
 //            }else{
 //                return "2";
 //            }
@@ -521,8 +557,16 @@ public class ComputingServerImpl
     }
 
     @Override
-    public Object getRequestInvestment(String login) throws RemoteException
+    public String unlockAcc(String login,String cust_nr) throws RemoteException
     {
+//        try {
+//            statement.executeUpdate("Update users set password='" + generator.generatePassword()+ "' where login='"+cust_nr+"'");
+//            statement.executeUpdate("UPDATE USERS set counter=0 where login='"+cust_nr+"'");
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//            return "1";
+//        }
+//        return "0";
         return null;
     }
 

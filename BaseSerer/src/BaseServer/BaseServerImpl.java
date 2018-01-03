@@ -4,7 +4,7 @@ import Base.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BaseServerImpl
 	extends UnicastRemoteObject
@@ -19,12 +19,10 @@ public class BaseServerImpl
 	// This object hold every client who is now login on server.
 	private ClientSession clientSession = new ClientSession();
 
-	//  This object hold reference to computing servers. Counters represent how much client is connecting to server,
-	private BaseServerFace computingSever_1;
-	private int countComputingSever_1 = 0;
-
-	private BaseServerFace computingSever_2;
-	private int countComputingSever_2= 0;
+	//  This object hold reference to computing servers. AtomicBoolean represent state each computing server.
+	private BaseServerFace computingSever_1, computingSever_2;
+	private AtomicBoolean serverState_1 = new AtomicBoolean(true);
+	private AtomicBoolean serverState_2 = new AtomicBoolean(true);
 
 	public BaseServerImpl(BaseServerFace serverFace_1, BaseServerFace serverFace_2) throws RemoteException
 	{
@@ -35,39 +33,52 @@ public class BaseServerImpl
 	@Override
 	public synchronized LogFrom logIn(String login, LogTo data) throws RemoteException
 	{
-		synchronized (computingSever_1)
+		LogFrom logFrom;
+
+		while(true)
 		{
-			LogFrom logFrom = computingSever_1.logIn(login, data);
-
-			if(logFrom.error.equals("0"))
+			if(serverState_1.get())
 			{
-				// Add error code if client have session now!!!!
-
-				logServer.addMessageToLog("Add client " + login + " to session.");
-
-				ClientData client = new ClientData();
-				clientSession.addClient(login, client);
-
-				if(countComputingSever_2 == countComputingSever_1)
+				synchronized (computingSever_1)
 				{
-					client.setComputingSever(computingSever_2);
-					System.out.println("2: " + countComputingSever_2++);
+					serverState_1.set(false);
+					logFrom = computingSever_1.logIn(login, data);
+					serverState_1.set(true);
 				}
-				else if(countComputingSever_2 < countComputingSever_1)
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
 				{
-					client.setComputingSever(computingSever_2);
-					System.out.println("2: " + countComputingSever_2++);
+					serverState_2.set(false);
+					logFrom = computingSever_2.logIn(login, data);
+					serverState_2.set(true);
 				}
-				else
-				{
-					client.setComputingSever(computingSever_1);
-					System.out.println("1: " + countComputingSever_1++);
-				}
+
+				break;
 			}
 
-			return logFrom;
+			// I'm limiting overload on my computer :)
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
+		if(logFrom.error.equals("0"))
+		{
+			logServer.AddMessageToLog("logIn true " + login);
+			clientSession.addClient(login, new ClientData());
+		}
+		else
+		{
+			logServer.AddMessageToLog("logIn false " + login);
+		}
+
+		return logFrom;
 	}
 
 	@Override
@@ -173,13 +184,13 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getLoanHistory(String login) throws RemoteException
+	public Loan getLoanHistory(String login) throws RemoteException
 	{
 		return null;
 	}
 
 	@Override
-	public Object getInvestmentHistory(String login) throws RemoteException
+	public ListInvestment getInvestmentHistory(String login) throws RemoteException
 	{
 		return null;
 	}
@@ -204,7 +215,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public Object getRequestInvestment(String login) throws RemoteException
+	public String unlockAcc(String login,String cust_nr) throws RemoteException
 	{
 		return null;
 	}
