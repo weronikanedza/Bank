@@ -51,8 +51,9 @@ public class ComputingServerImpl
     @Override
     public LogFrom logIn(String login, LogTo data) throws Exception
     {
-        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
-        DesEncrypter encrypter = new DesEncrypter(key);
+        byte[] key = {-120,17,42,121,-12,1,6,34}
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
 
         data.login = encrypter.decrypt(data.login);
         data.password = encrypter.decrypt(data.password);
@@ -187,8 +188,9 @@ public class ComputingServerImpl
 
     public String requestAddAccount(String login, PersonalData data) throws Exception
     {
-        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
-        DesEncrypter encrypter = new DesEncrypter(key);
+        byte[] key = {-120,17,42,121,-12,1,6,34}
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
 
         data.firstName = encrypter.decrypt(data.firstName);
         data.lastName = encrypter.decrypt(data.lastName);
