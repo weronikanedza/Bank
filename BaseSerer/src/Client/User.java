@@ -67,7 +67,11 @@ public class User
 
 
         //Pack and encode data
+<<<<<<< HEAD
         byte[] key = {-120,17,42,121,-12,1,6,34};
+=======
+        byte[] key = {-120,17,42,121,-12,1,6,34}
+>>>>>>> b9ea200423a26ae565b56b78512016b0a0ebca4c
         SecretKey secretKey = new SecretKeySpec(key,"DES");
         DesEncrypter encrypter = new DesEncrypter(secretKey);
 
@@ -156,7 +160,11 @@ public class User
         if(communicateWithServer()==-1)
             return "-4";
 
+<<<<<<< HEAD
         byte[] key = {-120,17,42,121,-12,1,6,34};
+=======
+        byte[] key = {-120,17,42,121,-12,1,6,34}
+>>>>>>> b9ea200423a26ae565b56b78512016b0a0ebca4c
         SecretKey secretKey = new SecretKeySpec(key,"DES");
         DesEncrypter encrypter = new DesEncrypter(secretKey);
 

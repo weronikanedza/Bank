@@ -52,7 +52,11 @@ public class ComputingServerImpl
     @Override
     public LogFrom logIn(String login, LogTo data) throws Exception
     {
+<<<<<<< HEAD
         byte[] key = {-120,17,42,121,-12,1,6,34};
+=======
+        byte[] key = {-120,17,42,121,-12,1,6,34}
+>>>>>>> b9ea200423a26ae565b56b78512016b0a0ebca4c
         SecretKey secretKey = new SecretKeySpec(key,"DES");
         DesEncrypter encrypter = new DesEncrypter(secretKey);
 
@@ -190,7 +194,11 @@ public class ComputingServerImpl
 
     public String requestAddAccount(String login, PersonalData data) throws Exception
     {
+<<<<<<< HEAD
         byte[] key = {-120,17,42,121,-12,1,6,34};
+=======
+        byte[] key = {-120,17,42,121,-12,1,6,34}
+>>>>>>> b9ea200423a26ae565b56b78512016b0a0ebca4c
         SecretKey secretKey = new SecretKeySpec(key,"DES");
         DesEncrypter encrypter = new DesEncrypter(secretKey);
 
