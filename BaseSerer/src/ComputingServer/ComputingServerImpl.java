@@ -5,6 +5,7 @@ import Base.*;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.security.NoSuchAlgorithmException;
@@ -100,6 +101,7 @@ public class ComputingServerImpl
             System.out.println(e.getMessage());
             logFrom.error = "1";
         }
+
         return logFrom;
     }
 
@@ -118,15 +120,20 @@ public class ComputingServerImpl
 
     @Override
     public String transfer(Transfer data) throws RemoteException {
-        double balance, transferAmount, senderBalance;
+        BigDecimal balance, transferAmount, senderBalance,receiverBalance;
+        BigDecimal bigDecimal=new BigDecimal("0");
         int id_transfer=0;
+        int temp=0;
 
-        System.out.println(data);
-        balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
-        transferAmount = Double.parseDouble(data.amount);
-        senderBalance = balance - transferAmount;
+        balance = new BigDecimal(check.checkBalance(data.accNoFrom));
+        transferAmount = new BigDecimal(data.amount);
+        senderBalance = balance.subtract(transferAmount);
 
-        if (senderBalance < 0) {
+        System.out.println(transferAmount);
+        System.out.println(balance);
+        System.out.println("Sender balance " + senderBalance);
+
+        if (senderBalance.compareTo(bigDecimal)<0) {
             return "1";
         } else if (check.findAccount(data.accNoTo).equals("")) {
             return "2";
@@ -136,11 +143,16 @@ public class ComputingServerImpl
                 statement.executeUpdate("UPDATE account a  join customers c on a.pesel=c.pesel  " +
                         "set a.balance= '" + senderBalance + "' WHERE c.customer_nr='" + data.login + "'"); //update sender account
 
-                statement.executeUpdate("UPDATE account SET balance=balance+'" + transferAmount
+                receiverBalance=balance.add(transferAmount);
+                statement.executeUpdate("UPDATE account SET balance='" + receiverBalance
                         + "' WHERE id_account='" + data.accNoTo + "'");
                 rS=statement.executeQuery("SELECT id_transfer from transfer");
-                while(rS.next())
-                    id_transfer= Integer.parseInt(rS.getString("id_transfer"));
+
+                while(rS.next()) {
+                    temp = Integer.parseInt(rS.getString("id_transfer"));
+                    if(temp>id_transfer)
+                        id_transfer=temp;
+                }
 
                 id_transfer+=1;
                 statement.executeUpdate("INSERT into transfer values('"+id_transfer+"','"+data.accNoFrom+"','"+data.accNoTo+"','"+data.amount+"','"+data.title+"','" +
@@ -175,8 +187,8 @@ public class ComputingServerImpl
             if(check.checkBalanceLogin(data.login).equals("")){
                 return "2";
             }else {
-                Double balance = Double.parseDouble(check.checkBalanceLogin(data.login));
-                balance+=Double.parseDouble(data.amount);
+                BigDecimal balance=new BigDecimal(check.checkBalanceLogin(data.login));
+                balance=balance.add(new BigDecimal(data.amount));
                 statement.executeUpdate("update account a join customers c on a.pesel = c.pesel set a.balance ='"+balance+"' WHERE c.customer_nr='"+data.login+"'");
             }
         }catch (SQLException e){
@@ -206,13 +218,17 @@ public class ComputingServerImpl
         data.phoneNumber = encrypter.decrypt(data.phoneNumber);
 
         int id_req=0;
+        int temp=0;
         System.out.println(data);
         try{
             if( check.checkIfCustomerExist(data.pesel) &&
                     check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
                 rS=statement.executeQuery("SELECT id_request FROM newaccountrequest");
-                while (rS.next())
-                    id_req = Integer.parseInt(rS.getString(1));
+                while (rS.next()) {
+                    temp = Integer.parseInt(rS.getString(1));
+                    if(temp>id_req)
+                        id_req=temp;
+                }
 
                 id_req+=1;
 
@@ -237,12 +253,16 @@ public class ComputingServerImpl
     {
         System.out.println(data);
         int id_req=0;
+        int temp=0;
         try{
             if(check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
                 statement.execute("SELECT id_request FROM newaccountrequest");
                 rS=statement.getResultSet();
-                while (rS.next())
-                    id_req = Integer.parseInt(rS.getString(1));
+                while (rS.next()) {
+                    temp= Integer.parseInt(rS.getString(1));
+                    if(temp>id_req)
+                        id_req=temp;
+                }
 
                 id_req+=1;
 
@@ -290,20 +310,24 @@ public class ComputingServerImpl
     public String requestInvestment(Investment data) throws RemoteException
     {
         		int id=0;
-		System.out.println(data);
+        		int temp=0;
 		try {
 			if(Double.parseDouble(check.checkBalanceLogin(data.login))>=Double.parseDouble(data.amount)) {
-				String rate = check.checkBankRate(data.time);
+				String rate[] = check.checkBankRate(data.time);
 				String tab[] = generator.dateGenerate(data.time);
-				String finalAmount = check.checkAmount(data.amount, data.time, rate);
+				String finalAmount = check.checkAmount(data.amount, data.time, rate[1]);
+				BigDecimal balance=new BigDecimal(check.checkBalanceLogin(data.login));
+				balance=balance.subtract(new BigDecimal(data.amount));
 				rS = statement.executeQuery("Select id_investment FROM investment");
-				while (rS.next())
-					id = Integer.parseInt(rS.getString("id_investment"));
-
+				while (rS.next()) {
+                    temp = Integer.parseInt(rS.getString("id_investment"));
+                    if(temp>id)
+                        id=temp;
+                }
 				++id;
 
-				statement.executeUpdate("INSERT INTO investment values('" + id + "','" + data.amount + "','" + tab[0] + "','" + tab[1] + "','" + rate + "',0,'" + finalAmount + "','"+data.login+"')");
-				statement.executeUpdate("UPDATE account NATURAL join customers set balance=balance-'"+data.amount+"'where customer_nr='"+data.login+"'");
+				statement.executeUpdate("INSERT INTO investment values('" + id + "','" + data.amount + "','" + tab[0] + "','" + tab[1] + "'," + rate[0] + ",0,'" + finalAmount + "','"+data.login+"')");
+				statement.executeUpdate("UPDATE account NATURAL join customers set balance='"+balance+"'where customer_nr='"+data.login+"'");
 			}else{
 				return"2";
 			}
@@ -386,9 +410,9 @@ public class ComputingServerImpl
                 rS.next();
                 String tab[]=generator.dateGenerate(rS.getString("numberOfMonths"));
                 String customer_nr=rS.getString("customer_nr");
-                double amount=Double.parseDouble(rS.getString("amount"));
-                double balance=Double.parseDouble(check.checkBalanceLogin(customer_nr));
-                balance+= amount;
+                BigDecimal amount=new BigDecimal(rS.getString("amount"));
+                BigDecimal balance=new BigDecimal(check.checkBalanceLogin(customer_nr));
+                balance=balance.add( amount);
                 System.out.println(balance);
                 statement.executeUpdate("UPDATE account a natural join customers c set a.balance='"+balance+"' WHERE " +
                         "c.customer_nr='"+customer_nr+"'");
@@ -561,14 +585,17 @@ public class ComputingServerImpl
     public String requestLoan(Loan data) throws RemoteException
     {
         int id_loan=0;
+        int temp=0;
         try {
             if(check.checkLoan(data.login)) {
                 statement.execute("SELECT id_loan FROM loan");
                 rS = statement.getResultSet();
-                while (rS.next())
+                while (rS.next()) {
                     id_loan = Integer.parseInt(rS.getString(1));
-
-                id_loan += 1;
+                    if(temp>id_loan)
+                        id_loan=temp;
+                }
+                ++id_loan ;
                 statement.executeUpdate("INSERT into loan VALUES ('" + id_loan + "','" + data.amount + "'," +
                         "'5','" + data.instalment + "','" + data.numberOfMonths + "','" + data.login + "','" + data.salary + "','0','0','0')");
             }else{

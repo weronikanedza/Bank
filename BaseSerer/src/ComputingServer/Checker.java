@@ -179,32 +179,36 @@ public class Checker {
      * @param time
      * @return corretc bank rate
      */
-    public String checkBankRate(String time) throws SQLException {
-        String rate="";
+    public String[] checkBankRate(String time) throws SQLException {
+        String rate[]=new String[2];
         switch(time){
             case "1":
-                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS=statement.executeQuery("Select id_rate,rate from bankrate where time='"+time+"'");
                 rS.next();
-                rate= rS.getString("rate");
+                rate[0]= rS.getString("id_rate");
+                rate[1]=rS.getString("rate");
                 break;
             case "3":
-                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS=statement.executeQuery("Select id_rate,rate from bankrate where time='"+time+"'");
                 rS.next();
-                rate= rS.getString("rate");
+                rate[0]= rS.getString("id_rate");
+                rate[1]=rS.getString("rate");
                 break;
             case "6":
-                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS=statement.executeQuery("Select id_rate,rate from bankrate where time='"+time+"'");
                 rS.next();
-                rate= rS.getString("rate");
+                rate[0]= rS.getString("id_rate");
+                rate[1]=rS.getString("rate");
                 break;
             case "12":
-                rS=statement.executeQuery("Select rate from bankrate where time='"+time+"'");
+                rS=statement.executeQuery("Select id_rate,rate from bankrate where time='"+time+"'");
                 rS.next();
-                rate= rS.getString("rate");
+                rate[0]= rS.getString("id_rate");
+                rate[1]=rS.getString("rate");
                 break;
             default: break;
         }
-        System.out.println("RATA "+ rate);
+
         return rate;
     }
 
