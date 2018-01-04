@@ -1,17 +1,22 @@
 package Client;
 
 import Base.*;
+
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import java.security.NoSuchAlgorithmException;
 
 public class User
 {
 
     private CheckData checkData = new CheckData();
-    String accNo;
-    String userId;
-    String balance;
-    BaseServerFace server;
+    public String accNo;
+    public String userId;
+    public String balance;
+    public BaseServerFace server;
 
     /*
     * errocode:
@@ -38,36 +43,40 @@ public class User
 
         return 0;
     }
+
     /*
     * erroCode:
     * 1 everything ok admin log in
     * 0 everything ok client log in
     * -1 cannot connect to server
     * -2 unsuitable data in fields
-    * */
-    public int login(String login, String password)
+    * -3 account is banned
+    * */ // czy dostaje null po polaczaeniu
+    public String login(String login, String password) throws Exception
     {
-        int errorCode = -1;
         LogTo toSend = new LogTo();
         LogFrom received;
 
         // connect to server
         if(communicateWithServer()==-1)
-            return errorCode;
+            return "-1";
 
         //check whether data is correct
-        if (!checkData.checkIfOnlyNum(login) || !checkData.checkPassword(password))
-        {
-            errorCode = -2;
-            return errorCode;
-        }
+        if (!checkData.checkIfOnlyNum(login))
+            return "-2";
 
-        //encoding data to send
-        //TO DO
 
-        //Pack data to send
-        toSend.login = login;
-        toSend.password = password;
+        //Pack and encode data
+
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
+
+        String encrypted_login = encrypter.encrypt(login);
+        String encrypted_password = encrypter.encrypt(password);
+
+        toSend.login = encrypted_login;
+        toSend.password = encrypted_password;
 
         //checking whether new thread can be created
         //TO DO
@@ -86,12 +95,12 @@ public class User
 
             System.out.println("Error: " + e);
             e.printStackTrace();
-            return -1;
+            return "-1";
         }
         //chcek if received if null !!!
 
         if(received == null)
-            return errorCode;
+            return "-1";
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
@@ -102,64 +111,79 @@ public class User
             {
                 balance = received.balance;
                 accNo = received.accNo;
-                errorCode = 0;
+                userId = received.login;
+                return "0";
             }
             else if (received.status.equals("A"))// ok and admin
-                errorCode = 1;
+            {
+                userId = received.login;
+                return "1";
+            }
 
-            userId = received.login;
+
         }
         else if(received.error.equals("1"))// sht wrong
-            errorCode=-1;
+            return "-1";
+        else if(received.error.equals("2"))// banned
+            return "-3";
 
 
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode;
+        return "-1";
     }
+
     /*
     * errocode:
+    * 1 request not accepted
     * 0 everything ok
-    * -1 cannot connect to server
     * -2 email != emailRepeated
     * -3 unsuitable data in fields
+    * -4 cannot connect to server
     * */
-    public int register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated)
+    public String register(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email, String emailRepeated) throws Exception
     {
-        int errorCode = -4;
         PersonalData toSend = new PersonalData();
-        String received;
+        String receivedErr;
 
         if(!email.equals(emailRepeated))
-        {
-            errorCode = -2;
-            return errorCode;
-        }
+            return "-2";
 
         if (!checkData.checkPersonalData(name, lastName, pesel, city, street, zipCode, idNumber, phoneNum, email))
-        {
-            errorCode = -3;
-            return errorCode;
-        }
+            return "-3";
 
         // connect to server
         if(communicateWithServer()==-1)
-            return errorCode;
+            return "-4";
 
-        //Putting everything in to a list S
-        toSend.pesel = pesel;
-        toSend.city = city;
-        toSend.email = email;
-        toSend.firstName = name;
-        toSend.idNumber = idNumber;
-        toSend.lastName = lastName;
-        toSend.phoneNumber = phoneNum;
-        toSend.street = street;
-        toSend.zipCode = zipCode;
 
-        //encoding the list S of data
-        //TO DO
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
+
+        String encrypted_pesel = encrypter.encrypt(pesel);
+        String encrypted_city = encrypter.encrypt(city);
+        String encrypted_email = encrypter.encrypt(email);
+        String encrypted_firstName = encrypter.encrypt(name);
+        String encrypted_idNumber = encrypter.encrypt(idNumber);
+        String encrypted_lastName = encrypter.encrypt(lastName);
+        String encrypted_phoneNumber = encrypter.encrypt(phoneNum);
+        String encrypted_street = encrypter.encrypt(street);
+        String encrypted_zipCode = encrypter.encrypt(zipCode);
+
+
+
+        //Pack and encode data
+        toSend.pesel = encrypted_pesel;
+        toSend.city = encrypted_city;
+        toSend.email = encrypted_email;
+        toSend.firstName = encrypted_firstName;
+        toSend.idNumber = encrypted_idNumber;
+        toSend.lastName = encrypted_lastName;
+        toSend.phoneNumber = encrypted_phoneNumber;
+        toSend.street = encrypted_street;
+        toSend.zipCode = encrypted_zipCode;
 
         //checking whether new thread can be created
         //TO DO
@@ -171,26 +195,77 @@ public class User
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.requestAddAccount(userId, toSend);
+            receivedErr = server.requestAddAccount(userId, toSend);
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "-4";
         }
 
         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+        if(receivedErr == null)
+            return "-4";
 //----------------------------------------------------------------------------------------------
-
-        if(received.equals("0"))
-            errorCode = 0;
-        else if(received.equals("1"))
-            errorCode=-1;
+        //decoding data
+        //TO DO
 
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode; // only to tests
+        return receivedErr; // only to tests
+    }
+
+    /*
+    * erroCode:
+    * -2 unsuitable data in fields
+    * -1 cannot connect to server
+    * 0 ok
+    * 1 sht wrong with data base
+    * 2 no such client
+    * */
+    public String resetPass(String clientNo, String name, String lastName)
+    {
+        String receivedErr;
+
+        // connect to server
+        if(communicateWithServer()==-1)
+            return "-1";
+
+        //check whether data is correct
+        if(!checkData.checkIfOnlyNum(clientNo) || !checkData.checkIfOnlyChars(name) || !checkData.checkIfOnlyChars(lastName))
+            return "-2";
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//           receivedErr = server.restartPassword(clientNo); // encoding clientNo
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return "-1";
+//        }
+
+        receivedErr = "0";
+
+        //chcek if received if null !!!
+        if(receivedErr == null)
+            return "-1";
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return receivedErr;
     }
 }

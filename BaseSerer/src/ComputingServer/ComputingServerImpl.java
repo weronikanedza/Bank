@@ -2,8 +2,12 @@ package ComputingServer;
 
 import Base.*;
 
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,8 +50,18 @@ public class ComputingServerImpl
 
 
     @Override
-    public LogFrom logIn(String login, LogTo data) throws RemoteException
+    public LogFrom logIn(String login, LogTo data) throws Exception
     {
+
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
+
+        data.login = encrypter.decrypt(data.login);
+        data.password = encrypter.decrypt(data.password);
+
+
         System.out.println("LOGIN");
         LogFrom logFrom=new LogFrom();
         try {
@@ -108,6 +122,7 @@ public class ComputingServerImpl
         double balance, transferAmount, senderBalance;
         int id_transfer=0;
 
+        System.out.println(data);
         balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
         transferAmount = Double.parseDouble(data.amount);
         senderBalance = balance - transferAmount;
@@ -175,7 +190,23 @@ public class ComputingServerImpl
 
     @Override
 
-    public String requestAddAccount(String login, PersonalData data) throws RemoteException{
+    public String requestAddAccount(String login, PersonalData data) throws Exception
+    {
+
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
+
+        data.firstName = encrypter.decrypt(data.firstName);
+        data.lastName = encrypter.decrypt(data.lastName);
+        data.street = encrypter.decrypt(data.street);
+        data.zipCode = encrypter.decrypt(data.zipCode);
+        data.city = encrypter.decrypt(data.city);
+        data.pesel = encrypter.decrypt(data.pesel);
+        data.idNumber = encrypter.decrypt(data.idNumber);
+        data.email = encrypter.decrypt(data.email);
+        data.phoneNumber = encrypter.decrypt(data.phoneNumber);
+
         int id_req=0;
         System.out.println(data);
         try{
@@ -567,6 +598,12 @@ public class ComputingServerImpl
 //            return "1";
 //        }
 //        return "0";
+        return null;
+    }
+
+    @Override
+    public String deleteAcc(String login) throws RemoteException
+    {
         return null;
     }
 

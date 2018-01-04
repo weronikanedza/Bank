@@ -10,4 +10,9 @@ public class LoanDecision implements Serializable {
         this.id_req = id_req;
         this.decision = decision;
     }
+
+    public LoanDecision()
+    {
+
+    }
 }

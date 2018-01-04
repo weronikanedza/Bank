@@ -2,6 +2,7 @@ package Client;
 
 import Base.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Admin
@@ -14,7 +15,7 @@ public class Admin
 
         try
         {
-            server.LogOut(userId);
+            server.LogOut(userId); //encoding userId
         }
         catch (Exception e)
         {
@@ -32,26 +33,20 @@ public class Admin
 * 2 there is no such client
 * 3 unsuitable data in field
 * */
-    public int addFunds(String login, String amount, String amountAfterComma)
+    public String addFunds(String login, String amount, String amountAfterComma)
     {
         int errorCode = 1;
         Funds toSend = new Funds();
-        String received;
+        String receivedErr;
 
         //check data
         if (!checkData.checkIfOnlyNum(login) || !checkData.checkIfOnlyNum(amount) || amountAfterComma.length() != 2 || !checkData.checkIfOnlyNum(amountAfterComma))
-        {
-            errorCode = 3;
-            return errorCode;
-        }
+            return "3";
 
-        //Putting everything in to a list S
 
+        //Pack and encode data
         toSend.login = login;
         toSend.amount = amount + "." + amountAfterComma;
-
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -71,24 +66,19 @@ public class Admin
 //        }
 
          //testy
-        received = "0";
+        receivedErr = "0";
 
 
         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+        if(receivedErr == null)
+            return "1";
 //----------------------------------------------------------------------------------------------
+        //decoding?
 
-        if(received.equals("0"))
-            errorCode = 0;
-        else if(received.equals("1"))
-            errorCode = 1;
-        else if(received.equals("2"))
-            errorCode = 2;
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode; // only to tests
+        return receivedErr; // only to tests
 
     }
 
@@ -99,29 +89,20 @@ public class Admin
 * 2 unsuitable data in field
 * 3 not equal password and repeated password
 * */
-    public int changePassword( String newPassword, String newPasswordRepeat)
+    public String changePassword( String newPassword, String newPasswordRepeat)
     {
-        int errorCode = 1;
         LogTo toSend = new LogTo();
-        String received;
+        String receivedErr;
 
         if(!newPassword.equals(newPasswordRepeat))
-        {
-            errorCode = 3;
-            return errorCode;
-        }
+           return "3";
 
         if (!checkData.checkPassword(newPassword))
-        {
-            errorCode = 2;
-            return errorCode;
-        }
+            return "2";
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.login = userId;
         toSend.password = newPassword;
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -133,11 +114,11 @@ public class Admin
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.changePassword(toSend);
+            receivedErr = server.changePassword(toSend);
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "1";
         }
 
         // testy
@@ -145,22 +126,22 @@ public class Admin
 
 
         //chcek if received if null !!!
-        if(received == null)
-            return errorCode;
+        if(receivedErr == null)
+            return "1";
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
 
-        if(received.equals("0"))
-            errorCode = 0;
-        else if(received.equals("1"))
-            errorCode = 1;
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode; // only to tests
+        return receivedErr; // only to tests
     }
 
     /*
-    *
+    * errorCode
+    * 0 ok
+    * 1 sth wrong with data base
     * */
     public List<AddAccountRequest> getListAddAccReq()
     {
@@ -170,8 +151,7 @@ public class Admin
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.getRequestAddAccount(userId);
-
+            received = server.getRequestAddAccount(userId); // encoding userId
         }
         catch (Exception e)
         {
@@ -214,21 +194,26 @@ public class Admin
 //
 //        received.data = list;
 //----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
         return  received.data;
     }
 
-    public int sendAddAccDecision(String idReq, String decision)
+    /*
+    * errorCode
+    * -1 sth wrong with sending req
+    * 0 ok
+    * 1 sth wrong with data base
+    * */
+    public String sendAddAccDecision(String idReq, String decision)
     {
-        int errorCode = -1;
         AddAccReqDecision toSend = new AddAccReqDecision();
-        String received;
+        String receivedErr;
 
-        //Putting everything in to a list S
+        //Pack and encode data
         toSend.id_req = idReq;
         toSend.decision = decision;
-
-        //encoding the list S of data
-        //TO DO
 
         //checking whether new thread can be created
         //TO DO
@@ -239,21 +224,323 @@ public class Admin
         //sending and receiving data to/from main server, interpreting received data all in thread
         try
         {
-            received = server.answerAddAccountReq(userId, toSend);
+            receivedErr = server.answerAddAccountReq(userId, toSend);
         }
         catch (Exception e)
         {
-            return errorCode;
+            return "-1";
         }
 
 //----------------------------------------------------------------------------------------------
-        if (received.equals("1"))
-            errorCode = -2;
-        else if (received.equals("0"))
-            errorCode = 0;
-        else
-            errorCode = -1;
+        //decoding data
+        //TO DO
 
+        return receivedErr;
+    }
+
+    /*
+    * errorCode
+    * 0 ok
+    * 1 sth wrong with data base
+    * */
+    public List<AddAccountRequest> getListChangePersonalDataReq()
+    {
+        RequestListAddAccount received;
+
+        //---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.getRequestChangePersonalData(userId); // encoding userId
+//
+//        }
+//        catch (Exception e)
+//        {
+//            return null;
+//        }
+//
+//        if (received.error.equals("1"))
+//            return null;
+//----------------------------------------------------------------------------------------------
+
+//--------------------------do testowania odbierania danych-------------------------------------------
+        received = new RequestListAddAccount();
+        List<AddAccountRequest> list = new ArrayList<AddAccountRequest>();
+        AddAccountRequest sample = new AddAccountRequest();
+        sample.id_request = "1234";
+        sample.firstName = "Janusz";
+        sample.lastName = "Nędza";
+        sample.street = "Jana Pawła II 13c/14";
+        sample.zipCode = "37-450";
+        sample.city = "Stalowa Wola";
+        sample.pesel = "54092356981";
+        sample.idNumber = "AZK784512";
+        sample.email = "Janusz@gmail.com";
+        sample.phoneNumber = "759413682";
+
+        AddAccountRequest sample2 = new AddAccountRequest();
+        sample2.id_request = "1234";
+        sample2.firstName = "Andrzej";
+        sample2.lastName = "Wolak";
+        sample2.street = "Wislka II 13c/14";
+        sample2.zipCode = "37-450";
+        sample2.city = "Nowy Sącz";
+        sample2.pesel = "54092356981";
+        sample2.idNumber = "AZK784512";
+        sample2.email = "WolakA@gmail.com";
+        sample2.phoneNumber = "759413682";
+
+        list.add(sample);
+        list.add(sample2);
+
+        received.data = list;
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        return  received.data;
+    }
+
+    /*
+    * errorCode:
+    * -1 sth wrong with sending req
+    * 0 ok
+    * 1 sth wrong with data base
+    * */
+    public String sendChangeDataDecision(String idReq, String decision)
+    {
+        AddAccReqDecision toSend = new AddAccReqDecision();
+        String receivedErr;
+
+        //Pack and encode data
+        toSend.id_req = idReq;
+        toSend.decision = decision;
+
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+//        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            receivedErr = server.answerChangePersonalDataReq(userId, toSend);
+//        }
+//        catch (Exception e)
+//        {
+//            return "-1";
+//        }
+        receivedErr = "0";
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        return receivedErr;
+    }
+
+    /*
+    * erroCode:
+    * 0 ok
+    * 1 sth wrong with data base
+    * */
+    public List<LoanReq> getListLoanReq()
+    {
+        ListLoanReq received;
+
+        //---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            received = server.getRequestLoan(userId); // encoding userId
+//        }
+//        catch (Exception e)
+//        {
+//            return null;
+//        }
+
+//        if (received.error.equals("1"))
+//            return null;
+//----------------------------------------------------------------------------------------------
+
+//--------------------------do testowania odbierania danych-------------------------------------------
+        received = new ListLoanReq();
+        List<LoanReq> list = new ArrayList<LoanReq>();
+        LoanReq loan = new LoanReq();
+        PersonalData sample = new PersonalData();
+        loan.id_req = "1234";
+        loan.amount = "25 000";
+        loan.numberOfMonths = "12";
+        loan.salary = "3300";
+        loan.bankRate = "5%";
+        loan.instalment = "1345";
+        sample.firstName = "Janusz";
+        sample.lastName = "Nędza";
+        sample.street = "Jana Pawła II 13c/14";
+        sample.zipCode = "37-450";
+        sample.city = "Stalowa Wola";
+        sample.pesel = "54092356981";
+        sample.idNumber = "AZK784512";
+        sample.email = "Janusz@gmail.com";
+        sample.phoneNumber = "759413682";
+        loan.personalData = sample;
+
+        LoanReq loan1 = new LoanReq();
+        PersonalData sample2 = new PersonalData();
+
+        loan1.id_req = "1234";
+        loan1.amount = "25 000";
+        loan1.numberOfMonths = "12";
+        loan1.salary = "3300";
+        loan1.bankRate = "5%";
+        loan1.instalment = "1345";
+        sample2.firstName = "Andrzej";
+        sample2.lastName = "Wolak";
+        sample2.street = "Wislka II 13c/14";
+        sample2.zipCode = "37-450";
+        sample2.city = "Nowy Sącz";
+        sample2.pesel = "54092356981";
+        sample2.idNumber = "AZK784512";
+        sample2.email = "WolakA@gmail.com";
+        sample2.phoneNumber = "759413682";
+        loan1.personalData = sample2;
+
+        list.add(loan);
+        list.add(loan1);
+
+
+        received.loanList = list;
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        return  received.loanList;
+    }
+
+    /*
+    * errorCode:
+    * -1 sth wrong with sending req
+    * 0 ok
+    * 1 sth wrong with data base
+    * */
+    public String sendLoanReqDecision(String idReq, String decision)
+    {
+        LoanDecision toSend = new LoanDecision();
+        String receivedErr;
+
+        //Pack and encode data
+        toSend.id_req = idReq;
+        toSend.decision = decision;
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+//        try
+//        {
+//            receivedErr = server.answerLoanReq(userId, toSend);
+//        }
+//        catch (Exception e)
+//        {
+//            return "-1";
+//        }
+        receivedErr = "0";
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        return receivedErr;
+    }
+
+    /*
+* errorCode:
+* */
+    public int unlockAcc()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+        //Pack and encode data
+        // TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
+        return errorCode;
+    }
+
+    /*
+* errorCode:
+* */
+    public int deleteAcc()
+    {
+        int errorCode = -1;
+        LogTo toSend = new LogTo();
+        LogFrom received;
+
+        //Pack and encode data
+        // TO DO
+
+        //checking whether new thread can be created
+        //TO DO
+
+        //new thread creating
+        //TO DO
+//---------------------------------poprawne wysylanie------------------------------------------
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return -1;
+        }
+        //chcek if received if null !!!
+
+//----------------------------------------------------------------------------------------------
+        //decoding data
+        //TO DO
+
+        // interpret data
+
+        //end thread
+
+        //can I return sth inside a thread or better outside??
         return errorCode;
     }
     //----------------------------------------------------------------------------------------------

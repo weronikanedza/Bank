@@ -47,9 +47,24 @@ public class CheckData
         return !password.isEmpty() && textHasCapital(password) && !textHasSpecial(password) && textHasNumber(password);
     }
 
-    public boolean checkIfOnlyNum(String login)
+    public boolean checkIfOnlyNum(String text)
     {
-        return !login.isEmpty() && !textHasCharacter(login) && !textHasSpecial(login) && textHasNumber(login);
+        return !text.isEmpty() && !textHasCharacter(text) && !textHasSpecial(text) && textHasNumber(text);
+    }
+
+    public boolean checkIfOnlyChars(String text)
+    {
+        return !text.isEmpty() && textHasCharacter(text) && !textHasSpecial(text) && !textHasNumber(text);
+    }
+
+    public boolean checkCompanyName(String text)
+    {
+        return  !text.isEmpty() &&
+                !text.matches(".*[!@#$,<>/?;:'%^&*()`~}{|_=+].*") &&
+                !text.contains("]")&&
+                !text.contains("[") &&
+                !text.contains("\"")&&
+                !text.contains("\\");
     }
 
     public boolean checkTransferData(String accNoTo, String amount, String amountAfterComma, String transferTitle)
@@ -57,7 +72,7 @@ public class CheckData
         boolean isAccNoToCorrect;
         boolean isAmountCorrect;
         boolean isAmountAfterCommaCorrect;
-        boolean istransferTitleCorrect;
+        boolean isTransferTitleCorrect;
 
         isAccNoToCorrect = accNoTo.length() == 9  &&
                 !textHasCharacter(accNoTo) &&
@@ -71,10 +86,10 @@ public class CheckData
                 !textHasCharacter(amountAfterComma) &&
                 !textHasSpecial(amountAfterComma);
 
-        istransferTitleCorrect = !transferTitle.isEmpty() &&
+        isTransferTitleCorrect = !transferTitle.isEmpty() &&
                 !textHasSpecial(amount);
 
-        return isAccNoToCorrect && isAmountAfterCommaCorrect && isAmountCorrect && istransferTitleCorrect;
+        return isAccNoToCorrect && isAmountAfterCommaCorrect && isAmountCorrect && isTransferTitleCorrect;
     }
 
     public boolean checkPersonalData(String name, String lastName, String pesel, String city, String street, String zipCode, String idNumber, String phoneNum, String email)
@@ -88,7 +103,7 @@ public class CheckData
         boolean isIDNumberCorrect;
         boolean isIDSeriesCorrect;
         boolean isPhoneNumCorrect;
-        boolean isEmialCorrect;
+        boolean isEmailCorrect;
 
         String idNumOnly;
         String idSeriesOnly;
@@ -117,7 +132,7 @@ public class CheckData
         // has only "/"
         isStreetCorrect = !street.isEmpty() &&
                 textHasNumber(street) &&
-                !street.matches(".*[-!@#$,<.>?;:'%^&*()`~}{|_=+].*") &&
+                !street.matches(".*[!@#$,<.>?;:'%^&*()`~}{|_=+].*") &&
                 !street.contains("]")&&
                 !street.contains("[") &&
                 !street.contains("\"")&&
@@ -152,7 +167,7 @@ public class CheckData
                 !textHasCharacter(phoneNum) &&
                 !textHasSpecial(phoneNum);
 
-        isEmialCorrect = !email.isEmpty() &&
+        isEmailCorrect = !email.isEmpty() &&
                 !email.matches(".*[!#$,<>/?;:'%^&*()`~}{|_=+].*") &&
                 !email.contains("]")&&
                 !email.contains("[") &&
@@ -161,7 +176,7 @@ public class CheckData
                 email.contains("@")&&
                 email.contains(".");
 
-        return isCityCorrect && isIDNumberCorrect && isIDSeriesCorrect && isLastNameCorrect && isNameCorrect && isPeselCorrecct && isPhoneNumCorrect && isStreetCorrect && isZipCodeCorrect && isEmialCorrect;
+        return isCityCorrect && isIDNumberCorrect && isIDSeriesCorrect && isLastNameCorrect && isNameCorrect && isPeselCorrecct && isPhoneNumCorrect && isStreetCorrect && isZipCodeCorrect && isEmailCorrect;
     }
 
 }

@@ -18,7 +18,7 @@ public class RegisterController
     @FXML
     TextField name, lastName, pesel, city, street, houseNo1, houseNo2, zipCode, idNumber, phoneNum, email, emailRepeated;
 
-    public void setsetControllerRegister(User user)
+    public void setControllerRegister(User user)
     {
         this.user = user;
     }
@@ -33,9 +33,9 @@ public class RegisterController
         appStage.show();
     }
 
-    public void handleSendRequest() throws IOException
+    public void handleSendRequest() throws Exception
     {
-        int errorCode;
+        String errorCode;
 
         errorCode = user.register(name.getText(),
                                     lastName.getText(),
@@ -47,7 +47,7 @@ public class RegisterController
                                     phoneNum.getText(),
                                     email.getText(),
                                     emailRepeated.getText());
-        if (errorCode == 0)
+        if (errorCode.equals("0"))
         {
             Parent homePageParent = FXMLLoader.load(getClass().getResource("EndRegisterFX.fxml"));
             Scene homePageScene = new Scene(homePageParent);
@@ -55,13 +55,13 @@ public class RegisterController
             appStage.setScene(homePageScene);
             appStage.show();
         }
-        else if (errorCode==-1)
+        else if (errorCode.equals("1"))
             errorText.setText("Wniosek nie został przyjety.");
-        else if (errorCode== -2)
+        else if (errorCode.equals("-2"))
             errorText.setText("Nie poprawnie powtórzono adres e-mail.");
-        else if (errorCode== -3)
+        else if (errorCode.equals("-3"))
             errorText.setText("Sprawdz czy dane zostały wprowadzone poprawinie.");
-        else if (errorCode==-4)
+        else if (errorCode.equals("-4"))
             errorText.setText("Nie można połaczyc sie z serwerem!");
 
     }
