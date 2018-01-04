@@ -35,7 +35,6 @@ public class Admin
 * */
     public String addFunds(String login, String amount, String amountAfterComma)
     {
-        int errorCode = 1;
         Funds toSend = new Funds();
         String receivedErr;
 
@@ -55,19 +54,15 @@ public class Admin
         //TO DO
 
 //---------------------------------poprawne wysylanie------------------------------------------
-//        //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.addFunds(toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return errorCode;
-//        }
-
-         //testy
-        receivedErr = "0";
-
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            receivedErr = server.addFunds(userId, toSend);
+        }
+        catch (Exception e)
+        {
+            return "-1";
+        }
 
         //chcek if received if null !!!
         if(receivedErr == null)
@@ -249,51 +244,51 @@ public class Admin
 
         //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.getRequestChangePersonalData(userId); // encoding userId
-//
-//        }
-//        catch (Exception e)
-//        {
-//            return null;
-//        }
-//
-//        if (received.error.equals("1"))
-//            return null;
+        try
+        {
+            received = server.getRequestChangePersonalData(userId); // encoding userId
+
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+
+        if (received.error.equals("1"))
+            return null;
 //----------------------------------------------------------------------------------------------
 
 //--------------------------do testowania odbierania danych-------------------------------------------
-        received = new RequestListAddAccount();
-        List<AddAccountRequest> list = new ArrayList<AddAccountRequest>();
-        AddAccountRequest sample = new AddAccountRequest();
-        sample.id_request = "1234";
-        sample.firstName = "Janusz";
-        sample.lastName = "Nędza";
-        sample.street = "Jana Pawła II 13c/14";
-        sample.zipCode = "37-450";
-        sample.city = "Stalowa Wola";
-        sample.pesel = "54092356981";
-        sample.idNumber = "AZK784512";
-        sample.email = "Janusz@gmail.com";
-        sample.phoneNumber = "759413682";
-
-        AddAccountRequest sample2 = new AddAccountRequest();
-        sample2.id_request = "1234";
-        sample2.firstName = "Andrzej";
-        sample2.lastName = "Wolak";
-        sample2.street = "Wislka II 13c/14";
-        sample2.zipCode = "37-450";
-        sample2.city = "Nowy Sącz";
-        sample2.pesel = "54092356981";
-        sample2.idNumber = "AZK784512";
-        sample2.email = "WolakA@gmail.com";
-        sample2.phoneNumber = "759413682";
-
-        list.add(sample);
-        list.add(sample2);
-
-        received.data = list;
+//        received = new RequestListAddAccount();
+//        List<AddAccountRequest> list = new ArrayList<AddAccountRequest>();
+//        AddAccountRequest sample = new AddAccountRequest();
+//        sample.id_request = "1234";
+//        sample.firstName = "Janusz";
+//        sample.lastName = "Nędza";
+//        sample.street = "Jana Pawła II 13c/14";
+//        sample.zipCode = "37-450";
+//        sample.city = "Stalowa Wola";
+//        sample.pesel = "54092356981";
+//        sample.idNumber = "AZK784512";
+//        sample.email = "Janusz@gmail.com";
+//        sample.phoneNumber = "759413682";
+//
+//        AddAccountRequest sample2 = new AddAccountRequest();
+//        sample2.id_request = "1234";
+//        sample2.firstName = "Andrzej";
+//        sample2.lastName = "Wolak";
+//        sample2.street = "Wislka II 13c/14";
+//        sample2.zipCode = "37-450";
+//        sample2.city = "Nowy Sącz";
+//        sample2.pesel = "54092356981";
+//        sample2.idNumber = "AZK784512";
+//        sample2.email = "WolakA@gmail.com";
+//        sample2.phoneNumber = "759413682";
+//
+//        list.add(sample);
+//        list.add(sample2);
+//
+//        received.data = list;
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
@@ -307,7 +302,7 @@ public class Admin
     * 0 ok
     * 1 sth wrong with data base
     * */
-    public String sendChangeDataDecision(String idReq, String decision)
+    public String sendChangeDataDecision(String idReq, String decision, PersonalData data)
     {
         AddAccReqDecision toSend = new AddAccReqDecision();
         String receivedErr;
@@ -315,6 +310,7 @@ public class Admin
         //Pack and encode data
         toSend.id_req = idReq;
         toSend.decision = decision;
+        toSend.personalData = data;
 
 
         //checking whether new thread can be created
@@ -323,16 +319,16 @@ public class Admin
         //new thread creating
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
-//        //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            receivedErr = server.answerChangePersonalDataReq(userId, toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return "-1";
-//        }
-        receivedErr = "0";
+        //sending and receiving data to/from main server, interpreting received data all in thread
+        try
+        {
+            receivedErr = server.answerChangePersonalDataReq(userId, toSend);
+        }
+        catch (Exception e)
+        {
+            return "-1";
+        }
+
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
@@ -351,66 +347,66 @@ public class Admin
 
         //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.getRequestLoan(userId); // encoding userId
-//        }
-//        catch (Exception e)
-//        {
-//            return null;
-//        }
+        try
+        {
+            received = server.getRequestLoan(userId); // encoding userId
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
 
-//        if (received.error.equals("1"))
-//            return null;
+        if (received.error.equals("1"))
+            return null;
 //----------------------------------------------------------------------------------------------
 
 //--------------------------do testowania odbierania danych-------------------------------------------
-        received = new ListLoanReq();
-        List<LoanReq> list = new ArrayList<LoanReq>();
-        LoanReq loan = new LoanReq();
-        PersonalData sample = new PersonalData();
-        loan.id_req = "1234";
-        loan.amount = "25 000";
-        loan.numberOfMonths = "12";
-        loan.salary = "3300";
-        loan.bankRate = "5%";
-        loan.instalment = "1345";
-        sample.firstName = "Janusz";
-        sample.lastName = "Nędza";
-        sample.street = "Jana Pawła II 13c/14";
-        sample.zipCode = "37-450";
-        sample.city = "Stalowa Wola";
-        sample.pesel = "54092356981";
-        sample.idNumber = "AZK784512";
-        sample.email = "Janusz@gmail.com";
-        sample.phoneNumber = "759413682";
-        loan.personalData = sample;
-
-        LoanReq loan1 = new LoanReq();
-        PersonalData sample2 = new PersonalData();
-
-        loan1.id_req = "1234";
-        loan1.amount = "25 000";
-        loan1.numberOfMonths = "12";
-        loan1.salary = "3300";
-        loan1.bankRate = "5%";
-        loan1.instalment = "1345";
-        sample2.firstName = "Andrzej";
-        sample2.lastName = "Wolak";
-        sample2.street = "Wislka II 13c/14";
-        sample2.zipCode = "37-450";
-        sample2.city = "Nowy Sącz";
-        sample2.pesel = "54092356981";
-        sample2.idNumber = "AZK784512";
-        sample2.email = "WolakA@gmail.com";
-        sample2.phoneNumber = "759413682";
-        loan1.personalData = sample2;
-
-        list.add(loan);
-        list.add(loan1);
-
-
-        received.loanList = list;
+//        received = new ListLoanReq();
+//        List<LoanReq> list = new ArrayList<LoanReq>();
+//        LoanReq loan = new LoanReq();
+//        PersonalData sample = new PersonalData();
+//        loan.id_req = "1234";
+//        loan.amount = "25 000";
+//        loan.numberOfMonths = "12";
+//        loan.salary = "3300";
+//        loan.bankRate = "5%";
+//        loan.instalment = "1345";
+//        sample.firstName = "Janusz";
+//        sample.lastName = "Nędza";
+//        sample.street = "Jana Pawła II 13c/14";
+//        sample.zipCode = "37-450";
+//        sample.city = "Stalowa Wola";
+//        sample.pesel = "54092356981";
+//        sample.idNumber = "AZK784512";
+//        sample.email = "Janusz@gmail.com";
+//        sample.phoneNumber = "759413682";
+//        loan.personalData = sample;
+//
+//        LoanReq loan1 = new LoanReq();
+//        PersonalData sample2 = new PersonalData();
+//
+//        loan1.id_req = "1234";
+//        loan1.amount = "25 000";
+//        loan1.numberOfMonths = "12";
+//        loan1.salary = "3300";
+//        loan1.bankRate = "5%";
+//        loan1.instalment = "1345";
+//        sample2.firstName = "Andrzej";
+//        sample2.lastName = "Wolak";
+//        sample2.street = "Wislka II 13c/14";
+//        sample2.zipCode = "37-450";
+//        sample2.city = "Nowy Sącz";
+//        sample2.pesel = "54092356981";
+//        sample2.idNumber = "AZK784512";
+//        sample2.email = "WolakA@gmail.com";
+//        sample2.phoneNumber = "759413682";
+//        loan1.personalData = sample2;
+//
+//        list.add(loan);
+//        list.add(loan1);
+//
+//
+//        received.loanList = list;
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO
@@ -440,15 +436,14 @@ public class Admin
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            receivedErr = server.answerLoanReq(userId, toSend);
-//        }
-//        catch (Exception e)
-//        {
-//            return "-1";
-//        }
-        receivedErr = "0";
+        try
+        {
+            receivedErr = server.answerLoanReq(userId, toSend);
+        }
+        catch (Exception e)
+        {
+            return "-1";
+        }
 //----------------------------------------------------------------------------------------------
         //decoding data
         //TO DO

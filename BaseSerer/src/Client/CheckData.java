@@ -125,14 +125,19 @@ public class CheckData
         else
             isPeselCorrecct = false;
 
-        isCityCorrect = !city.isEmpty() &&
-                !textHasNumber(city) &&
-                !textHasSpecial(city);
+        if(city == null)
+            isCityCorrect = false;
+        else
+        {
+            isCityCorrect = !city.isEmpty() &&
+                    !textHasNumber(city) &&
+                    !textHasSpecial(city);
+        }
 
         // has only "/"
         isStreetCorrect = !street.isEmpty() &&
                 textHasNumber(street) &&
-                !street.matches(".*[!@#$,<.>?;:'%^&*()`~}{|_=+].*") &&
+                !street.matches(".*[!@#$,<>?;:'%^&*()`~}{|_=+].*") &&
                 !street.contains("]")&&
                 !street.contains("[") &&
                 !street.contains("\"")&&

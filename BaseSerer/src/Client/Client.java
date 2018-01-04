@@ -190,7 +190,7 @@ public class Client
 * */
     public void getPersonalData()
     {
-        PersonalData received;
+        PersonalData received = new PersonalData();
 
         //checking whether new thread can be created
         //TO DO
@@ -199,33 +199,33 @@ public class Client
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.getPersonalData(userId); //encoding userId
-//        }
-//        catch (Exception e)
-//        {
-//
-//            System.out.println("Error: " + e);
-//            e.printStackTrace();
-//            return null;
-//        }
+        try
+        {
+            received = server.getPersonalData(userId); //encoding userId
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            personalData = null;
+        }
 
         //testy
-        PersonalData sample = new PersonalData();
-        sample.firstName = "Janusz";
-        sample.lastName = "Nędza";
-        sample.street = "Jana Pawła II 13c/14";
-        sample.zipCode = "37-450";
-        sample.city = "Stalowa Wola";
-        sample.pesel = "54092356981";
-        sample.idNumber = "AZK784512";
-        sample.email = "Janusz@gmail.com";
-        sample.phoneNumber = "759413682";
+//        PersonalData sample = new PersonalData();
+//        sample.firstName = "Janusz";
+//        sample.lastName = "Nędza";
+//        sample.street = "Jana Pawła II 13c/14";
+//        sample.zipCode = "37-450";
+//        sample.city = "Stalowa Wola";
+//        sample.pesel = "54092356981";
+//        sample.idNumber = "AZK784512";
+//        sample.email = "Janusz@gmail.com";
+//        sample.phoneNumber = "759413682";
 
         //chcek if received if null !!!
-//        if(received == null)
-//            return null;
+        if(received == null)
+            personalData = null;
 
 //----------------------------------------------------------------------------------------------
         //decoding data
@@ -234,7 +234,7 @@ public class Client
         //end thread
 
         //can I return sth inside a thread or better outside??
-        personalData = sample; // zmienic na received przy laczeniu
+        personalData = received; // zmienic na received przy laczeniu
     }
 
     /*
@@ -275,19 +275,18 @@ public class Client
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.requestChangePersonalData(userId, toSend);
-//        }
-//        catch (Exception e)
-//        {
-//
-//            System.out.println("Error: " + e);
-//            e.printStackTrace();
-//            return "-1";
-//        }
+        try
+        {
+            received = server.requestChangePersonalData(userId, toSend);
+        }
+        catch (Exception e)
+        {
 
-        received = "0";
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return "-1";
+        }
+
         //chcek if received if null !!!
         if(received == null)
             return "-1";
@@ -451,6 +450,7 @@ public class Client
         if(!checkData.checkCompanyName(workPlace) || !checkData.checkIfOnlyNum(salary))
             return "-2";
 
+        System.out.println(months + "miesiace");
         //Pack and encode data
         toSend.amount = amount;
         toSend.numberOfMonths = months;
@@ -465,19 +465,18 @@ public class Client
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            server.requestLoan(toSend);
-//        }
-//        catch (Exception e)
-//        {
-//
-//            System.out.println("Error: " + e);
-//            e.printStackTrace();
-//            return "-1";
-//        }
+        try
+        {
+            received = server.requestLoan(toSend);
+        }
+        catch (Exception e)
+        {
 
-        received = "0";
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return "-1";
+        }
+
         //check if received if null !!!
         if(received == null)
             return "-1";
@@ -529,23 +528,21 @@ public class Client
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//            received = server.requestInvestment(toSend);
-//        }
-//        catch (Exception e)
-//        {
-//
-//            System.out.println("Error: " + e);
-//            e.printStackTrace();
-//            return "-1";
-//        }
-//
-//        //chcek if received if null !!!
-//        if(received == null)
-//            return "-1";
+        try
+        {
+            received = server.requestInvestment(toSend);
+        }
+        catch (Exception e)
+        {
 
-        received = "0";
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return "-1";
+        }
+
+        //chcek if received if null !!!
+        if(received == null)
+            return "-1";
 
 //----------------------------------------------------------------------------------------------
         //decoding data

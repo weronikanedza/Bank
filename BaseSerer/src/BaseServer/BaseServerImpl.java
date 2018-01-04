@@ -69,9 +69,35 @@ public class BaseServerImpl
 	@Override
 	public String restartPassword(String login) throws RemoteException
 	{
-//		System.out.println("RESTARTPASSWORD");
-//		return computingSever.restartPassword(login);
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.restartPassword(login);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.restartPassword(login);
+					serverState_2.set(true);
+				}
+
+				break;
+			}
+		}
+		logServer.AddMessageToLog("transfer", login, login);
+
+		return temporary;
 	}
 
 	@Override
@@ -146,9 +172,35 @@ public class BaseServerImpl
 	@Override
 	public String addFunds(String login, Funds data) throws RemoteException
 	{
-//		System.out.println("addFunds");
-//		return computingSever.addFunds(data);
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.addFunds(login,data);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.addFunds(login,data);
+					serverState_2.set(true);
+				}
+
+				break;
+			}
+		}
+		logServer.AddMessageToLog("addFunds", login, data);
+
+		return temporary;
 	}
 
 	@Override
@@ -187,21 +239,100 @@ public class BaseServerImpl
 	@Override
 	public String requestChangePersonalData(String login, PersonalData data) throws RemoteException
 	{
-//		System.out.println("request chane persoanl data");
-//		return  computingSever.requestChangePersonalData(login, data);
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.requestChangePersonalData(login, data);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.requestChangePersonalData(login, data);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("requestChangePersonalData", login, data);
+		return temporary;
 	}
 
 	@Override
 	public ListLoanReq getRequestLoan(String login) throws RemoteException
 	{
-		return null;
+		ListLoanReq temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.getRequestLoan(login);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.getRequestLoan(login);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("getRequestLoan", login, login);
+		return temporary;
 	}
 
 	@Override
 	public String requestInvestment(Investment data) throws RemoteException
 	{
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.requestInvestment(data);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.requestInvestment(data);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("requestInvestment", data.login, data);
+		return temporary;
 	}
 
 	@Override
@@ -241,13 +372,69 @@ public class BaseServerImpl
 	@Override
 	public String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException
 	{
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.answerChangePersonalDataReq(login, data);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.answerChangePersonalDataReq(login, data);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("answerChangePersonalDataReq", login, data);
+
+		return temporary;
 	}
 
 	@Override
 	public String answerLoanReq(String login,LoanDecision data) throws RemoteException
 	{
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.answerLoanReq(login, data);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.answerLoanReq(login, data);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("answerLoanReq", login, data);
+
+		return temporary;
 	}
 
 
@@ -295,7 +482,35 @@ public class BaseServerImpl
 	@Override
 	public PersonalData getPersonalData(String login) throws RemoteException
 	{
-		return null;
+		PersonalData temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.getPersonalData(login);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.getPersonalData(login);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("RequestListAddAccount", login, temporary);
+
+		return temporary;
 	}
 
 	@Override
@@ -347,13 +562,69 @@ public class BaseServerImpl
 	@Override
 	public  RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException
 	{
-		return null;
+		RequestListAddAccount temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.getRequestChangePersonalData(login);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.getRequestChangePersonalData(login);
+					serverState_2.set(true);
+				}
+				break;
+			}
+		}
+
+		logServer.AddMessageToLog("getRequestChangePersonalData", login, temporary);
+
+		return temporary;
 	}
 
 	@Override
 	public String requestLoan(Loan data) throws RemoteException
 	{
-		return null;
+		String temporary;
+		while(true)
+		{
+			if(serverState_1.get())
+			{
+				synchronized (computingSever_1)
+				{
+					serverState_1.set(false);
+					temporary = computingSever_1.requestLoan(data);
+					serverState_1.set(true);
+				}
+
+				break;
+			}
+			else if(serverState_2.get())
+			{
+				synchronized (computingSever_2)
+				{
+					serverState_2.set(false);
+					temporary = computingSever_2.requestLoan(data);
+					serverState_2.set(true);
+				}
+
+				break;
+			}
+		}
+		logServer.AddMessageToLog("requestLoan", data.login, data);
+
+		return temporary;
 	}
 
 	@Override

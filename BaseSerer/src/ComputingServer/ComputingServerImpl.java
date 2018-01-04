@@ -106,15 +106,14 @@ public class ComputingServerImpl
     @Override
     public String restartPassword(String login) throws RemoteException
     {
-//        try {
-//            statement.executeUpdate("Update users set password='" + check.generatePassword() + "' where login='"+login+"'");
-//        }catch (SQLException e){
-//            System.out.println("restartPassword sql exception");
-//            System.out.println(e.getMessage());
-//            return "1";
-//        }
-//        return "0";
-        return null;
+        try {
+            statement.executeUpdate("Update users set password='" + generator.generatePassword() + "' where login='"+login+"'");
+        }catch (SQLException e){
+            System.out.println("restartPassword sql exception");
+            System.out.println(e.getMessage());
+            return "1";
+        }
+        return "0";
     }
 
     @Override
@@ -172,20 +171,19 @@ public class ComputingServerImpl
     @Override
     public String addFunds(String login,Funds data) throws RemoteException
     {
-//        try{
-//            if(check.checkBalanceLogin(data.login).equals("")){
-//                return "2";
-//            }else {
-//                Double balance = Double.parseDouble(check.checkBalanceLogin(data.login));
-//                balance+=Double.parseDouble(data.amount);
-//                statement.executeUpdate("update account a join customers c on a.pesel = c.pesel set a.balance ='"+balance+"' WHERE c.customer_nr='"+data.login+"'");
-//            }
-//        }catch (SQLException e){
-//            System.out.println("Error addFunds");
-//            return "1";
-//        }
-//        return "0";
-        return null;
+        try{
+            if(check.checkBalanceLogin(data.login).equals("")){
+                return "2";
+            }else {
+                Double balance = Double.parseDouble(check.checkBalanceLogin(data.login));
+                balance+=Double.parseDouble(data.amount);
+                statement.executeUpdate("update account a join customers c on a.pesel = c.pesel set a.balance ='"+balance+"' WHERE c.customer_nr='"+data.login+"'");
+            }
+        }catch (SQLException e){
+            System.out.println("Error addFunds");
+            return "1";
+        }
+        return "0";
     }
 
     @Override
@@ -237,82 +235,84 @@ public class ComputingServerImpl
     @Override
     public String requestChangePersonalData(String login, PersonalData data) throws RemoteException
     {
-//        int id_req=0;
-//        try{
-//            if( check.checkIfCustomerExist(data.pesel) &&
-//                    check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
-//                statement.execute("SELECT id_request FROM newaccountrequest");
-//                rS=statement.getResultSet();
-//                while (rS.next())
-//                    id_req = Integer.parseInt(rS.getString(1));
-//
-//                id_req+=1;
-//
-//                statement.executeUpdate("INSERT INTO newaccountrequest VALUES('"+id_req+ "','"+data.firstName+
-//                        "','"+data.lastName+"','"+data.street+"','"+data.city+"','"+data.zipCode+
-//                        "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1,0)");
-//
-//            }
-//        }catch (SQLException e){
-//            System.out.println(e.getMessage());
-//            return "1";
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//            return "1";
-//        }
-//        return "0";
-        return null;
+        System.out.println(data);
+        int id_req=0;
+        try{
+            if(check.checkCustomerInAddAccReq(data.pesel) && check.checkAge(data.pesel) ){
+                statement.execute("SELECT id_request FROM newaccountrequest");
+                rS=statement.getResultSet();
+                while (rS.next())
+                    id_req = Integer.parseInt(rS.getString(1));
+
+                id_req+=1;
+
+                statement.executeUpdate("INSERT INTO newaccountrequest VALUES('"+id_req+ "','"+data.firstName+
+                        "','"+data.lastName+"','"+data.street+"','"+data.city+"','"+data.zipCode+
+                        "','"+data.idNumber+"','"+data.email+"','"+data.phoneNumber+"','"+data.pesel+"',1,0)");
+
+            }else {
+                return "2";
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return "1";
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return "1";
+        }
+        return "0";
     }
 
     @Override
     public ListLoanReq getRequestLoan(String login) throws RemoteException
     {
-//        ListLoanReq list=new ListLoanReq();
-//        list.loanList =new ArrayList<>();
-//
-//        try{
-//            rS=statement.executeQuery("Select * from loan where status=0");
-//            while (rS.next()){
-//                list.loanList.add(new LoanReq(rS.getString("customer_nr"),rS.getString("amount"),rS.getString("instalment"),
-//                        rS.getString("numberOfMonths"),rS.getString("bankRate"),rS.getString("salary"),rS.getString("id_loan")));
-//            }
-//            list.error="0";
-//        }catch (SQLException e){
-//            System.out.println(e.getMessage());
-//            list.error="1";
-//        }
-//        return list;
-        return null;
+        ListLoanReq list=new ListLoanReq();
+        list.loanList =new ArrayList<>();
+
+        try{
+            rS=statement.executeQuery("Select * from loan l natural join customers c where l.status=0");
+            while (rS.next()){
+                list.loanList.add(new LoanReq(rS.getString("customer_nr"),rS.getString("amount"),rS.getString("instalment"),
+                        rS.getString("numberOfMonths"),rS.getString("bankRate"),rS.getString("salary"),rS.getString("id_loan")
+                        ,new PersonalData(rS.getString("firstname"),rS.getString("lastname"),rS.getString("street"),rS.getString("zipCode"),
+                        rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),rS.getString("email"),rS.getString("phoneNumber"))));
+            }
+            list.error="0";
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            list.error="1";
+        }
+        return list;
+
     }
 
     @Override
     public String requestInvestment(Investment data) throws RemoteException
     {
-//        		int id=0;
-//		System.out.println(data);
-//		try {
-//			if(Double.parseDouble(check.checkBalanceLogin(data.login))>=Double.parseDouble(data.amount)) {
-//				String rate = check.checkBankRate(data.time);
-//				String tab[] = generator.dateGenerate(data.time);
-//				String finalAmount = check.checkAmount(data.amount, data.time, rate);
-//				rS = statement.executeQuery("Select id_investment FROM investment");
-//				while (rS.next())
-//					id = Integer.parseInt(rS.getString("id_investment"));
-//
-//				++id;
-//
-//				statement.executeUpdate("INSERT INTO investment values('" + id + "','" + data.amount + "','" + tab[0] + "','" + tab[1] + "','" + rate + "',0,'" + finalAmount + "','"+data.login+"')");
-//				statement.executeUpdate("UPDATE account NATURAL join customers set balance=balance-'"+data.amount+"'where customer_nr='"+data.login+"'");
-//			}else{
-//				return"2";
-//			}
-//
-//		}catch (SQLException e){
-//			System.out.println(e.getMessage());
-//			return "1";
-//		}
-//		return "0";
-        return null;
+        		int id=0;
+		System.out.println(data);
+		try {
+			if(Double.parseDouble(check.checkBalanceLogin(data.login))>=Double.parseDouble(data.amount)) {
+				String rate = check.checkBankRate(data.time);
+				String tab[] = generator.dateGenerate(data.time);
+				String finalAmount = check.checkAmount(data.amount, data.time, rate);
+				rS = statement.executeQuery("Select id_investment FROM investment");
+				while (rS.next())
+					id = Integer.parseInt(rS.getString("id_investment"));
+
+				++id;
+
+				statement.executeUpdate("INSERT INTO investment values('" + id + "','" + data.amount + "','" + tab[0] + "','" + tab[1] + "','" + rate + "',0,'" + finalAmount + "','"+data.login+"')");
+				statement.executeUpdate("UPDATE account NATURAL join customers set balance=balance-'"+data.amount+"'where customer_nr='"+data.login+"'");
+			}else{
+				return"2";
+			}
+
+		}catch (SQLException e){
+			System.out.println(e.getMessage());
+			return "1";
+		}
+		return "0";
     }
 
     @Override
@@ -349,67 +349,63 @@ public class ComputingServerImpl
     @Override
     public String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException
     {
-//        if(data.decision.equals("y")){
-//            System.out.println("jestem tu");
-//            System.out.println(data.personalData);
-//            try {
-//                statement.executeUpdate("UPDATE customers SET city = '"+data.personalData.city+"', email='"+data.personalData.email+"'," +
-//                        "firstname='"+data.personalData.firstName+"',idNumber='"+data.personalData.idNumber+"'," +
-//                        "lastname='"+data.personalData.lastName+"',phoneNumber='"+data.personalData.phoneNumber+"'," +
-//                        "street='"+data.personalData.street+"',zipcode='"+data.personalData.zipCode + "' where pesel='"+data.personalData.pesel+"'");
-//
-//                statement.executeUpdate("Delete from newaccountrequest where id_req='"+data.id_req+"'");
-//            } catch (Exception e) {
-//                System.out.println("answer change personal data exception");
-//                System.out.println(e.getMessage());
-//                return "1";
-//            }
-//        }
-//        else{
-//            try{
-//                statement.executeUpdate("Delete from newaccountrequest where id_request='" + data.id_req + "'");
-//            } catch (SQLException e) {
-//                System.out.println("answer change personal data req exception");
-//                e.printStackTrace();
-//                return "1";
-//            }
-//
-//        }
-//        return "0";
+        if(data.decision.equals("y")){
 
-        return null;
+            try {
+                statement.executeUpdate("UPDATE customers SET city = '"+data.personalData.city+"', email='"+data.personalData.email+"'," +
+                        "firstname='"+data.personalData.firstName+"',idNumber='"+data.personalData.idNumber+"'," +
+                        "lastname='"+data.personalData.lastName+"',phoneNumber='"+data.personalData.phoneNumber+"'," +
+                        "street='"+data.personalData.street+"',zipcode='"+data.personalData.zipCode + "' where pesel='"+data.personalData.pesel+"'");
+
+                statement.executeUpdate("Delete from newaccountrequest where id_request='"+data.id_req+"'");
+            } catch (Exception e) {
+                System.out.println("answer change personal data exception");
+                System.out.println(e.getMessage());
+                return "1";
+            }
+        }
+        else{
+            try{
+                statement.executeUpdate("Delete from newaccountrequest where id_request='" + data.id_req + "'");
+            } catch (SQLException e) {
+                System.out.println("answer change personal data req exception");
+                e.printStackTrace();
+                return "1";
+            }
+
+        }
+        return "0";
     }
 
     @Override
     public String answerLoanReq(String login, LoanDecision data) throws RemoteException
     {
-//        if(data.decision.equals("y")){
-//            try {
-//                rS=statement.executeQuery("SELECT * from loan where id_loan='"+data.id_req+"'");;
-//                rS.next();
-//                String tab[]=generator.dateGenerate(rS.getString("numberOfMonths"));
-//                String customer_nr=rS.getString("customer_nr");
-//                double amount=Double.parseDouble(rS.getString("amount"));
-//                double balance=Double.parseDouble(check.checkBalanceLogin(customer_nr));
-//                balance+= amount;
-//                System.out.println(balance);
-//                statement.executeUpdate("UPDATE account a natural join customers c set a.balance='"+balance+"' WHERE " +
-//                        "c.customer_nr='"+customer_nr+"'");
-//
-//                statement.executeUpdate("UPDATE Loan set status=1, date='" + tab[0] + "',dateTo='"+tab[1]+"' where id_loan='" + data.id_req + "'");
-//            }catch (SQLException e){
-//                System.out.println(e.getMessage());
-//                return "1";
-//            }
-//        } else{
-//            try {
-//                statement.executeUpdate("Delete from Loan where id_loan='" + data.id_req + "'");
-//            } catch (SQLException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
-//        return "0";
-        return null;
+        if(data.decision.equals("y")){
+            try {
+                rS=statement.executeQuery("SELECT * from loan where id_loan='"+data.id_req+"'");;
+                rS.next();
+                String tab[]=generator.dateGenerate(rS.getString("numberOfMonths"));
+                String customer_nr=rS.getString("customer_nr");
+                double amount=Double.parseDouble(rS.getString("amount"));
+                double balance=Double.parseDouble(check.checkBalanceLogin(customer_nr));
+                balance+= amount;
+                System.out.println(balance);
+                statement.executeUpdate("UPDATE account a natural join customers c set a.balance='"+balance+"' WHERE " +
+                        "c.customer_nr='"+customer_nr+"'");
+
+                statement.executeUpdate("UPDATE Loan set status=1, date='" + tab[0] + "',dateTo='"+tab[1]+"' where id_loan='" + data.id_req + "'");
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
+                return "1";
+            }
+        } else{
+            try {
+                statement.executeUpdate("Delete from Loan where id_loan='" + data.id_req + "'");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return "0";
     }
 
 
@@ -456,20 +452,20 @@ public class ComputingServerImpl
     @Override
     public PersonalData getPersonalData(String login) throws RemoteException
     {
-//        PersonalData data;
-//        try{
-//            ResultSet rS=statement.executeQuery("SELECT * from customers where customer_nr='"+login+"'");
-//            rS.next();
-//            data=new PersonalData(rS.getString("firstname"),rS.getString("lastname"),rS.getString("street"),rS.getString("zipcode"),
-//                    rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),rS.getString("email"),
-//                    rS.getString("phoneNumber"));
-//        }catch (SQLException e){
-//            System.out.println("getPersonalData exception");
-//            System.out.println(e.getMessage());
-//            return null;
-//        }
-//        return data;
-        return null;
+        PersonalData data;
+        try{
+            ResultSet rS=statement.executeQuery("SELECT * from customers where customer_nr='"+login+"'");
+            rS.next();
+            data=new PersonalData(rS.getString("firstname"),rS.getString("lastname"),rS.getString("street"),rS.getString("zipcode"),
+                    rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),rS.getString("email"),
+                    rS.getString("phoneNumber"));
+        }catch (SQLException e){
+            System.out.println("getPersonalData exception");
+            System.out.println(e.getMessage());
+            return null;
+        }
+        System.out.println(data);
+        return data;
     }
 
     @Override
@@ -541,50 +537,48 @@ public class ComputingServerImpl
     @Override
     public  RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException
     {
-//        RequestListAddAccount req=new RequestListAddAccount();
-//        req.data=new ArrayList<>();
-//        try {
-//            ResultSet rS=statement.executeQuery("SELECT * from newaccountrequest where reqstatus='0'");
-//            while(rS.next()){
-//                AddAccountRequest addAcc=new AddAccountRequest(rS.getString("id_request"),rS.getString("firstname"),
-//                        rS.getString("lastname"),rS.getString("street"),rS.getString("zipCode"),
-//                        rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),
-//                        rS.getString("email"),rS.getString("phoneNumber"));
-//                req.data.add(addAcc);
-//            }
-//            req.error="0";
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//            req.error="1";
-//        }
-//
-//        return  req;
-        return null;
+        RequestListAddAccount req=new RequestListAddAccount();
+        req.data=new ArrayList<>();
+        try {
+            ResultSet rS=statement.executeQuery("SELECT * from newaccountrequest where reqstatus='0'");
+            while(rS.next()){
+                AddAccountRequest addAcc=new AddAccountRequest(rS.getString("id_request"),rS.getString("firstname"),
+                        rS.getString("lastname"),rS.getString("street"),rS.getString("zipCode"),
+                        rS.getString("city"),rS.getString("pesel"),rS.getString("idNumber"),
+                        rS.getString("email"),rS.getString("phoneNumber"));
+                req.data.add(addAcc);
+            }
+            req.error="0";
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            req.error="1";
+        }
+
+        return  req;
     }
 
     @Override
     public String requestLoan(Loan data) throws RemoteException
     {
-//        int id_loan=0;
-//        try {
-//            if(check.checkLoan(data.login)) {
-//                statement.execute("SELECT id_loan FROM loan");
-//                rS = statement.getResultSet();
-//                while (rS.next())
-//                    id_loan = Integer.parseInt(rS.getString(1));
-//
-//                id_loan += 1;
-//                statement.executeUpdate("INSERT into loan VALUES ('" + id_loan + "','" + data.amount + "'," +
-//                        "'5','" + data.instalment + "','" + data.numberOfMonths + "','" + data.login + "','" + data.salary + "','0','0','0')");
-//            }else{
-//                return "2";
-//            }
-//        }catch(SQLException e){
-//            System.out.println(e.getMessage());
-//            return "1";
-//        }
-//        return "0";
-        return null;
+        int id_loan=0;
+        try {
+            if(check.checkLoan(data.login)) {
+                statement.execute("SELECT id_loan FROM loan");
+                rS = statement.getResultSet();
+                while (rS.next())
+                    id_loan = Integer.parseInt(rS.getString(1));
+
+                id_loan += 1;
+                statement.executeUpdate("INSERT into loan VALUES ('" + id_loan + "','" + data.amount + "'," +
+                        "'5','" + data.instalment + "','" + data.numberOfMonths + "','" + data.login + "','" + data.salary + "','0','0','0')");
+            }else{
+                return "2";
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            return "1";
+        }
+        return "0";
     }
 
     @Override

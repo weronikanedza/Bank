@@ -7,10 +7,12 @@ public class LoanReq extends Loan implements Serializable{
     public String id_req;
     public PersonalData personalData;
 
-    public LoanReq(String login, String amount, String instalment, String numberOfMonths, String bankRate, String salary, String id_req) {
+    public LoanReq(String login, String amount, String instalment, String numberOfMonths, String bankRate, String salary, String id_req,PersonalData personalData) {
         super(login, amount, instalment, numberOfMonths, bankRate, salary);
         this.id_req = id_req;
+        this.personalData=personalData;
     }
+
 
     public LoanReq(){
 

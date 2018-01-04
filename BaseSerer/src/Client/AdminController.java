@@ -151,7 +151,7 @@ public class AdminController
         if(newAccReq == 1)
             er = admin.sendAddAccDecision(listPersonalDataReq.get(currentReq).id_request, decision);
         else
-            er = admin.sendChangeDataDecision(listPersonalDataReq.get(currentReq).id_request, decision);
+            er = admin.sendChangeDataDecision(listPersonalDataReq.get(currentReq).id_request, decision, listPersonalDataReq.get(currentReq));
 
         if (er.equals("1"))
         {
@@ -525,7 +525,7 @@ public class AdminController
         {
             listLoanReq.remove(currentReq);
 
-            //listLoanReq = admin.getListLoanReq();
+            listLoanReq = admin.getListLoanReq();
 
             if(listLoanReq == null)
             {

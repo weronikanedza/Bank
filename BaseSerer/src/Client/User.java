@@ -242,19 +242,17 @@ public class User
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-//        try
-//        {
-//           receivedErr = server.restartPassword(clientNo); // encoding clientNo
-//        }
-//        catch (Exception e)
-//        {
-//
-//            System.out.println("Error: " + e);
-//            e.printStackTrace();
-//            return "-1";
-//        }
+        try
+        {
+           receivedErr = server.restartPassword(clientNo); // encoding clientNo
+        }
+        catch (Exception e)
+        {
 
-        receivedErr = "0";
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+            return "-1";
+        }
 
         //chcek if received if null !!!
         if(receivedErr == null)

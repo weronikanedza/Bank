@@ -288,8 +288,8 @@ public class ClientController
             }
             else if (errorCode.equals("1"))
                 errDataEdit.setText("Wniosek nie został przyjety. Wystąpił problem z bazą danych.");
-            else if (errorCode.equals("1"))
-                errDataEdit.setText("Wystąpił problem z serwerem, spróbuj ponownie, za chwilę.");
+            else if (errorCode.equals("2"))
+                errDataEdit.setText("Wniosek o dodanie danych został już przyjęty i oczekuje na akceptacje.");
             else if (errorCode.equals("-2"))
                 errDataEdit.setText("Nie poprawnie powtórzono adres e-mail.");
             else if (errorCode.equals("-3"))
@@ -330,6 +330,10 @@ public class ClientController
         doubleClick = 0;
         errLoanReq.setText("");
         instolmentLab.setText("");
+        workPlace.setText("");
+        salary.setText("");
+
+        calculateInstolment();
     }
 
     @FXML
@@ -340,18 +344,22 @@ public class ClientController
         {
             doubleClick = 0;
             err = client.sendReqLoan(loanAmLab.getText(), loanMoLab.getText(), workPlace.getText(), salary.getText(), instolmentLab.getText());
+            errLoanReq.setText(err);
 
             if (err.equals("-2"))
                 errLoanReq.setText("Dane nie zostały wprowadzone poprawnie:\n 1. Wszystkie pola są obowiązkowe\n 2. Średni dochód nie może zawierać przecinka ani kropki");
             else if (err.equals("-1"))
                 errLoanReq.setText("Wystąpił problem podczas wysyłania wniosku, wyślij wniosek ponownie za chwilę.");
-            if (err.equals("0"))
+            else if (err.equals("0"))
             {
                 currentPane.setVisible(false);
                 currentPane = loanReqEndPane;
                 currentPane.setVisible(true);
-            } else if (err.equals("1"))
+            }
+            else if (err.equals("1"))
                 errLoanReq.setText("Wystąpił problem z serwerem, wyślij wniosek ponownie za chwilę.");
+            else if (err.equals("2"))
+                errLoanReq.setText("Już masz zaciągniętą pożyczkę w naszym banku.");
         }
         else
         {
