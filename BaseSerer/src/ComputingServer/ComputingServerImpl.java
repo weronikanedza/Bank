@@ -17,7 +17,7 @@ public class ComputingServerImpl
     implements BaseServerFace
 {
 
-    final private String URL="jdbc:mysql://localhost:3306/bankdb";
+    final private String URL="jdbc:mysql://localhost:3306/bankdb?useUnicode=yes&characterEncoding=UTF-8";
     private Connection connection=null;
     private Statement statement=null;
     private ResultSet rS=null;
