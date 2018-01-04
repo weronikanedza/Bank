@@ -15,7 +15,7 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="2159">
               <caret line="512" column="22" lean-forward="false" selection-start-line="512" selection-start-column="22" selection-end-line="512" selection-end-column="22" />
               <folding>
                 <element signature="method#changePassword#0;class#Client#0" expanded="false" />
@@ -60,9 +60,6 @@
       </file>
       <file leaf-file-name="ClientFX.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/ClientFX.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
               <caret line="22" column="82" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
@@ -70,6 +67,9 @@
                 <marker date="1515068452585" expanded="true" signature="52081:52096" ph="..." />
               </folding>
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -93,12 +93,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputingServerImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ComputingServerImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="192" column="49" lean-forward="false" selection-start-line="192" selection-start-column="49" selection-end-line="192" selection-end-column="49" />
+            <state relative-caret-position="280">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Client/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="70" column="49" lean-forward="false" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
+              <folding>
+                <element signature="method#communicateWithServer#0;class#User#0" expanded="false" />
+                <element signature="method#resetPass#0;class#User#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,8 +164,8 @@
         <option value="$PROJECT_DIR$/src/Client/Client.java" />
         <option value="$PROJECT_DIR$/src/Client/ClientFX.fxml" />
         <option value="$PROJECT_DIR$/src/Client/ClientController.java" />
-        <option value="$PROJECT_DIR$/src/Client/User.java" />
         <option value="$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java" />
+        <option value="$PROJECT_DIR$/src/Client/User.java" />
       </list>
     </option>
   </component>
@@ -176,8 +189,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,8 +233,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -536,9 +549,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientFX.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="82" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
@@ -546,6 +556,9 @@
             <marker date="1515068452585" expanded="true" signature="52081:52096" ph="..." />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/Transfer.java">
@@ -605,9 +618,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientFX.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="82" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
@@ -615,6 +625,9 @@
             <marker date="1515068452585" expanded="true" signature="52081:52096" ph="..." />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
@@ -670,9 +683,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientFX.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -680,6 +690,9 @@
             <marker date="1515068452585" expanded="true" signature="52081:52096" ph="..." />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientController.java">
@@ -867,14 +880,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/AdminFX.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/InvestmentHistory.java">
@@ -943,7 +956,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="2159">
           <caret line="512" column="22" lean-forward="false" selection-start-line="512" selection-start-column="22" selection-end-line="512" selection-end-column="22" />
           <folding>
             <element signature="method#changePassword#0;class#Client#0" expanded="false" />
@@ -960,9 +973,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientFX.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="82" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
@@ -970,6 +980,9 @@
             <marker date="1515068452585" expanded="true" signature="52081:52096" ph="..." />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/ClientController.java">
@@ -1020,17 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="158" column="49" lean-forward="false" selection-start-line="158" selection-start-column="49" selection-end-line="158" selection-end-column="49" />
-          <folding>
-            <element signature="method#communicateWithServer#0;class#User#0" expanded="false" />
-            <element signature="method#resetPass#0;class#User#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/BaseServerFace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1041,9 +1043,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ComputingServer/ComputingServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="192" column="49" lean-forward="false" selection-start-line="192" selection-start-column="49" selection-end-line="192" selection-end-column="49" />
+        <state relative-caret-position="280">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="70" column="49" lean-forward="false" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
+          <folding>
+            <element signature="method#communicateWithServer#0;class#User#0" expanded="false" />
+            <element signature="method#resetPass#0;class#User#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
