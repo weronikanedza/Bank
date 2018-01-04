@@ -31,7 +31,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public LogFrom logIn(String login, LogTo data) throws RemoteException, InterruptedException
+	public LogFrom logIn(String login, LogTo data) throws Exception//RemoteException, InterruptedException
 	{
 		LogFrom logFrom;
 
@@ -152,7 +152,7 @@ public class BaseServerImpl
 	}
 
 	@Override
-	public String requestAddAccount(String login, PersonalData data) throws RemoteException
+	public String requestAddAccount(String login, PersonalData data) throws Exception//RemoteException
 	{
 		String temporary;
 		while(true)

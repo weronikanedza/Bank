@@ -4,6 +4,7 @@ import Base.*;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.security.NoSuchAlgorithmException;
@@ -51,8 +52,9 @@ public class ComputingServerImpl
     @Override
     public LogFrom logIn(String login, LogTo data) throws Exception
     {
-        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
-        DesEncrypter encrypter = new DesEncrypter(key);
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
 
         data.login = encrypter.decrypt(data.login);
         data.password = encrypter.decrypt(data.password);
@@ -118,6 +120,7 @@ public class ComputingServerImpl
         double balance, transferAmount, senderBalance;
         int id_transfer=0;
 
+        System.out.println(data);
         balance = Double.parseDouble(check.checkBalance(data.accNoFrom));
         transferAmount = Double.parseDouble(data.amount);
         senderBalance = balance - transferAmount;
@@ -187,8 +190,9 @@ public class ComputingServerImpl
 
     public String requestAddAccount(String login, PersonalData data) throws Exception
     {
-        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
-        DesEncrypter encrypter = new DesEncrypter(key);
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
 
         data.firstName = encrypter.decrypt(data.firstName);
         data.lastName = encrypter.decrypt(data.lastName);

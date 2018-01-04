@@ -6,19 +6,19 @@ import java.rmi.RemoteException;
 public interface BaseServerFace
         extends Remote
 {
-    LogFrom logIn(String login, LogTo data) throws RemoteException; //checked
+    LogFrom logIn(String login, LogTo data) throws Exception; //checked // changed from RemoteException
     String restartPassword(String login) throws RemoteException;//ok (w) email ok(n)
     String transfer(Transfer data) throws RemoteException; //checked
     String changePassword(LogTo data) throws RemoteException; // ok(w) ok(n)
     String addFunds(String login,Funds data) throws RemoteException; //ok(w) ok(n)
     String requestLoan(Loan data) throws RemoteException; //ok(w) ok(n)
-    String requestAddAccount(String login, PersonalData data) throws RemoteException; //checked
+    String requestAddAccount(String login, PersonalData data) throws Exception; //checked // changed from RemoteException
     String requestChangePersonalData(String login, PersonalData data) throws RemoteException;//ok(w) ok(n)
     String requestInvestment(Investment data) throws RemoteException; //ok(w)
 
     String answerAddAccountReq(String login, AddAccReqDecision data) throws RemoteException; //checked //email
     String answerChangePersonalDataReq(String login,AddAccReqDecision data) throws RemoteException; //ok(w) ok(n)
-    String answerLoanReq(String login,LoanDecision data) throws RemoteException; // ok(w)
+    String answerLoanReq(String login,LoanDecision data) throws RemoteException; // ok(w) ok(n)
 
     String getBalance(String login) throws RemoteException; // checked
     TransferData getTransferHistory(TransferHistory data) throws RemoteException; //ok(w)
@@ -27,7 +27,7 @@ public interface BaseServerFace
     ListInvestment getInvestmentHistory(String login) throws RemoteException; //ok(w)
     RequestListAddAccount getRequestAddAccount(String login) throws RemoteException; //checked
     RequestListAddAccount getRequestChangePersonalData(String login) throws RemoteException; // ok(w) ok(n)
-    ListLoanReq getRequestLoan(String login) throws RemoteException; //ok(w)
+    ListLoanReq getRequestLoan(String login) throws RemoteException; //ok(w) ok(n)
     String unlockAcc (String login,String cust_nr) throws RemoteException; //ok(w)
     String deleteAcc (String login) throws RemoteException;
 

@@ -42,6 +42,12 @@ public class ClientController
     private TextField workPlace, salary;
     @FXML
     private Label instolmentLab, loanAmLab, loanMoLab, errLoanReq;
+    @FXML
+    private Label errGetInvestment;
+    @FXML
+    private TextField amountInv, amountAfterCommaInv;
+    @FXML
+    private RadioButton investmentOp1, investmentOp2, investmentOp3, investmentOp4;
 
     @FXML
     private AnchorPane currentPane;
@@ -57,6 +63,8 @@ public class ClientController
     private AnchorPane personaDataPane, personaDataEditPane, personaDataEndPane;
     @FXML
     private AnchorPane loanPane, loanReqPane, loanReqEndPane, loanHostoryPane;
+    @FXML
+    private AnchorPane investmentPane, getInvestmentPane, getInvestmentEndPane, investmentHistoryPane;
 
 
     public void setControllerClient(Client client){
@@ -353,11 +361,77 @@ public class ClientController
     }
 
     @FXML
-    public void calculateInstolment(){
+    public void calculateInstolment()
+    {
 
         loanAmount.setValue((int)loanAmount.getValue() / 100 * 100);
         loanAmLab.setText(Integer.toString((int)loanAmount.getValue()));
         loanMoLab.setText(Integer.toString((int)loanMonths.getValue()));
-        instolmentLab.setText(Integer.toString((int)loanAmount.getValue()/(int)loanMonths.getValue()));
+        instolmentLab.setText(Integer.toString((int)(loanAmount.getValue()*1.05)/(int)loanMonths.getValue()));
     }
+
+    @FXML
+    public void handleInvestmentPane()
+    {
+        currentPane.setVisible(false);
+        currentPane = investmentPane;
+        currentPane.setVisible(true);
+    }
+
+    @FXML
+    public void handleGetInvestmentPane()
+    {
+        currentPane.setVisible(false);
+        currentPane = getInvestmentPane;
+        currentPane.setVisible(true);
+
+        errGetInvestment.setText("");
+        doubleClick = 0;
+    }
+
+    @FXML
+    public void sendReqInvestment()
+    {
+        String error;
+        String time = "0";
+
+        if(doubleClick == 1)
+        {
+            doubleClick = 0;
+
+            if (investmentOp1.isSelected())
+                time = "1";
+            else if (investmentOp2.isSelected())
+                time = "3";
+            else if (investmentOp3.isSelected())
+                time = "6";
+            else if (investmentOp4.isSelected())
+                time = "12";
+
+            error = client.sendReqInvestment(amountInv.getText(), amountAfterCommaInv.getText(), time);
+
+            if (error.equals("0"))
+            {
+                currentPane.setVisible(false);
+                currentPane = getInvestmentEndPane;
+                currentPane.setVisible(true);
+            } else if (error.equals("1"))
+                errGetInvestment.setText("Wystąpił problem z serwerem, wyślij wniosek ponownie za chwilę.");
+            else if (error.equals("2"))
+                errGetInvestment.setText("Nie masz wystarczających środków na koncie, wprowadź mniejszą kwote.");
+            else if (error.equals("-1"))
+                errGetInvestment.setText("Wystąpił problem z serwerem, wyślij wniosek ponownie za chwilę.");
+            else if (error.equals("-2"))
+                errGetInvestment.setText("Nie poprawnie wypełnione pola. Musi być wybrana jedna z opcji,\nkwota może zawierać tylko dwie liczby, pamiętaj że po przecinku\nmogą znaleźć się tylko dwie pozycje. ");
+            else if (error.equals("-3"))
+                errGetInvestment.setText("Wprowadzona kwota nie może przekraczać 10 000 zł i nie może\nbyć mniejsza niż 500 zł.");
+        }
+        else
+        {
+            doubleClick ++;
+            errGetInvestment.setText("Kliknij ponownie aby potwierdzić wybór.");
+        }
+    }
+
+
 }

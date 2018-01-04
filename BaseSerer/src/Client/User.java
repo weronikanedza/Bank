@@ -4,6 +4,7 @@ import Base.*;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.security.NoSuchAlgorithmException;
@@ -66,8 +67,9 @@ public class User
 
 
         //Pack and encode data
-        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
-        DesEncrypter encrypter = new DesEncrypter(key);
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
 
         String encrypted_login = encrypter.encrypt(login);
         String encrypted_password = encrypter.encrypt(password);
@@ -154,8 +156,9 @@ public class User
         if(communicateWithServer()==-1)
             return "-4";
 
-        SecretKey key = KeyGenerator.getInstance("DES").generateKey();
-        DesEncrypter encrypter = new DesEncrypter(key);
+        byte[] key = {-120,17,42,121,-12,1,6,34};
+        SecretKey secretKey = new SecretKeySpec(key,"DES");
+        DesEncrypter encrypter = new DesEncrypter(secretKey);
 
         String encrypted_pesel = encrypter.encrypt(pesel);
         String encrypted_city = encrypter.encrypt(city);

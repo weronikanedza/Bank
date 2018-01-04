@@ -26,7 +26,7 @@ public class LoginController extends Application {
     private Label labLoginProblem;
 
     @FXML
-    public void handleBtnLogin() throws IOException
+    public void handleBtnLogin() throws Exception
     {
         String errorCode;
 

@@ -12,6 +12,10 @@ public class LoanReq extends Loan implements Serializable{
         this.id_req = id_req;
     }
 
+    public LoanReq(){
+
+    }
+
     @Override
     public String toString() {
         return "LoanReq{" +

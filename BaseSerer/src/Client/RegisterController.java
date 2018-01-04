@@ -33,7 +33,7 @@ public class RegisterController
         appStage.show();
     }
 
-    public void handleSendRequest() throws IOException
+    public void handleSendRequest() throws Exception
     {
         String errorCode;
 

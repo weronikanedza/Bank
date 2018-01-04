@@ -492,16 +492,35 @@ public class Client
     }
 
     /*
-* erroCode:
-* */
-    public int sendReqInvestment()
+    * erroCode:
+    * -3 amount is not between 500 and 10 0000
+    * -2 unsuitable data in fields
+    * -1 sth wrong with base server
+    * 0 ok
+    * 1 sth wrong with data base
+    * 2 no enough resources
+*   */
+    public String  sendReqInvestment(String amount, String amountAfterComma, String time)
     {
-        int errorCode = -1;
-        LogTo toSend = new LogTo();
-        LogFrom received;
 
-        //Pack and encode data
-        //TO DO
+        Investment toSend = new Investment();
+        String received;
+        double amountCheck, max = 10000.00, min = 500.00;
+
+        System.out.println("time = " + time);
+
+        if(!checkData.checkIfOnlyNum(amount) || !checkData.checkIfOnlyNum(amountAfterComma) || time.equals("0"))
+            return "-2";
+
+
+         amountCheck = Double.parseDouble(amount + "." + amountAfterComma);
+         if (amountCheck < min || amountCheck > max)
+             return "-3";
+
+        //Pack
+        toSend.amount = amount + "." + amountAfterComma;
+        toSend.time = time;
+        toSend.login = userId;
 
         //checking whether new thread can be created
         //TO DO
@@ -510,18 +529,23 @@ public class Client
         //TO DO
 //---------------------------------poprawne wysylanie------------------------------------------
         //sending and receiving data to/from main server, interpreting received data all in thread
-        try
-        {
+//        try
+//        {
+//            received = server.requestInvestment(toSend);
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("Error: " + e);
+//            e.printStackTrace();
+//            return "-1";
+//        }
+//
+//        //chcek if received if null !!!
+//        if(received == null)
+//            return "-1";
 
-        }
-        catch (Exception e)
-        {
-
-            System.out.println("Error: " + e);
-            e.printStackTrace();
-            return -1;
-        }
-        //chcek if received if null !!!
+        received = "0";
 
 //----------------------------------------------------------------------------------------------
         //decoding data
@@ -532,7 +556,7 @@ public class Client
         //end thread
 
         //can I return sth inside a thread or better outside??
-        return errorCode;
+        return received;
     }
 
     //----------------------------------------------------------------------------------------------

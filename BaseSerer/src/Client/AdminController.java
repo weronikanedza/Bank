@@ -1,6 +1,7 @@
 package Client;
 
 import Base.AddAccountRequest;
+import Base.LoanReq;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,8 +32,14 @@ public class AdminController
     private PasswordField newPassword, newPasswordRepeat;
     @FXML
     private Label errChangePass;
+    @FXML
+    private Label idReqLoan, nameAndLastNameLoan, peselLoan, idNumberLoan, streetLoan, cityLoan, zipCodeLoan, emailLoan, phoneNumberLoan, switchReqLoan, reqAmountLoan, errGetLoanReq, errSendLoanDecision;
+    @FXML
+    private Label amountLoan, monthsLoan, salaryLoan, rateLoan, instolmentLoan;
+
 
     private List<AddAccountRequest> listPersonalDataReq;
+    private List<LoanReq> listLoanReq;
     private int regAmount;
     private int currentReq;
     private int doubleClicks0;
@@ -45,13 +52,13 @@ public class AdminController
     @FXML
     private AnchorPane greetingPane;
     @FXML
-    private AnchorPane personalDataReqPane;
+    private AnchorPane personalDataReqPane, viewPersonalDataPane;
     @FXML
-    private AnchorPane viewPersonalDataPane;
+    private AnchorPane changePasswordPane;
     @FXML
     private AnchorPane addFundsPane;
     @FXML
-    private AnchorPane changePasswordPane;
+    private AnchorPane loanReqPane, viewLoanReqPane;
 
 
     public void setControllerAdmin(Admin admin)
@@ -242,7 +249,7 @@ public class AdminController
     }
 
     @FXML
-    public void handleAddAccRequests()
+    public void handleGetAddAccRequests()
     {
         currentPane.setVisible(false);
         currentPane = personalDataReqPane;
@@ -269,7 +276,7 @@ public class AdminController
     }
 
     @FXML
-    public void handleChangePersonalDataRequests()
+    public void handleGetChangePersonalDataRequests()
     {
         currentPane.setVisible(false);
         currentPane = personalDataReqPane;
@@ -363,5 +370,189 @@ public class AdminController
         Stage appStage = (Stage) home.getScene().getWindow();
         appStage.setScene(homePageScene);
         appStage.show();
+    }
+
+    @FXML
+    public void handleGetLoanReq()
+    {
+        currentPane.setVisible(false);
+        currentPane = loanReqPane;
+        currentPane.setVisible(true);
+
+        errGetLoanReq.setText("");
+
+        listLoanReq = admin.getListLoanReq();
+
+        if(listLoanReq != null)
+        {
+            regAmount = listLoanReq.size();
+            currentReq = 0;
+            reqAmountLoan.setText(regAmount + "");
+
+        }
+        else
+        {
+            errGetLoanReq.setText("Niestety obecnie nie jest możliwe pobranie wniosków, sprobój ponownie pożniej.");
+            regAmount = -1;
+        }
+    }
+
+    private void loadLoanReq(int index)
+    {
+        LoanReq el= listLoanReq.get(index);
+
+        idReqLoan.setText(el.id_req);
+        nameAndLastNameLoan.setText(el.personalData.firstName + el.personalData.lastName);
+        peselLoan.setText(el.personalData.pesel);
+        idNumberLoan.setText(el.personalData.idNumber);
+        streetLoan.setText(el.personalData.street);
+        cityLoan.setText(el.personalData.city);
+        zipCodeLoan.setText(el.personalData.zipCode);
+        emailLoan.setText(el.personalData.email);
+        phoneNumberLoan.setText(el.personalData.phoneNumber);
+
+        amountLoan.setText(el.amount);
+        monthsLoan.setText(el.numberOfMonths);
+        salaryLoan.setText(el.salary);
+        rateLoan.setText(el.bankRate);
+        instolmentLoan.setText(el.instalment);
+
+        switchReqLoan.setText("");
+        errSendLoanDecision.setText("");
+
+        doubleClicks0 = 0;
+        doubleClicks1 = 0;
+    }
+
+    @FXML
+    public void handleViewLoanReq()
+    {
+        if(regAmount > 0)
+        {
+            currentPane.setVisible(false);
+            currentPane = viewLoanReqPane;
+            currentPane.setVisible(true);
+
+            currentReq = 0;
+            loadLoanReq(currentReq);
+        }
+        else if(regAmount == 0)
+        {
+            errGetLoanReq.setText("Nie ma wniosków do sprawdzenia.");
+        }
+    }
+
+    @FXML
+    public void handleNextLoanReq()
+    {
+
+        if(currentReq+1 == regAmount)
+        {
+            switchReqLoan.setText("To juz ostani wniosek.");
+        }
+        else
+        {
+            currentReq++;
+            loadLoanReq(currentReq);
+        }
+    }
+
+    @FXML
+    public void handlePreviousLoanReq()
+    {
+
+        if(currentReq-1 == -1)
+        {
+            switchReqLoan.setText("To jest pierwszy wniosek na liście.");
+        }
+        else
+        {
+            currentReq--;
+            loadLoanReq(currentReq);
+        }
+    }
+
+    @FXML
+    public void handleAcceptLoanReq()
+    {
+        if(doubleClicks0 == 0)
+        {
+            errSendLoanDecision.setText("Kliknij, ponownie aby potwierdzić wybór!");
+            doubleClicks0++;
+            doubleClicks1 = 0;
+        }
+        else if (doubleClicks0 == 1)
+        {
+            errSendLoanDecision.setText("");
+            decideLoanReq("y");
+            doubleClicks0 = 0;
+        }
+    }
+
+    @FXML
+    public void handleRefuseLoanReq()
+    {
+        if(doubleClicks1 == 0)
+        {
+            errSendLoanDecision.setText("Kliknij, ponownie aby potwierdzić wybór!");
+            doubleClicks1++;
+            doubleClicks0 = 0;
+        }
+        else if (doubleClicks1 == 1)
+        {
+            errSendLoanDecision.setText("");
+            decideLoanReq("n");
+            doubleClicks1 = 0;
+        }
+    }
+
+    public void decideLoanReq(String decision)
+    {
+        String er;
+
+        er = admin.sendLoanReqDecision(listLoanReq.get(currentReq).id_req, decision);
+
+
+        if (er.equals("1"))
+        {
+            errSendLoanDecision.setText("Wystąpił bład podczas przetważania wniosku.");
+        }
+        else if (er.equals("-1"))
+        {
+            errSendLoanDecision.setText("Wystąpił bład podczas wysyłania wniosku.");
+        }
+        else if (er.equals("0"))
+        {
+            listLoanReq.remove(currentReq);
+
+            //listLoanReq = admin.getListLoanReq();
+
+            if(listLoanReq == null)
+            {
+                currentPane.setVisible(false);
+                currentPane = personalDataReqPane;
+                currentPane.setVisible(true);
+
+                errGetLoanReq.setText("Wystąplił problem z probranie nowych wnioskow, spróbuj ponoawnie za chwile.");
+                regAmount = -1;
+            }
+
+            regAmount = listLoanReq.size();
+            currentReq = 0;
+
+            if(regAmount == 0)
+            {
+                currentPane.setVisible(false);
+                currentPane = loanReqPane;
+                currentPane.setVisible(true);
+                reqAmountLoan.setText("0");
+            }
+            else
+            {
+                loadLoanReq(currentReq);
+            }
+
+        }
+
     }
 }
