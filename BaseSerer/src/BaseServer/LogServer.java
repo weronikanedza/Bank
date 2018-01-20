@@ -19,8 +19,9 @@ public class LogServer
     {
         super("LogServer");
 
-        this.start();
         this.isRunning = true;
+        this.start();
+
     }
 
     @Override
@@ -39,6 +40,10 @@ public class LogServer
                 }
                 // Split this message
                 String[] message = tempMessage.split(" ");
+                for(String mes : message)
+                {
+                    System.out.println(mes);
+                }
 
                 // Return local date
                 String localDate;
@@ -54,6 +59,7 @@ public class LogServer
 
                 // Create folder for specific client
                 File file = CreateFolder(path, message);
+
 
                 // Create file
                 file = new File(file.getPath() + "\\" + localDate + ".txt");
@@ -120,14 +126,6 @@ public class LogServer
         file.mkdirs();
 
         return file;
-    }
-
-    void AddMessageToLog(String message)
-    {
-        synchronized (logServerQueue)
-        {
-            logServerQueue.offer(message);
-        }
     }
 
     void AddMessageToLog(String message, String login, Object object)

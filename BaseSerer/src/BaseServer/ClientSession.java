@@ -1,47 +1,36 @@
 package BaseServer;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientSession
 {
     // This collection contain current user session.
-    private static Map<String, ClientData> clientSessions;
+    Map<String, Client> clients;
 
-    public ClientSession()
+    ClientSession()
     {
-        clientSessions = new HashMap<>();
+        clients = new ConcurrentHashMap<>();
+    }
+
+    void Add(String key, Client value)
+    {
+        clients.put(key, value);
+    }
+
+    Client Find(String key)
+    {
+        return clients.get(key);
+    }
+
+    void Remove(String key)
+    {
+        clients.remove(key);
     }
 
 
-    public void addClient(String login, ClientData data)
-    {
-        synchronized (clientSessions)
-        {
-            clientSessions.put(login, data);
-            show(); // for test
-        }
 
-    }
 
-    public boolean removeClient(String login)
-    {
-        synchronized (clientSessions)
-        {
-            if(clientSessions.remove(login) != null)
-            {
-                show(); // for test
-                return true;
-            }
-
-        }
-        return false;
-    }
-
-    public synchronized void show()
-    {
-        System.out.println(clientSessions);
-    }
 
 
 
